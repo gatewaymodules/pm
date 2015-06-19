@@ -40,17 +40,25 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title">Snowball Scripts 3.0</div>
+        <div class="title">ISP Scripts 3.0</div>
+        <br>
         <div class="quote">{{ Inspiring::quote() }}</div>
         <br><br>
 
         <div>
-            <button type="button" class="btn btn-default navbar-btn">Sign in</button>
+            <button type="button" class="btn btn-default navbar-btn" data-target="/projects">Sign in</button>
         </div>
     </div>
 </div>
 <!-- Scripts -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>
+$('.btn').on('click', function(event) {
+event.preventDefault();
+var url = $(this).data('target');
+location.replace(url);
+});
+</script>
 </body>
 </html>
