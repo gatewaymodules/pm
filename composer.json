@@ -1,0 +1,6 @@
+{
+    "require": {
+        "barryvdh/laravel-ide-helper": "^2.0",
+        "illuminate/html": "~5.0"
+    }
+}

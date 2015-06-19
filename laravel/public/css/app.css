@@ -1,0 +1,1925 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300);
+/* ==========================================================================
+   Neat helpers
+   ========================================================================== */
+/* ==========================================================================
+   Settings
+   ========================================================================== */
+/* ==========================================================================
+   Grid settings
+   ========================================================================== */
+/* ==========================================================================
+   Visual grid settings
+   ========================================================================== */
+/* ==========================================================================
+   Custom settings
+   ========================================================================== */
+/* ==========================================================================
+   Anchors
+   ========================================================================== */
+/* line 4, ../scss/_elements.scss */
+a {
+    text-decoration: none;
+    color: #f0523f;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+/* line 12, ../scss/_elements.scss */
+.button {
+    text-align: center;
+    background: #f0523f;
+    padding: 10px;
+    border: none;
+    color: #fff;
+}
+
+/* line 21, ../scss/_elements.scss */
+.button.full {
+    width: 100%;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+/* line 29, ../scss/_elements.scss */
+h1, h2, h3 {
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   Vendor
+   ========================================================================== */
+/*! normalize.css v2.1.1 | MIT License | git.io/normalize */
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined in IE 8/9.
+ */
+/* line 22, ../scss/vendor/normalize/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+/* line 32, ../scss/vendor/normalize/_normalize.scss */
+audio,
+canvas,
+video {
+    display: inline-block;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 41, ../scss/vendor/normalize/_normalize.scss */
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 50, ../scss/vendor/normalize/_normalize.scss */
+[hidden] {
+    display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+/**
+ * 1. Prevent system color scheme's background color being used in Firefox, IE,
+ *    and Opera.
+ * 2. Prevent system color scheme's text color being used in Firefox, IE, and
+ *    Opera.
+ * 3. Set default font family to sans-serif.
+ * 4. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+/* line 68, ../scss/vendor/normalize/_normalize.scss */
+html {
+    background: #fff;
+    /* 1 */
+    color: #000;
+    /* 2 */
+    font-family: sans-serif;
+    /* 3 */
+    -ms-text-size-adjust: 100%;
+    /* 4 */
+    -webkit-text-size-adjust: 100%;
+    /* 4 */
+}
+
+/**
+ * Remove default margin.
+ */
+/* line 80, ../scss/vendor/normalize/_normalize.scss */
+body {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+/* line 92, ../scss/vendor/normalize/_normalize.scss */
+a:focus {
+    outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 101, ../scss/vendor/normalize/_normalize.scss */
+a:active,
+a:hover {
+    outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+/* line 114, ../scss/vendor/normalize/_normalize.scss */
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+/* line 123, ../scss/vendor/normalize/_normalize.scss */
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+/* line 132, ../scss/vendor/normalize/_normalize.scss */
+b,
+strong {
+    font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+/* line 140, ../scss/vendor/normalize/_normalize.scss */
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 148, ../scss/vendor/normalize/_normalize.scss */
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 158, ../scss/vendor/normalize/_normalize.scss */
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+/**
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+/* line 170, ../scss/vendor/normalize/_normalize.scss */
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+/* line 179, ../scss/vendor/normalize/_normalize.scss */
+pre {
+    white-space: pre-wrap;
+}
+
+/**
+ * Set consistent quote types.
+ */
+/* line 187, ../scss/vendor/normalize/_normalize.scss */
+q {
+    quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 195, ../scss/vendor/normalize/_normalize.scss */
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 204, ../scss/vendor/normalize/_normalize.scss */
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+/* line 211, ../scss/vendor/normalize/_normalize.scss */
+sup {
+    top: -0.5em;
+}
+
+/* line 215, ../scss/vendor/normalize/_normalize.scss */
+sub {
+    bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9.
+ */
+/* line 227, ../scss/vendor/normalize/_normalize.scss */
+img {
+    border: 0;
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+/* line 235, ../scss/vendor/normalize/_normalize.scss */
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+/* line 247, ../scss/vendor/normalize/_normalize.scss */
+figure {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 259, ../scss/vendor/normalize/_normalize.scss */
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 270, ../scss/vendor/normalize/_normalize.scss */
+legend {
+    border: 0;
+    /* 1 */
+    padding: 0;
+    /* 2 */
+}
+
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+/* line 284, ../scss/vendor/normalize/_normalize.scss */
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    /* 1 */
+    font-size: 100%;
+    /* 2 */
+    margin: 0;
+    /* 3 */
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 296, ../scss/vendor/normalize/_normalize.scss */
+button,
+input {
+    line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+/* line 308, ../scss/vendor/normalize/_normalize.scss */
+button,
+select {
+    text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 323, ../scss/vendor/normalize/_normalize.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button;
+    /* 2 */
+    cursor: pointer;
+    /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 333, ../scss/vendor/normalize/_normalize.scss */
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ */
+/* line 343, ../scss/vendor/normalize/_normalize.scss */
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box;
+    /* 1 */
+    padding: 0;
+    /* 2 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+/* line 354, ../scss/vendor/normalize/_normalize.scss */
+input[type="search"] {
+    -webkit-appearance: textfield;
+    /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    /* 2 */
+    box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+/* line 367, ../scss/vendor/normalize/_normalize.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 376, ../scss/vendor/normalize/_normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+/* line 386, ../scss/vendor/normalize/_normalize.scss */
+textarea {
+    overflow: auto;
+    /* 1 */
+    vertical-align: top;
+    /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 399, ../scss/vendor/normalize/_normalize.scss */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* line 2, ../scss/vendor/neat/grid/_grid.scss */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*!
+ *
+.||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||.
+
+    .                                      '||            .
+  .||.  .... ... ... ...    ....  ... ...   ||   ....   .||.    ....
+   ||    '|.  |   ||'  || .|...||  ||'  ||  ||  '' .||   ||   .|...||
+   ||     '|.|    ||    | ||       ||    |  ||  .|' ||   ||   ||
+   '|.'    '|     ||...'   '|...'  ||...'  .||. '|..'|'  '|.'  '|...'
+        .. |      ||               ||
+         ''      ''''             ''''      A Typographic Starter Kit
+
+  URL ........... http://typeplate.com
+  VERSION ....... 1.1.1
+  Github ........ https://github.com/typeplate/typeplate.github.io
+  AUTHORS ....... Dennis Gaebel (@gryghostvisuals) & Zachary Kain (@zakkain)
+  LICENSE ....... Creative Commmons Attribution 3.0
+  LICENSE URL ... http://creativecommons.org/licenses/by/3.0
+
+ .||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||.
+ *
+ */
+@font-face {
+    font-family: "Ampersand";
+    src: local("Georgia"), local("Garamond"), local("Palatino"), local("Book Antiqua");
+    unicode-range: U+0026;
+}
+
+@font-face {
+    font-family: "Ampersand";
+    src: local("Georgia");
+    unicode-range: U+270C;
+}
+
+/* line 386, ../scss/vendor/typeplate/_typeplate.scss */
+body {
+    word-wrap: break-word;
+}
+
+/* line 390, ../scss/vendor/typeplate/_typeplate.scss */
+pre code {
+    word-wrap: normal;
+}
+
+/**
+ * Dropcap Sass @include
+ * Use the following Sass @include with any selector you feel necessary.
+ *
+    @include dropcap($dropcap-float-position, $dropcap-font-size, $dropcap-font-family, $dropcap-txt-indent, $dropcap-margin, $dropcap-padding, $dropcap-color, $dropcap-line-height, $dropcap-bg);
+ *
+ * Extend this object into your custom stylesheet. Let the variables do the work.
+ *
+ */
+/* line 515, ../scss/vendor/typeplate/_typeplate.scss */
+html {
+    font: normal 112.5%/1.65 "Open Sans", sans-serif, serif;
+}
+
+/* line 523, ../scss/vendor/typeplate/_typeplate.scss */
+body {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: auto;
+    color: #444444;
+}
+
+/* line 534, ../scss/vendor/typeplate/_typeplate.scss */
+small {
+    font-size: 65%;
+}
+
+/* line 557, ../scss/vendor/typeplate/_typeplate.scss */
+h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+    line-height: 1;
+    margin-top: 0;
+}
+
+/* line 572, ../scss/vendor/typeplate/_typeplate.scss */
+.tera {
+    font-size: 117px;
+    font-size: 6.5rem;
+    margin-bottom: 0.25385rem;
+}
+
+/* line 572, ../scss/vendor/typeplate/_typeplate.scss */
+.giga {
+    font-size: 90px;
+    font-size: 5rem;
+    margin-bottom: 0.33rem;
+}
+
+/* line 572, ../scss/vendor/typeplate/_typeplate.scss */
+.mega {
+    font-size: 72px;
+    font-size: 4rem;
+    margin-bottom: 0.4125rem;
+}
+
+/* line 572, ../scss/vendor/typeplate/_typeplate.scss */
+.alpha, h1 {
+    font-size: 60px;
+    font-size: 3.33333rem;
+    margin-bottom: 0.495rem;
+}
+
+/* line 572, ../scss/vendor/typeplate/_typeplate.scss */
+.beta, h2 {
+    font-size: 48px;
+    font-size: 2.66667rem;
+    margin-bottom: 0.61875rem;
+}
+
+/* line 572, ../scss/vendor/typeplate/_typeplate.scss */
+.gamma, h3, .articles article h1, .form h2, .form h3, .form legend, .comments .comment h2, .comments .comment h3 {
+    font-size: 36px;
+    font-size: 2rem;
+    margin-bottom: 0.825rem;
+}
+
+/* line 572, ../scss/vendor/typeplate/_typeplate.scss */
+.delta, h4 {
+    font-size: 24px;
+    font-size: 1.33333rem;
+    margin-bottom: 1.2375rem;
+}
+
+/* line 572, ../scss/vendor/typeplate/_typeplate.scss */
+.epsilon, h5 {
+    font-size: 21px;
+    font-size: 1.16667rem;
+    margin-bottom: 1.41429rem;
+}
+
+/* line 572, ../scss/vendor/typeplate/_typeplate.scss */
+.zeta, h6 {
+    font-size: 18px;
+    font-size: 1rem;
+    margin-bottom: 1.65rem;
+}
+
+/* line 612, ../scss/vendor/typeplate/_typeplate.scss */
+p {
+    margin: auto auto 1.5em;
+}
+/* line 614, ../scss/vendor/typeplate/_typeplate.scss */
+p + p {
+    text-indent: 1.5em;
+    margin-top: -1.5em;
+}
+
+/* line 638, ../scss/vendor/typeplate/_typeplate.scss */
+abbr,
+acronym,
+blockquote,
+code,
+dir,
+kbd,
+listing,
+plaintext,
+q,
+samp,
+tt,
+var,
+xmp {
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    -o-hyphens: none;
+    hyphens: none;
+}
+
+/* line 646, ../scss/vendor/typeplate/_typeplate.scss */
+pre code {
+    white-space: -moz-pre-wrap;
+    white-space: pre-wrap;
+}
+
+/* line 651, ../scss/vendor/typeplate/_typeplate.scss */
+pre {
+    white-space: pre;
+}
+
+/* line 655, ../scss/vendor/typeplate/_typeplate.scss */
+code {
+    white-space: pre;
+    font-family: monospace;
+}
+
+/**
+ * Abbreviations Markup
+ *
+    <abbr title="hyper text markup language">HMTL</abbr>
+ *
+ * Extend this object into your markup.
+ *
+ */
+/* line 671, ../scss/vendor/typeplate/_typeplate.scss */
+abbr {
+    font-variant: small-caps;
+    font-weight: 600;
+    text-transform: lowercase;
+    color: gray;
+}
+/* line 673, ../scss/vendor/typeplate/_typeplate.scss */
+abbr[title]:hover {
+    cursor: help;
+}
+
+/* line 687, ../scss/vendor/typeplate/_typeplate.scss */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #444444;
+}
+
+/* line 697, ../scss/vendor/typeplate/_typeplate.scss */
+p + .drop-cap {
+    text-indent: 0;
+    margin-top: 0;
+}
+
+/* line 417, ../scss/vendor/typeplate/_typeplate.scss */
+.drop-cap:first-letter {
+    float: left;
+    margin: inherit;
+    padding: inherit;
+    font-size: 4em;
+    font-family: inherit;
+    line-height: 1;
+    text-indent: 0;
+    background: transparent;
+    color: inherit;
+}
+
+/**
+ * Lining Definition Style Markup
+ *
+    <dl class="lining">
+        <dt><b></b></dt>
+        <dd></dd>
+    </dl>
+ *
+ * Extend this object into your markup.
+ *
+ */
+/* line 456, ../scss/vendor/typeplate/_typeplate.scss */
+.lining dt,
+.lining dd {
+    display: inline;
+    margin: 0;
+}
+/* line 463, ../scss/vendor/typeplate/_typeplate.scss */
+.lining dt + dt:before,
+.lining dd + dt:before {
+    content: "\A";
+    white-space: pre;
+}
+/* line 471, ../scss/vendor/typeplate/_typeplate.scss */
+.lining dd + dd:before {
+    content: ", ";
+}
+/* line 475, ../scss/vendor/typeplate/_typeplate.scss */
+.lining dd:before {
+    content: ": ";
+    margin-left: -0.2rem;
+}
+
+/**
+ * Dictionary Definition Style Markup
+ *
+    <dl class="dictionary-style">
+        <dt><b></b></dt>
+            <dd></dd>
+    </dl>
+ *
+ * Extend this object into your markup.
+ *
+ */
+/* line 483, ../scss/vendor/typeplate/_typeplate.scss */
+.dictionary-style dt {
+    display: inline;
+    counter-reset: definitions;
+}
+/* line 487, ../scss/vendor/typeplate/_typeplate.scss */
+.dictionary-style dt + dt:before {
+    content: ", ";
+    margin-left: -0.2rem;
+}
+/* line 493, ../scss/vendor/typeplate/_typeplate.scss */
+.dictionary-style dd {
+    display: block;
+    counter-increment: definitions;
+}
+/* line 496, ../scss/vendor/typeplate/_typeplate.scss */
+.dictionary-style dd:before {
+    content: counter(definitions,decimal) ". ";
+}
+
+/**
+ * Blockquote Markup
+ *
+        <figure>
+            <blockquote cite="">
+                <p></p>
+            </blockquote>
+            <figcaption>
+                <cite>
+                    <small><a href=""></a></small>
+                </cite>
+            </figcaption>
+        </figure>
+ *
+ * Extend this object into your markup.
+ *
+ */
+/**
+ * Pull Quotes Markup
+ *
+    <aside class="pull-quote">
+        <blockquote>
+            <p></p>
+        </blockquote>
+    </aside>
+ *
+ * Extend this object into your custom stylesheet.
+ *
+ */
+/* line 781, ../scss/vendor/typeplate/_typeplate.scss */
+.pull-quote {
+    position: relative;
+    padding: 1em;
+}
+/* line 358, ../scss/vendor/typeplate/_typeplate.scss */
+.pull-quote:before, .pull-quote:after {
+    height: 1em;
+    opacity: 0.5;
+    position: absolute;
+    font-size: 4em;
+    color: #dc976e;
+}
+/* line 365, ../scss/vendor/typeplate/_typeplate.scss */
+.pull-quote:before {
+    content: '“';
+    top: 0;
+    left: 0;
+}
+/* line 370, ../scss/vendor/typeplate/_typeplate.scss */
+.pull-quote:after {
+    content: '”';
+    bottom: 0;
+    right: 0;
+}
+
+/**
+ * Figures Markup
+ *
+    <figure>
+        <figcaption>
+            <strong>Fig. 4.2 | </strong>Type Anatomy, an excerpt from Mark Boulton's book<cite title="http://designingfortheweb.co.uk/book/part3/part3_chapter11.php">"Designing for the Web"</cite>
+        </figcaption>
+    </figure>
+ *
+ * Extend this object into your markup.
+ *
+ */
+/**
+ * Footnote Markup : Replace 'X' with your unique number for each footnote
+ *
+    <article>
+        <p><sup><a href="#fn-itemX" id="fn-returnX"></a></sup></p>
+        <footer>
+            <ol class="foot-notes">
+                <li id="fn-itemX"><a href="#fn-returnX">↩</a></li>
+            </ol>
+        </footer>
+    </article>
+ *
+ * Extend this object into your markup.
+ *
+ */
+/* ==========================================================================
+   Modules
+   ========================================================================== */
+/* ==========================================================================
+   Articles
+   ========================================================================== */
+/* line 7, ../scss/modules/_articles.scss */
+.articles {
+    display: block;
+    float: left;
+    margin-right: 2.5641%;
+    width: 100%;
+    margin-right: 0;
+    padding: 2%;
+    max-width: 900px;
+}
+/* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+.articles:last-child {
+    margin-right: 0;
+}
+/* line 13, ../scss/modules/_articles.scss */
+.articles article {
+    margin: 0 0 2rem 0;
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+    /* line 40, ../scss/modules/_articles.scss */
+    .articles {
+        display: block;
+        float: left;
+        margin-right: 2.5641%;
+        width: 74.35897%;
+        margin-right: 0;
+        max-width: 900px;
+    }
+    /* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+    .articles:last-child {
+        margin-right: 0;
+    }
+}
+/* ==========================================================================
+   CATEGORIES
+   ========================================================================== */
+/* line 7, ../scss/modules/_categories.scss */
+.categories ul, .categories li {
+    padding: 0;
+    list-style-type: none;
+}
+/* line 12, ../scss/modules/_categories.scss */
+.categories li a {
+    font-size: .7em;
+    display: block;
+    padding: 8px 10px;
+    color: #444444;
+    border-bottom: 1px solid #dbdbdb;
+    text-decoration: none;
+}
+/* line 19, ../scss/modules/_categories.scss */
+.categories li a:hover {
+    color: white;
+    background: #444444;
+}
+
+/* ==========================================================================
+   CONTRIBUTORS
+   ========================================================================== */
+/* ==========================================================================
+   HEADER NAVIGATION (mobile first module)
+   ========================================================================== */
+/* line 7, ../scss/modules/_header.scss */
+.top-navigation {
+    *zoom: 1;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #444444;
+    position: relative;
+}
+/* line 18, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.top-navigation:before, .top-navigation:after {
+    content: " ";
+    display: table;
+}
+/* line 23, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.top-navigation:after {
+    clear: both;
+}
+
+/* line 13, ../scss/modules/_header.scss */
+.top-navigation-logo {
+    float: left;
+    text-align: center;
+    padding: 0.5rem 0 0.5rem 0.5rem;
+}
+
+/* line 19, ../scss/modules/_header.scss */
+.top-navigation-items {
+    float: left;
+    margin: 2.25rem 0 0 0.25rem;
+    list-style: none;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-size: 0.8rem;
+    padding: 0;
+}
+/* line 27, ../scss/modules/_header.scss */
+.top-navigation-items li {
+    display: inline-block;
+    margin: 0 1rem;
+}
+/* line 30, ../scss/modules/_header.scss */
+.top-navigation-items li a {
+    color: #eee;
+    text-decoration: none;
+}
+/* line 33, ../scss/modules/_header.scss */
+.top-navigation-items li a:hover {
+    color: #f0523f;
+}
+
+/* line 40, ../scss/modules/_header.scss */
+.top-navigation-signin-desktop {
+    display: none;
+}
+
+/* line 44, ../scss/modules/_header.scss */
+.top-navigation-signin-mobile {
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #2b2b2b;
+}
+/* line 50, ../scss/modules/_header.scss */
+.top-navigation-signin-mobile li {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+}
+/* line 53, ../scss/modules/_header.scss */
+.top-navigation-signin-mobile li a {
+    color: #bbb;
+    text-decoration: none;
+}
+/* line 56, ../scss/modules/_header.scss */
+.top-navigation-signin-mobile li a:hover {
+    color: #f0523f;
+}
+
+@media only screen and (min-width: 480px) {
+    /* line 67, ../scss/modules/_header.scss */
+    .top-navigation-signin-mobile {
+        display: none;
+    }
+
+    /* line 70, ../scss/modules/_header.scss */
+    .top-navigation-signin-desktop {
+        display: inline-block;
+        text-align: right;
+        list-style: none;
+        float: right;
+        padding: 0;
+        margin: 1.70rem 1rem 0 0;
+        font-size: 0.8rem;
+    }
+    /* line 78, ../scss/modules/_header.scss */
+    .top-navigation-signin-desktop li {
+        padding: 0.5rem 0;
+        font-size: 0.9rem;
+    }
+    /* line 81, ../scss/modules/_header.scss */
+    .top-navigation-signin-desktop li a {
+        color: #bbb;
+        text-decoration: none;
+    }
+    /* line 84, ../scss/modules/_header.scss */
+    .top-navigation-signin-desktop li a:hover {
+        color: #f0523f;
+    }
+
+    /* line 90, ../scss/modules/_header.scss */
+    .dashboard-word {
+        display: none;
+    }
+}
+@media only screen and (min-width: 768px) {
+    /* line 100, ../scss/modules/_header.scss */
+    .top-navigation-logo {
+        padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    }
+
+    /* line 103, ../scss/modules/_header.scss */
+    .top-navigation-items {
+        margin: 2.25rem 0 0 0.75rem;
+    }
+
+    /* line 106, ../scss/modules/_header.scss */
+    .top-navigation-signin-desktop {
+        margin: 1.75rem 2rem 0 0;
+    }
+
+    /* line 109, ../scss/modules/_header.scss */
+    .dashboard-word {
+        display: inline-block;
+    }
+}
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+/* line 5, ../scss/modules/_hero-section.scss */
+.hero-section {
+    background-color: #f0523f;
+    border-bottom: 2px solid #fff;
+    clear: both;
+    float: left;
+    width: 100%;
+}
+/* line 11, ../scss/modules/_hero-section.scss */
+.hero-section .description {
+    width: 40%;
+    float: left;
+    color: #fff;
+    padding: 4% 5% 5%;
+}
+/* line 16, ../scss/modules/_hero-section.scss */
+.hero-section .description h1 {
+    color: #fff;
+}
+/* line 19, ../scss/modules/_hero-section.scss */
+.hero-section .description a {
+    color: #fff;
+    text-decoration: underline;
+}
+/* line 22, ../scss/modules/_hero-section.scss */
+.hero-section .description a:hover {
+    color: #444444;
+    text-shadow: none;
+}
+/* line 28, ../scss/modules/_hero-section.scss */
+.hero-section .posts {
+    float: left;
+    color: #fff;
+    width: 60%;
+    padding: 4% 5% 2% 5%;
+}
+/* line 33, ../scss/modules/_hero-section.scss */
+.hero-section .posts a {
+    color: #fff;
+    text-decoration: underline;
+}
+/* line 36, ../scss/modules/_hero-section.scss */
+.hero-section .posts a:hover {
+    color: #444444;
+    text-shadow: none;
+}
+
+/* line 44, ../scss/modules/_hero-section.scss */
+.hero-section .dark {
+    background-color: #ef4531;
+}
+
+/* line 48, ../scss/modules/_hero-section.scss */
+.hero-section .darker {
+    background-color: #ee3823;
+}
+
+/* ==========================================================================
+   META
+   ========================================================================== */
+/* line 5, ../scss/modules/_meta.scss */
+.meta {
+    margin: 0 0 1em;
+    padding: 0;
+    font-size: 65%;
+}
+/* line 10, ../scss/modules/_meta.scss */
+.meta .meta i {
+    padding: 0 3px 0 0;
+}
+/* line 14, ../scss/modules/_meta.scss */
+.meta li {
+    display: inline;
+    margin: 0 2em 0 0;
+}
+/* line 19, ../scss/modules/_meta.scss */
+.meta li a {
+    color: white;
+}
+/* line 21, ../scss/modules/_meta.scss */
+.meta li a:hover {
+    color: #444444;
+}
+
+/* ==========================================================================
+   POST
+   ========================================================================== */
+/* line 5, ../scss/modules/_post.scss */
+.post {
+    padding: 0 0 13px 0;
+    margin: 0 0 13px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+/* line 9, ../scss/modules/_post.scss */
+.post h3 {
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+/* line 18, ../scss/modules/_post.scss */
+.post h3 a {
+    color: white;
+}
+/* line 20, ../scss/modules/_post.scss */
+.post h3 a:hover {
+    color: #444444;
+    text-shadow: none;
+}
+/* line 26, ../scss/modules/_post.scss */
+.post:last-child {
+    border: none;
+}
+
+/* ==========================================================================
+   SIDEBAR
+   ========================================================================== */
+/* line 7, ../scss/modules/_sidebar.scss */
+.sidebar {
+    padding: 2%;
+    display: block;
+    float: left;
+    margin-right: 2.5641%;
+    width: 100%;
+}
+/* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+.sidebar:last-child {
+    margin-right: 0;
+}
+
+/* line 12, ../scss/modules/_sidebar.scss */
+.new-post {
+    font-size: 80%;
+    margin: 2rem 0;
+}
+
+@media only screen and (min-width: 768px) {
+    /* line 30, ../scss/modules/_sidebar.scss */
+    .sidebar {
+        display: block;
+        float: left;
+        margin-right: 2.5641%;
+        width: 23.07692%;
+    }
+    /* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+    .sidebar:last-child {
+        margin-right: 0;
+    }
+}
+/* ==========================================================================
+   FORUM
+   ========================================================================== */
+/* line 7, ../scss/modules/_forum.scss */
+.forum {
+    *zoom: 1;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-right: 0;
+    padding: 2%;
+    max-width: 900px;
+}
+/* line 18, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.forum:before, .forum:after {
+    content: " ";
+    display: table;
+}
+/* line 23, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.forum:after {
+    clear: both;
+}
+/* line 13, ../scss/modules/_forum.scss */
+.forum h1 {
+    font-size: 23px;
+    padding: 0 0 0 0;
+    margin: 0;
+    font-weight: 600;
+}
+/* line 20, ../scss/modules/_forum.scss */
+.forum h2 {
+    font-size: 14px;
+    padding: 0 0 0 3px;
+}
+/* line 25, ../scss/modules/_forum.scss */
+.forum .tags {
+    font-size: 13px;
+    padding: 5px 0 0 0;
+    display: block;
+    *zoom: 1;
+}
+/* line 18, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.forum .tags:before, .forum .tags:after {
+    content: " ";
+    display: table;
+}
+/* line 23, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.forum .tags:after {
+    clear: both;
+}
+/* line 32, ../scss/modules/_forum.scss */
+.forum .version {
+    font-size: 13px;
+    margin: 0;
+    padding: 0px 0 10px 0;
+    display: block;
+    font-style: italic;
+}
+/* line 40, ../scss/modules/_forum.scss */
+.forum article {
+    padding: 22px 5px 7px 5px;
+    border-top: 1px solid #ccc;
+    *zoom: 1;
+}
+/* line 18, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.forum article:before, .forum article:after {
+    content: " ";
+    display: table;
+}
+/* line 23, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.forum article:after {
+    clear: both;
+}
+/* line 45, ../scss/modules/_forum.scss */
+.forum article .title-tags {
+    float: left;
+}
+/* line 49, ../scss/modules/_forum.scss */
+.forum article h3 {
+    font-size: 16px;
+    margin: 0;
+    padding: 0 0 5px 0;
+}
+/* line 54, ../scss/modules/_forum.scss */
+.forum article h3 a:visited {
+    color: #ccc;
+}
+/* line 58, ../scss/modules/_forum.scss */
+.forum article h3:hover a {
+    color: #444444;
+}
+/* line 63, ../scss/modules/_forum.scss */
+.forum article .meta {
+    padding: 0;
+    margin: 0;
+    float: right;
+}
+/* line 70, ../scss/modules/_forum.scss */
+.forum article:last-child {
+    border-bottom: 1px solid #ccc;
+}
+
+@media only screen and (min-width: 480px) {
+    /* line 82, ../scss/modules/_forum.scss */
+    .forum {
+        display: block;
+        float: left;
+        margin-right: 2.5641%;
+        width: 74.35897%;
+    }
+    /* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+    .forum:last-child {
+        margin-right: 0;
+    }
+}
+@media only screen and (min-width: 768px) {
+    /* line 93, ../scss/modules/_forum.scss */
+    .forum {
+        display: block;
+        float: left;
+        margin-right: 2.5641%;
+        width: 74.35897%;
+        margin-right: 0;
+        max-width: 900px;
+    }
+    /* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+    .forum:last-child {
+        margin-right: 0;
+    }
+}
+/* ==========================================================================
+   FORUM
+   ========================================================================== */
+/* line 7, ../scss/modules/_form.scss */
+.form {
+    display: block;
+    float: left;
+    margin-right: 2.5641%;
+    width: 100%;
+}
+/* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+.form:last-child {
+    margin-right: 0;
+}
+/* line 11, ../scss/modules/_form.scss */
+.form fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+/* line 17, ../scss/modules/_form.scss */
+.form .button {
+    margin: 15px 0 0 0;
+}
+/* line 21, ../scss/modules/_form.scss */
+.form h2 {
+    font-size: 20px;
+    border-bottom: 1px solid #eee;
+    padding: 0 0 13px 0;
+}
+/* line 28, ../scss/modules/_form.scss */
+.form h3 {
+    font-size: 20px;
+    border-bottom: 1px solid #eee;
+    padding: 20px 0 13px 0;
+}
+/* line 35, ../scss/modules/_form.scss */
+.form legend {
+    display: block;
+    width: 100%;
+    padding: 13px 0;
+    margin: 0;
+    font-size: 20px;
+    border-bottom: 1px solid #eee;
+}
+/* line 45, ../scss/modules/_form.scss */
+.form .tags {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    *zoom: 1;
+}
+/* line 18, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.form .tags:before, .form .tags:after {
+    content: " ";
+    display: table;
+}
+/* line 23, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.form .tags:after {
+    clear: both;
+}
+/* line 51, ../scss/modules/_form.scss */
+.form .tags li {
+    display: inline;
+    padding: 4px 0 6px 0;
+    font-size: 13px;
+}
+/* line 57, ../scss/modules/_form.scss */
+.form .tags li a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 0 3px 0;
+    background: #444444;
+    color: white;
+}
+/* line 65, ../scss/modules/_form.scss */
+.form .tags li a.active {
+    background: #f0523f;
+}
+/* line 69, ../scss/modules/_form.scss */
+.form .tags li a.disabled {
+    background: #ccc;
+}
+/* line 74, ../scss/modules/_form.scss */
+.form label {
+    font-weight: bold;
+    font-size: 14px;
+    padding: 6px 0;
+    cursor: pointer;
+    display: block;
+}
+/* line 82, ../scss/modules/_form.scss */
+.form input[type=text] {
+    display: block;
+    width: 100%;
+    border: none;
+    background: #000;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+}
+/* line 92, ../scss/modules/_form.scss */
+.form textarea {
+    display: block;
+    width: 100%;
+    border: none;
+    background: #000;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+}
+/* line 103, ../scss/modules/_form.scss */
+.form textarea[disabled] {
+    display: block;
+    width: 100%;
+    border: none;
+    background: #ccc;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+    height: 50px;
+    margin: 0 0 20px 0;
+}
+/* line 115, ../scss/modules/_form.scss */
+.form .gist {
+    padding: 5px 0 0 0;
+    display: block;
+}
+
+/* line 121, ../scss/modules/_form.scss */
+.error {
+    background: #f0523f;
+    display: block;
+    padding: 5px;
+    color: white;
+}
+
+/* ==========================================================================
+   FORUM
+   ========================================================================== */
+/* line 7, ../scss/modules/_comments.scss */
+.comments {
+    list-style-type: none;
+    margin: 0;
+    *zoom: 1;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* line 18, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.comments:before, .comments:after {
+    content: " ";
+    display: table;
+}
+/* line 23, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.comments:after {
+    clear: both;
+}
+/* line 12, ../scss/modules/_comments.scss */
+.comments .comment {
+    *zoom: 1;
+}
+/* line 15, ../scss/modules/_comments.scss */
+.comments .comment img {
+    max-width: 100%;
+}
+/* line 18, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.comments .comment:before, .comments .comment:after {
+    content: " ";
+    display: table;
+}
+/* line 23, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.comments .comment:after {
+    clear: both;
+}
+/* line 20, ../scss/modules/_comments.scss */
+.comments .comment h2 {
+    font-size: 20px;
+    border-bottom: 1px solid #eee;
+    padding: 0 0 13px 0;
+}
+/* line 27, ../scss/modules/_comments.scss */
+.comments .comment h3 {
+    font-size: 20px;
+    border-bottom: 1px solid #eee;
+    padding: 0 0 8px 0;
+}
+/* line 34, ../scss/modules/_comments.scss */
+.comments .comment p {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+}
+/* line 40, ../scss/modules/_comments.scss */
+.comments .comment .meta {
+    border-top: 1px solid #eee;
+    padding: 13px 0 0 0;
+    margin: 13px 0 0 0;
+}
+/* line 45, ../scss/modules/_comments.scss */
+.comments .comment .meta li a {
+    color: #f0523f;
+}
+/* line 47, ../scss/modules/_comments.scss */
+.comments .comment .meta li a:hover {
+    color: #444444;
+}
+/* line 53, ../scss/modules/_comments.scss */
+.comments .comment .user {
+    display: none;
+}
+/* line 57, ../scss/modules/_comments.scss */
+.comments .comment .content {
+    display: block;
+    float: left;
+    margin-right: 2.5641%;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #eee;
+    margin: 0 0 15px 0;
+}
+/* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+.comments .comment .content:last-child {
+    margin-right: 0;
+}
+
+@media only screen and (min-width: 480px) {
+    /* line 74, ../scss/modules/_comments.scss */
+    .comments .comment .user {
+        display: block;
+        display: block;
+        float: left;
+        margin-right: 2.5641%;
+        width: 10.25641%;
+    }
+    /* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+    .comments .comment .user:last-child {
+        margin-right: 0;
+    }
+    /* line 78, ../scss/modules/_comments.scss */
+    .comments .comment .user img {
+        width: 100%;
+        height: auto;
+    }
+    /* line 83, ../scss/modules/_comments.scss */
+    .comments .comment .user a {
+        margin: 0;
+        padding: 0;
+    }
+    /* line 88, ../scss/modules/_comments.scss */
+    .comments .comment .user p {
+        padding: 0;
+        margin: 0;
+        font-size: 13px;
+    }
+    /* line 95, ../scss/modules/_comments.scss */
+    .comments .comment .content {
+        display: block;
+        float: left;
+        margin-right: 2.5641%;
+        width: 87.17949%;
+        padding: 20px;
+        border: 1px solid #eee;
+        margin: 0 0 25px 0;
+    }
+    /* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+    .comments .comment .content:last-child {
+        margin-right: 0;
+    }
+}
+/* ==========================================================================
+   MOBILE FIRST MODULE SKELETON
+   ========================================================================== */
+/* line 8, ../scss/modules/_dashboard.scss */
+.user-information img {
+    width: 100%;
+}
+/* line 13, ../scss/modules/_dashboard.scss */
+.user-information h1 {
+    padding: 10px 0 0 0;
+    font-size: 20px;
+}
+/* line 19, ../scss/modules/_dashboard.scss */
+.user-information a {
+    font-size: 14px;
+}
+
+/* line 25, ../scss/modules/_dashboard.scss */
+.user-content {
+    display: block;
+    float: left;
+    margin-right: 2.5641%;
+    width: 100%;
+    padding: 2%;
+}
+/* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+.user-content:last-child {
+    margin-right: 0;
+}
+/* line 29, ../scss/modules/_dashboard.scss */
+.user-content h1 {
+    font-size: 18px;
+    padding: 0 0 15px 10px;
+    margin: 0;
+    font-weight: 600;
+}
+/* line 36, ../scss/modules/_dashboard.scss */
+.user-content .comments {
+    padding: 0 0 30px 0;
+}
+/* line 40, ../scss/modules/_dashboard.scss */
+.user-content .comment .content {
+    display: block;
+    float: left;
+    margin-right: 2.5641%;
+    width: 100%;
+}
+/* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+.user-content .comment .content:last-child {
+    margin-right: 0;
+}
+/* line 43, ../scss/modules/_dashboard.scss */
+.user-content .comment .content h2 {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+@media only screen and (min-width: 480px) {
+    /* line 54, ../scss/modules/_dashboard.scss */
+    .user-content {
+        display: block;
+        float: left;
+        margin-right: 2.5641%;
+        width: 74.35897%;
+    }
+    /* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+    .user-content:last-child {
+        margin-right: 0;
+    }
+    /* line 58, ../scss/modules/_dashboard.scss */
+    .user-content .half {
+        display: block;
+        float: left;
+        margin-right: 2.5641%;
+        width: 48.71795%;
+        float: left;
+    }
+    /* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+    .user-content .half:last-child {
+        margin-right: 0;
+    }
+}
+/* ==========================================================================
+   MOBILE FIRST MODULE SKELETON
+   ========================================================================== */
+/* line 7, ../scss/modules/_alert.scss */
+.alert-box {
+    padding: 10px;
+    background: #f0523f;
+    color: white;
+    font-size: 15px;
+}
+
+/* ==========================================================================
+   MOBILE FIRST MODULE SKELETON
+   ========================================================================== */
+/* line 7, ../scss/modules/_auth.scss */
+.auth {
+    padding: 2%;
+}
+/* line 11, ../scss/modules/_auth.scss */
+.auth.woops {
+    text-align: center;
+}
+/* line 15, ../scss/modules/_auth.scss */
+.auth .user {
+    *zoom: 1;
+}
+/* line 18, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.auth .user:before, .auth .user:after {
+    content: " ";
+    display: table;
+}
+/* line 23, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.auth .user:after {
+    clear: both;
+}
+/* line 19, ../scss/modules/_auth.scss */
+.auth h1 {
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3;
+    padding: 0 0 20px 0;
+}
+/* line 27, ../scss/modules/_auth.scss */
+.auth img {
+    float: left;
+    display: block;
+    float: left;
+    margin-right: 2.5641%;
+    width: 23.07692%;
+}
+/* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+.auth img:last-child {
+    margin-right: 0;
+}
+/* line 32, ../scss/modules/_auth.scss */
+.auth .bio {
+    float: left;
+    display: block;
+    float: left;
+    margin-right: 2.5641%;
+    width: 74.35897%;
+}
+/* line 41, ../scss/vendor/neat/grid/_span-columns.scss */
+.auth .bio:last-child {
+    margin-right: 0;
+}
+/* line 36, ../scss/modules/_auth.scss */
+.auth .bio h2 {
+    padding: 0 0 0 10px;
+    font-weight: 600;
+    font-size: 22px;
+}
+/* line 42, ../scss/modules/_auth.scss */
+.auth .bio h3 {
+    font-size: 14px;
+    padding: 0 0 0 10px;
+}
+/* line 47, ../scss/modules/_auth.scss */
+.auth .bio .button {
+    font-size: 14px;
+    margin: 15px 0 0 10px;
+}
+
+@media only screen and (min-width: 480px) {
+    /* line 59, ../scss/modules/_auth.scss */
+    .auth {
+        width: 500px;
+        margin: auto;
+    }
+}
+/* ==========================================================================
+   MOBILE FIRST MODULE SKELETON
+   ========================================================================== */
+/* line 7, ../scss/modules/_pagination.scss */
+.pagination {
+    *zoom: 1;
+    margin: 0 0 15px 0;
+}
+/* line 18, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.pagination:before, .pagination:after {
+    content: " ";
+    display: table;
+}
+/* line 23, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.pagination:after {
+    clear: both;
+}
+/* line 11, ../scss/modules/_pagination.scss */
+.pagination li {
+    float: left;
+    margin: 0;
+    list-style-type: none;
+}
+/* line 17, ../scss/modules/_pagination.scss */
+.pagination li a, .pagination .disabled, .pagination .active {
+    display: inline-block;
+    padding: 7px 15px;
+    font-size: 14px;
+}
+/* line 23, ../scss/modules/_pagination.scss */
+.pagination a:hover {
+    background: #f0523f;
+    color: white;
+}
+/* line 28, ../scss/modules/_pagination.scss */
+.pagination .active {
+    background: #f0523f;
+    color: white;
+}
+
+/* ==========================================================================
+   MOBILE FIRST MODULE SKELETON
+   ========================================================================== */
+/* line 7, ../scss/modules/_footer.scss */
+.content {
+    *zoom: 1;
+}
+/* line 18, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.content:before, .content:after {
+    content: " ";
+    display: table;
+}
+/* line 23, ../scss/vendor/bourbon/addons/_clearfix.scss */
+.content:after {
+    clear: both;
+}
+
+/* line 11, ../scss/modules/_footer.scss */
+footer {
+    width: 100%;
+    *zoom: 1;
+    border-top: 1px solid #444444;
+    padding: 1.75rem 2rem 1.75rem 0;
+    text-align: center;
+    font-size: 13px;
+}
+/* line 18, ../scss/vendor/bourbon/addons/_clearfix.scss */
+footer:before, footer:after {
+    content: " ";
+    display: table;
+}
+/* line 23, ../scss/vendor/bourbon/addons/_clearfix.scss */
+footer:after {
+    clear: both;
+}
+/* line 19, ../scss/modules/_footer.scss */
+footer .fortrabbit {
+    display: block;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
+    text-transform: lowercase;
+    font-size: 21px;
+}
+/* line 28, ../scss/modules/_footer.scss */
+footer .fortrabbit:hover {
+    text-decoration: none;
+}
+/* line 31, ../scss/modules/_footer.scss */
+footer .fortrabbit:hover em {
+    color: red;
+}
+
+@media only screen and (min-width: 768px) {
+    /* line 50, ../scss/modules/_footer.scss */
+    footer {
+        text-align: right;
+    }
+    /* line 53, ../scss/modules/_footer.scss */
+    footer .fortrabbit {
+        display: inline;
+    }
+}
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+/* line 5, ../scss/modules/_buttons.scss */
+.button {
+    text-align: center;
+    background: #f0523f;
+    padding: 10px;
+    border: none;
+    color: #fff;
+}
+
+/* line 14, ../scss/modules/_buttons.scss */
+.button.full {
+    width: 100%;
+}
+/* line 18, ../scss/modules/_buttons.scss */
+.button:hover {
+    background: #444444;
+}
+
+/* line 24, ../scss/modules/_buttons.scss */
+.right {
+    float: right;
+}
