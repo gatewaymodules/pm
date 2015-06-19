@@ -1,46 +1,56 @@
 <html>
-	<head>
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+<head>
+    <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
 
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            color: #B0BEC5;
+            display: table;
+            font-weight: 100;
+            font-family: 'Lato';
+        }
 
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
+        .container {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
 
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
+        .content {
+            text-align: center;
+            display: inline-block;
+        }
 
-			.quote {
-				font-size: 24px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="content">
-				<div class="title">Snowball Scripts 3.0</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
-			</div>
-		</div>
-	</body>
+        .title {
+            font-size: 96px;
+            margin-bottom: 40px;
+        }
+
+        .quote {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <div class="title">Snowball Scripts 3.0</div>
+        <div class="quote">{{ Inspiring::quote() }}</div>
+        <br><br>
+
+        <div>
+            <button type="button" class="btn btn-default navbar-btn">Sign in</button>
+        </div>
+    </div>
+</div>
+<!-- Scripts -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</body>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Snowball Scripts 3.0</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Snowball Scripts 3.0</title>
 
     <!--
 	<link href="/css/app.css" rel="stylesheet">
@@ -15,92 +15,115 @@
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
 
     <style>
-        table form { margin-bottom: 0; }
-        form ul { margin-left: 0; list-style: none; }
-        .error { color: red; font-style: italic; }
-        body { padding-top: 20px; }
+        table form {
+            margin-bottom: 0;
+        }
+
+        form ul {
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .error {
+            color: red;
+            font-style: italic;
+        }
+
+        body {
+            padding-top: 20px;
+        }
     </style>
 
-	<style>
-		.flash {padding:10px}
-		.flash p {margin:0}
-		.content {margin:auto 30px}
-		label{display:block}
-	</style>
+    <style>
+        .flash {
+            padding: 10px
+        }
 
-	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+        .flash p {
+            margin: 0
+        }
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
+        .content {
+            margin: auto 30px
+        }
+
+        label {
+            display: block
+        }
+    </style>
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
-			</div>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Laravel</a>
+        </div>
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="/">Home</a></li>
-                    <li><a href="/projects">Projects</a></li>
-                    <li><a href="/users">Users</a></li>
-                    <li><a href="/auth/logout">Logout</a></li>
-				</ul>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/users">Users</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
 
-				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
-						<li><a href="/auth/login">Login</a></li>
-						<li><a href="/auth/register">Register</a></li>
-					@else
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-                                <li><a href="/projects">Projects</a></li>
-                                <li><a href="/users">Users</a></li>
-								<li><a href="/auth/logout">Logout</a></li>
-							</ul>
-						</li>
-					@endif
-				</ul>
-			</div>
-		</div>
-	</nav>
+            <ul class="nav navbar-nav navbar-right">
+                @if (Auth::guest())
+                    <li><a href="/auth/login">Login</a></li>
+                    <li><a href="/auth/register">Register</a></li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/projects">Projects</a></li>
+                            <li><a href="/users">Users</a></li>
+                            <li><a href="/auth/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
+        </div>
+    </div>
+</nav>
 
-	<div class="content">
-		@if (Session::has('message'))
-			<div class="flash alert-info">
-				<p>{{ Session::get('message') }}</p>
-			</div>
-		@endif
-		@if ($errors->any())
-			<div class='flash alert-danger'>
-				@foreach ( $errors->all() as $error )
-					<p>{{ $error }}</p>
-				@endforeach
-			</div>
-		@endif
+<div class="content">
+    @if (Session::has('message'))
+        <div class="flash alert-info">
+            <p>{{ Session::get('message') }}</p>
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class='flash alert-danger'>
+            @foreach ( $errors->all() as $error )
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
 
-		@yield('content')
-
-
+    @yield('content')
 
 
-	</div>
-
-	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</div>
+<!-- Scripts -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
