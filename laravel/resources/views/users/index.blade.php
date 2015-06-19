@@ -5,6 +5,7 @@
     <h1>All Users</h1>
 
     <p>{!! link_to_route('users.create', 'Register new user') !!}</p>
+    <p><a href="{{ url('auth/logout') }}">Register</a></p>
 
     @if ($users->count())
         <table class="table table-striped table-bordered">
