@@ -100,20 +100,21 @@ class TasksController extends Controller {
     /**
      * Update the specified resource in storage.
      *
+     * @param Project $project
      * @param Tasklist $tasklist
      * @param  \App\Task $task
      * @param \Illuminate\Http\Request $request
      * @return Response
      * @internal param \App\Project $project
      */
-	public function update(Tasklist $tasklist, Task $task, Request $request)
+	public function update(Project $project, Tasklist $tasklist, Task $task, Request $request)
 	{
 		$this->validate($request, $this->rules);
 
 		$input = array_except(Input::all(), '_method');
 		$task->update($input);
 
-		return Redirect::route('projects.tasks.show', [$tasklist->slug, $task->slug])->with('message', 'Task updated.');
+		return Redirect::route('projects.tasklists.tasks.show', [$project->slug, $tasklist->slug, $task->slug])->with('message', 'Task updated.');
 	}
 
     /**
