@@ -1,22 +1,20 @@
 @extends('app')
 
 @section('content')
-    <h2>Projects
-    </h2>
+
 
     @if ( !$projects->count() )
+        <h2>Projects
+        </h2>
         You have no projects
     @else
-        <div class="container">
-            <table class="table table-hover table-bordered table-striped">
+        <div class="container gm-rounded-table" align="right">
+            <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Project
-                        <a href="http://pm.snowball.co.za/projects/server/edit" class="btn
-                            btn-primary"><span class="glyphicon glyphicon-plus"></span> New</a>
-                    </th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <td colspan="3"><h2>Projects <a href="{{ route('projects.create') }}" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-plus"></span> New </a>
+                        </h2></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,7 +39,4 @@
         </div>
     @endif
 
-    <p>
-        {!! link_to_route('projects.create', 'Create Project') !!}
-    </p>
 @endsection

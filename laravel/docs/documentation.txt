@@ -1,0 +1,5 @@
+How to span with a icon in a loop
+
+<a href="{{ URL::route('projects.edit', $project->slug) }}">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            </a>
