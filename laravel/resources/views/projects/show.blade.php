@@ -4,7 +4,7 @@
     <h2>{{ $project->name }}</h2>
 
     @if ( !$project->tasks->count() )
-        Your project has no tasks.
+        This project has no tasks.
     @else
         <ul>
             @foreach( $project->tasks as $task )

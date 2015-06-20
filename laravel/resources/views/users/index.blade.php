@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>All Users</h1>
+    <h1>Users</h1>
 
     <p>{!! link_to_route('users.create', 'Register new user') !!}</p>
     <p><a href="{{ url('auth/logout') }}">Register</a></p>

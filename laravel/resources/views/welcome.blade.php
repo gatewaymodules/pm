@@ -1,9 +1,8 @@
 <html>
 <head>
+    <title>Project Manager</title>
     <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
-
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-
     <style>
         body {
             margin: 0;
@@ -40,7 +39,7 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title">ISP Scripts 3.0</div>
+        <div class="title">Project Manager</div>
         <br>
         <div class="quote">{{ Inspiring::quote() }}</div>
         <br><br>
