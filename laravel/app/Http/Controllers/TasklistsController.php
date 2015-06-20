@@ -17,7 +17,7 @@ class TasklistsController extends Controller {
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     protected $rules = [
@@ -85,10 +85,10 @@ class TasklistsController extends Controller {
      * @internal param Task $task
      */
     public function show(Project $project, Tasklist $tasklist, Task $task)
+    //public function show(Tasklist $tasklist, Project $project, Task $task)
     {
-        echo "<pre>";
-
         return view('tasklists.show', compact('project', 'tasklist', 'task'));
+        //return view('tasklists.show', compact('tasklist', 'project', 'task'));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 use Input;
 use Redirect;
+use App\Project;
 use App\Tasklist;
 use App\Task;
 use App\Http\Requests;
@@ -16,7 +17,7 @@ class TasksController extends Controller {
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
 	protected $rules = [
@@ -40,13 +41,16 @@ class TasksController extends Controller {
     /**
      * Show the form for creating a new resource.
      *
-     * @param Tasklist $tasklist
+     * @param Project $project
      * @return Response
+     * @internal param Tasklist $tasklist
      * @internal param \App\Project $project
      */
-	public function create(Tasklist $tasklist)
+	//public function create(Tasklist $tasklist)
+    public function create(Project $project)
 	{
-		return view('tasks.create', compact('tasklist'));
+        return view('tasks.create', compact('project'));
+		//return view('tasks.create', compact('tasklist'));
 	}
 
     /**
@@ -69,29 +73,28 @@ class TasksController extends Controller {
 	}
 
     /**
-     * Display the specified resource.
-     *
+     * @param Project $project
      * @param Tasklist $tasklist
-     * @param  \App\Task $task
-     * @return Response
-     * @internal param \App\Project $project
+     * @param Task $task
+     * @return \Illuminate\View\View
      */
-	public function show(Tasklist $tasklist, Task $task)
+    public function show(Project $project, Tasklist $tasklist, Task $task)
 	{
-		return view('tasks.show', compact('tasklist', 'task'));
+        return view('tasks.show', compact('project', 'tasklist', 'task'));
 	}
 
     /**
      * Show the form for editing the specified resource.
      *
+     * @param Project $project
      * @param Tasklist $tasklist
      * @param  \App\Task $task
      * @return Response
      * @internal param \App\Project $project
      */
-	public function edit(Tasklist $tasklist, Task $task)
+    public function edit(Project $project, Tasklist $tasklist, Task $task)
 	{
-		return view('tasks.edit', compact('tasklist', 'task'));
+        return view('tasks.edit', compact('project', 'tasklist', 'task'));
 	}
 
     /**
