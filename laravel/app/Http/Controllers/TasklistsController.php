@@ -40,6 +40,7 @@ class TasklistsController extends Controller {
      */
     public function index(Project $project)
     {
+        //die("test");
         $tasklists = Tasklist::all();
         return view('tasklists.index', compact('project'));
     }
@@ -79,12 +80,15 @@ class TasklistsController extends Controller {
      *
      * @param  \App\Project $project
      * @param Tasklist $tasklist
+     * @param Task $task
      * @return Response
      * @internal param Task $task
      */
-    public function show(Project $project, Tasklist $tasklist)
+    public function show(Project $project, Tasklist $tasklist, Task $task)
     {
-        return view('tasklists.show', compact('project', 'tasklist'));
+        echo "<pre>";
+
+        return view('tasklists.show', compact('project', 'tasklist', 'task'));
     }
 
     /**

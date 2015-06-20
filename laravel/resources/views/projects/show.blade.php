@@ -3,7 +3,7 @@
 @section('content')
 
 
-    @if ( !$project->tasks->count() )
+    @if ( !$project->tasklists->count() )
         <h2>{{ $project->name }}</h2>
         This project has no task lists.
     @else
@@ -17,7 +17,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach( $project->tasks as $task )
+            @foreach( $project->tasklists as $task )
                 <tr>
                     <td>
                         <a href="{{ route('projects.tasklists.show', [$project->slug, $task->slug]) }}">{{ $task->name }}</a>
@@ -38,9 +38,9 @@
 
     @endif
 
-    <p>
         <a href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
             <span class="glyphicon glyphicon-plus"></span> New List</a> |
-        {!! link_to_route('projects.index', 'Back to Projects') !!}
+    <p>
+
     </p>
 @endsection
