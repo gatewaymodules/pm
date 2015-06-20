@@ -8,7 +8,7 @@
         </h2>
         You have no projects
     @else
-        <div class="container gm-rounded-table" align="right">
+
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -31,12 +31,11 @@
                             {!! Form::close() !!}
 
                         </td>
-
                     <tr>
                 @endforeach
                 </tbody>
             </table>
-        </div>
+
     @endif
 
 @endsection

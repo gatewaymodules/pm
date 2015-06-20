@@ -1,3 +1,11 @@
+Original Documentation with detailng about seeding
+
+https://www.flynsarmy.com/2015/02/creating-a-basic-todo-application-in-laravel-5-part-1/
+
+Awesome Breadcrumb Addin
+
+https://media.readthedocs.org/pdf/laravel-breadcrumbs/develop/laravel-breadcrumbs.pdf
+
 How to span with a icon in a loop
 
 <a href="{{ URL::route('projects.edit', $project->slug) }}">

@@ -4,13 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model {
-
+class Tasklist extends Model
+{
     protected $guarded = [];
 
     public function project()
     {
-        return $this->belongsTo('App\Tasklist');
+        return $this->belongsTo('App\Project');
     }
-
 }
