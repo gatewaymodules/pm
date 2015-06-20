@@ -9,7 +9,7 @@
     {!! Form::close() !!}
 
     <p>
-        {!! link_to_route('projects.index', 'Back to Projects') !!} |
+        {!! link_to_route('projects.index', 'Back to Projects') !!}
     </p>
 @endsection
 

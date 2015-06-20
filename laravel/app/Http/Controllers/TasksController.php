@@ -2,7 +2,7 @@
 
 use Input;
 use Redirect;
-use App\Project;
+use App\Tasklist;
 use App\Task;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -25,100 +25,108 @@ class TasksController extends Controller {
 		'description' => ['required'],
 	];
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @param  \App\Project $project
-	 * @return Response
-	 */
-	public function index(Project $project)
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Tasklist $tasklist
+     * @return Response
+     * @internal param \App\Project $project
+     */
+	public function index(Tasklist $tasklist)
 	{
-		return view('tasks.index', compact('project'));
+		return view('tasks.index', compact('tasklist'));
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @param  \App\Project $project
-	 * @return Response
-	 */
-	public function create(Project $project)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param Tasklist $tasklist
+     * @return Response
+     * @internal param \App\Project $project
+     */
+	public function create(Tasklist $tasklist)
 	{
-		return view('tasks.create', compact('project'));
+		return view('tasks.create', compact('tasklist'));
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \App\Project $project
-	 * @param \Illuminate\Http\Request $request
-	 * @return Response
-	 */
-	public function store(Project $project, Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Tasklist $tasklist
+     * @param \Illuminate\Http\Request $request
+     * @return Response
+     * @internal param \App\Project $project
+     */
+	public function store(Tasklist $tasklist, Request $request)
 	{
 		$this->validate($request, $this->rules);
 
 		$input = Input::all();
-		$input['project_id'] = $project->id;
+		$input['list_id'] = $tasklist->id;
 		Task::create( $input );
 
-		return Redirect::route('projects.show', $project->slug)->with('Task created.');
+		return Redirect::route('tasklists.show', $tasklist->slug)->with('Task created.');
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Project $project
-	 * @param  \App\Task    $task
-	 * @return Response
-	 */
-	public function show(Project $project, Task $task)
+    /**
+     * Display the specified resource.
+     *
+     * @param Tasklist $tasklist
+     * @param  \App\Task $task
+     * @return Response
+     * @internal param \App\Project $project
+     */
+	public function show(Tasklist $tasklist, Task $task)
 	{
-		return view('tasks.show', compact('project', 'task'));
+		return view('tasks.show', compact('tasklist', 'task'));
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  \App\Project $project
-	 * @param  \App\Task    $task
-	 * @return Response
-	 */
-	public function edit(Project $project, Task $task)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Tasklist $tasklist
+     * @param  \App\Task $task
+     * @return Response
+     * @internal param \App\Project $project
+     */
+	public function edit(Tasklist $tasklist, Task $task)
 	{
-		return view('tasks.edit', compact('project', 'task'));
+		return view('tasks.edit', compact('tasklist', 'task'));
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \App\Project $project
-	 * @param  \App\Task    $task
-	 * @param \Illuminate\Http\Request $request
-	 * @return Response
-	 */
-	public function update(Project $project, Task $task, Request $request)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Tasklist $tasklist
+     * @param  \App\Task $task
+     * @param \Illuminate\Http\Request $request
+     * @return Response
+     * @internal param \App\Project $project
+     */
+	public function update(Tasklist $tasklist, Task $task, Request $request)
 	{
 		$this->validate($request, $this->rules);
 
 		$input = array_except(Input::all(), '_method');
 		$task->update($input);
 
-		return Redirect::route('projects.tasks.show', [$project->slug, $task->slug])->with('message', 'Task updated.');
+		return Redirect::route('projects.tasks.show', [$tasklist->slug, $task->slug])->with('message', 'Task updated.');
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Project $project
-	 * @param  \App\Task    $task
-	 * @return Response
-	 */
-	public function destroy(Project $project, Task $task)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Tasklist $tasklist
+     * @param  \App\Task $task
+     * @return Response
+     * @throws \Exception
+     * @internal param \App\Project $project
+     */
+	public function destroy(Tasklist $tasklist, Task $task)
 	{
 		$task->delete();
 
-		return Redirect::route('projects.show', $project->slug)->with('message', 'Task deleted.');
+		return Redirect::route('tasklists.show', $tasklist->slug)->with('message', 'Task deleted.');
 	}
 
 }
