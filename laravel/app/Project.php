@@ -8,9 +8,9 @@ class Project extends Model {
 
     protected $guarded = [];
 
-    public function tasks()
+    public function tasklists()
     {
-        return $this->hasMany('App\Task');
+        return $this->hasMany('App\Tasklist');
     }
 
 }

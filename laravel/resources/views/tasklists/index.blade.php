@@ -3,28 +3,28 @@
 @section('content')
 
 
-    @if ( !$projects->count() )
-        <h2>Projects
+    @if ( !$tasklists->count() )
+        <h2>Task lists
         </h2>
-        You have no projects
+        This project has task lists
     @else
 
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th colspan="3"><h2>Projects <a href="{{ route('projects.create') }}" class="btn btn-primary">
+                    <td colspan="3"><h2>Projects <a href="{{ route('projects.create') }}" class="btn btn-primary">
                                 <span class="glyphicon glyphicon-plus"></span> New </a>
-                        </h2></th>
+                        </h2></td>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach( $projects as $project )
                     <tr>
-                        <td width="98%"><a href="{{ route('projects.show', $project->slug) }}">{{ $project->name }}</a></td>
-                        <td width="1%">{!! link_to_route('projects.edit', 'Edit', array($project->slug), array('class' => 'btn
+                        <td><a href="{{ route('projects.show', $project->slug) }}">{{ $project->name }}</a></td>
+                        <td>{!! link_to_route('projects.edit', 'Edit', array($project->slug), array('class' => 'btn
                             btn-info')) !!}
                         </td>
-                        <td width="1%">
+                        <td>
                             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' =>
                             array('projects.destroy', $project->slug))) !!}
                             {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}

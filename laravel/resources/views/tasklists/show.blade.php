@@ -3,27 +3,27 @@
 @section('content')
 
 
-    @if ( !$project->tasklists->count() )
-        <h2>{{ $project->name }}</h2>
-        This project has no task lists.
+    @if ( !$tasklist->tasks->count() )
+        <h2>{{ $tasklist->name }}</h2>
+        This list has no tasks.
     @else
 
         <table class="table table-hover">
             <thead>
             <tr>
-                <td colspan="3"><h2>{{ $project->name }} <a href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
+                <td colspan="3"><h2>{{ $tasklist->name }} <a href="{{ route('projects.tasklists.create', $tasklist->slug) }}" class="btn btn-primary">
                             <span class="glyphicon glyphicon-plus"></span> New List</a>
                     </h2></td>
             </tr>
             </thead>
             <tbody>
-            @foreach( $project->tasklists as $task )
+            @foreach( $tasklist->tasks as $task )
                 <tr>
                     <td>
-                        <a href="{{ route('projects.tasklists.show', [$project->slug, $task->slug]) }}">{{ $task->name }}</a>
+                        <a href="{{ route('projects.tasklists.tasks.show', [$project->slug, $tasklist->slug , $task->slug]) }}">{{ $task->name }}</a>
                     </td>
                     <td>
-                        {!! link_to_route('projects.tasklists.edit', 'Edit', array($project->slug, $task->slug), array('class' => 'btn btn-info')) !!}
+                        {!! link_to_route('projects.tasklists.tasks.edit', 'Edit', array($project->slug, $tasklist->slug, $task->slug), array('class' => 'btn btn-info')) !!}
                     </td>
                     <td>
                         {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('projects.tasklists.destroy', $project->slug, $task->slug))) !!}
@@ -38,9 +38,9 @@
 
     @endif
 
-        <a href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
-            <span class="glyphicon glyphicon-plus"></span> New List</a> |
     <p>
-
+        <a href="{{ route('projects.tasklists.tasks.create', $project->slug . $tasklist->slug) }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span> New Task</a> |
+        {!! link_to_route('projects.index', 'Back to Projects') !!}
     </p>
 @endsection

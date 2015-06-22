@@ -8,10 +8,6 @@
         <td>{!! Form::text('slug') !!}</td>
     </tr>
     <tr>
-        <td align="right">{!! Form::label('completed', 'Completed:') !!}</td>
-        <td>{!! Form::checkbox('completed') !!}</td>
-    </tr>
-    <tr>
         <td align="right">{!! Form::label('description', 'Description:') !!}</td>
         <td>{!! Form::textarea('description') !!}</td>
     </tr>
