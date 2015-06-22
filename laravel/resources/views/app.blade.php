@@ -95,7 +95,13 @@
 
 <div class="content">
 
-
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li>{!! link_to_route('projects.show', $project->name, [$project->slug]) !!}</li>
+        {{  isset($tasklist) ? "<li>" . link_to_route('projects.show', $tasklist->name, [$tasklist->slug]) . "</li>" : '' }}
+        <li class="active">{{ $task->name }}</li>
+    </ol>
+    <br>
 
     <div class="container gm-rounded-table">
         @if (Session::has('message'))
