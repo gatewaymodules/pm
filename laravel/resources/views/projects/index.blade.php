@@ -6,7 +6,7 @@
     @if ( !$projects->count() )
         <h2>Projects
         </h2>
-        You have no projects
+        There are have no projects
     @else
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
@@ -16,7 +16,7 @@
             <thead>
             <tr>
                 <th colspan="3"><h2>Projects <a href="{{ route('projects.create') }}" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-plus"></span> New </a>
+                            <span class="glyphicon glyphicon-plus"></span> New Project</a>
                     </h2></th>
             </tr>
             </thead>

@@ -8,7 +8,10 @@ class Task extends Model {
 
     protected $guarded = [];
 
-    public function project()
+    //protected $touches = ['tasklist', 'project'];
+    protected $touches = ['tasklist'];
+
+    public function tasklist()
     {
         return $this->belongsTo('App\Tasklist');
     }

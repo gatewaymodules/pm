@@ -4,7 +4,7 @@ use Input;
 use Redirect;
 use App\Project;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+//use App\Http\Controllers\Controller;
 
 class ProjectsController extends Controller {
 
@@ -29,7 +29,7 @@ class ProjectsController extends Controller {
 	 */
 	public function index()
 	{
-		$projects = Project::all();
+        $projects = Project::orderBy('updated_at', 'desc')->get();
 		return view('projects.index', compact('projects'));
 	}
 

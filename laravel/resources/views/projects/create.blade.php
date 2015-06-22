@@ -1,6 +1,13 @@
 @extends('app')
 
 @section('content')
+
+    <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li></li>
+        <li class="active">New Project</li>
+    </ol>
+
     <h2>Create Project
     </h2>
 
@@ -8,8 +15,5 @@
         @include('projects/partials/_form', ['submit_text' => 'Create Project'])
     {!! Form::close() !!}
 
-    <p>
-        {!! link_to_route('projects.index', 'Back to Projects') !!}
-    </p>
 @endsection
 

@@ -41,8 +41,11 @@ class TasklistsController extends Controller {
     public function index(Project $project)
     {
         //die("test");
-        $tasklists = Tasklist::all();
-        return view('tasklists.index', compact('project'));
+        //$tasklists = Tasklist::all();
+
+        //$tasklists = Tasklist::orderBy('updated_at', 'desc')->get();
+
+        return view('tasklists.index', compact('tasklists'));
     }
 
 
@@ -87,6 +90,7 @@ class TasklistsController extends Controller {
     public function show(Project $project, Tasklist $tasklist, Task $task)
     //public function show(Tasklist $tasklist, Project $project, Task $task)
     {
+        //$tasklists = Tasklist::orderBy('updated_at', 'desc')->get();
         return view('tasklists.show', compact('project', 'tasklist', 'task'));
         //return view('tasklists.show', compact('tasklist', 'project', 'task'));
     }

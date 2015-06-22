@@ -10,7 +10,7 @@ class Project extends Model {
 
     public function tasklists()
     {
-        return $this->hasMany('App\Tasklist');
+        return $this->hasMany('App\Tasklist')->orderBy('updated_at', 'desc');
     }
 
 }
