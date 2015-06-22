@@ -23,6 +23,8 @@ Route::controllers([
 
 Route::resource('users', 'UserController');
 
+Route::resource('roles', 'RoleController');
+
 Route::model('tasks', 'Task');
 Route::model('tasklists', 'Tasklist');
 Route::model('projects', 'Project');

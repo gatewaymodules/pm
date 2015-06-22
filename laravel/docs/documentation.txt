@@ -1,8 +1,12 @@
-Original Documentation with detailng about seeding
+Authentication Model
+
+https://github.com/Zizaco/entrust
+
+Original Documentation with detailing about seeding
 
 https://www.flynsarmy.com/2015/02/creating-a-basic-todo-application-in-laravel-5-part-1/
 
-Awesome Breadcrumb Addin
+Awesome Breadcrumb Addon
 
 https://media.readthedocs.org/pdf/laravel-breadcrumbs/develop/laravel-breadcrumbs.pdf
 

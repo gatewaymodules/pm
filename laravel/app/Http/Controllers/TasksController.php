@@ -117,7 +117,8 @@ class TasksController extends Controller {
 		$input = array_except(Input::all(), '_method');
 		$task->update($input);
 
-		return Redirect::route('projects.tasklists.tasks.show', [$project->slug, $tasklist->slug, $task->slug])->with('message', 'Task updated.');
+		//return Redirect::route('projects.tasklists.tasks.show', [$project->slug, $tasklist->slug, $task->slug])->with('message', 'Task updated.');
+        return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('message', 'Task updated.');
 	}
 
     /**
@@ -129,11 +130,11 @@ class TasksController extends Controller {
      * @throws \Exception
      * @internal param \App\Project $project
      */
-	public function destroy(Tasklist $tasklist, Task $task)
+	public function destroy(Project $project, Tasklist $tasklist, Task $task)
 	{
 		$task->delete();
 
-		return Redirect::route('tasklists.show', $tasklist->slug)->with('message', 'Task deleted.');
+		return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('message', 'Task deleted.');
 	}
 
 }
