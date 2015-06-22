@@ -18,7 +18,6 @@
             border-width: 1px;
             border-radius: 4px 4px 0 0;
             border-style: dotted;
-
         }
     </style>
 
@@ -40,7 +39,6 @@
     <![endif]-->
 </head>
 <body>
-
 
 @if (Auth::guest())
     <nav class="navbar navbar-default">
@@ -93,33 +91,21 @@
     </nav>
 @endif
 
-<div class="content">
+<div class="container gm-rounded-table">
+    @if (Session::has('message'))
+        <div class="flash alert-info">
+            <p>{{ Session::get('message') }}</p>
+        </div>
+    @endif
 
-    <ol class="breadcrumb">
-        <li><a href="/">Home</a></li>
-        <li>{!! link_to_route('projects.show', $project->name, [$project->slug]) !!}</li>
-        <li>{{  isset($tasklist->name) ? link_to_route('projects.show', $tasklist->name, [$tasklist->slug])  : '' }}</li>
-        <li class="active">{{  isset($task->name) ? $task->name  : '' }}</li>
-    </ol>
-    <br>
-
-    <div class="container gm-rounded-table">
-        @if (Session::has('message'))
-            <div class="flash alert-info">
-                <p>{{ Session::get('message') }}</p>
-            </div>
-        @endif
-
-        @if ($errors->any())
-            <div class='flash alert-danger'>
-                @foreach ( $errors->all() as $error )
-                    <p>{{ $error }}</p>
-                @endforeach
-            </div>
-        @endif
-        @yield('content')
-    </div>
-
+    @if ($errors->any())
+        <div class='flash alert-danger'>
+            @foreach ( $errors->all() as $error )
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+    @yield('content')
 </div>
 
 <!-- Scripts -->

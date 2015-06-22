@@ -2,10 +2,21 @@
 
 @section('content')
 
+    <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="{{ route('projects.show', [$project->slug]) }}">{{ $project->name }}</a></li>
+        <li class="active">{{  $tasklist->name }}</li>
+    </ol>
+
 
     @if ( !$tasklist->tasks->count() )
         <h2>{{ $tasklist->name }}</h2>
         This list has no tasks.
+        <p>
+        <a href="{{ route('projects.tasklists.tasks.create', [$project->slug, $tasklist->slug]) }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span> New Task</a>
+        </p>
     @else
 
         <table class="table table-hover">
@@ -39,8 +50,6 @@
     @endif
 
     <p>
-        <a href="{{ route('projects.tasklists.tasks.create', $project->slug . $tasklist->slug) }}" class="btn btn-primary">
-            <span class="glyphicon glyphicon-plus"></span> New Task</a> |
         {!! link_to_route('projects.index', 'Back to Projects') !!}
     </p>
 @endsection

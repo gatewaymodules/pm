@@ -2,13 +2,18 @@
 
 @section('content')
 
-
     @if ( !$tasklists->count() )
         <h2>Task lists
         </h2>
         This project has task lists
     @else
-
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Projects</a></li>
+            <li>{{  $project->name }} </li>
+            <li>{{  isset($tasklist->name) ? link_to_route('projects.show', $tasklist->name, [$tasklist->slug])  : '' }}</li>
+            <li class="active">{{  isset($task->name) ? $task->name  : '' }}</li>
+        </ol>
             <table class="table table-hover">
                 <thead>
                 <tr>

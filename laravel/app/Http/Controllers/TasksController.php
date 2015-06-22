@@ -17,7 +17,7 @@ class TasksController extends Controller {
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
 	protected $rules = [
@@ -42,34 +42,37 @@ class TasksController extends Controller {
      * Show the form for creating a new resource.
      *
      * @param Project $project
+     * @param Tasklist $tasklist
      * @return Response
+     * @internal param Tasklist $task
      * @internal param Tasklist $tasklist
      * @internal param \App\Project $project
      */
 	//public function create(Tasklist $tasklist)
-    public function create(Project $project)
+    public function create(Project $project, Tasklist $tasklist)
 	{
-        return view('tasks.create', compact('project'));
+        return view('tasks.create', compact('project', 'tasklist'));
 		//return view('tasks.create', compact('tasklist'));
 	}
 
     /**
      * Store a newly created resource in storage.
      *
+     * @param Project $project
      * @param Tasklist $tasklist
      * @param \Illuminate\Http\Request $request
      * @return Response
      * @internal param \App\Project $project
      */
-	public function store(Tasklist $tasklist, Request $request)
+	public function store(Project $project, Tasklist $tasklist, Request $request)
 	{
 		$this->validate($request, $this->rules);
 
 		$input = Input::all();
-		$input['list_id'] = $tasklist->id;
+		$input['tasklist_id'] = $tasklist->id;
 		Task::create( $input );
 
-		return Redirect::route('tasklists.show', $tasklist->slug)->with('Task created.');
+		return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('Task created.');
 	}
 
     /**

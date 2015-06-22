@@ -2,31 +2,38 @@
 
 @section('content')
 
-
     @if ( !$project->tasklists->count() )
         <h2>{{ $project->name }}</h2>
         This project has no task lists.
     @else
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects/">Projects</a></li></li>
 
+            <li class="active">{{  $project->name }} </li>
+        </ol>
         <table class="table table-hover">
             <thead>
             <tr>
-                <td colspan="3"><h2>{{ $project->name }} <a href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
+                <td colspan="3"><h2>{{ $project->name }} <a
+                                href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
                             <span class="glyphicon glyphicon-plus"></span> New List</a>
                     </h2></td>
             </tr>
             </thead>
             <tbody>
-            @foreach( $project->tasklists as $task )
+            @foreach( $project->tasklists as $tasklist )
                 <tr>
                     <td>
-                        <a href="{{ route('projects.tasklists.show', [$project->slug, $task->slug]) }}">{{ $task->name }}</a>
+                        <a href="{{ route('projects.tasklists.show', [$project->slug, $tasklist->slug]) }}">{{ $tasklist->name }}</a>
                     </td>
                     <td>
-                        {!! link_to_route('projects.tasklists.edit', 'Edit', array($project->slug, $task->slug), array('class' => 'btn btn-info')) !!}
+                        {!! link_to_route('projects.tasklists.edit', 'Edit', array($project->slug, $tasklist->slug),
+                        array('class' => 'btn btn-info')) !!}
                     </td>
                     <td>
-                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('projects.tasklists.destroy', $project->slug, $task->slug))) !!}
+                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' =>
+                        array('projects.tasklists.destroy', $project->slug, $tasklist->slug))) !!}
                         {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
                         {!! Form::close() !!}
                     </td>
@@ -38,8 +45,8 @@
 
     @endif
 
-        <a href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
-            <span class="glyphicon glyphicon-plus"></span> New List</a> |
+    <a href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span> New List</a> |
     <p>
 
     </p>
