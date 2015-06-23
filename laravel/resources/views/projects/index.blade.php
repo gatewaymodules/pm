@@ -2,11 +2,10 @@
 
 @section('content')
 
-
     @if ( !$projects->count() )
         <h2>Projects
         </h2>
-        There are have no projects
+        There are no projects
     @else
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
@@ -15,7 +14,7 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th colspan="3"><h2>Projects <a href="{{ route('projects.create') }}" class="btn btn-primary">
+                <th colspan="3"><h2>Projects<a href="{{ route('projects.create') }}" class="btn btn-primary">
                             <span class="glyphicon glyphicon-plus"></span> New Project</a>
                     </h2></th>
             </tr>
@@ -33,13 +32,11 @@
                         array('projects.destroy', $project->slug))) !!}
                         {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
                         {!! Form::close() !!}
-
                     </td>
                 <tr>
             @endforeach
             </tbody>
         </table>
-
     @endif
 
 @endsection

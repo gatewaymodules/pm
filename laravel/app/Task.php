@@ -8,7 +8,6 @@ class Task extends Model {
 
     protected $guarded = [];
 
-    //protected $touches = ['tasklist', 'project'];
     protected $touches = ['tasklist'];
 
     public function tasklist()

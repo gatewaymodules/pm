@@ -31,7 +31,15 @@ class ProjectsController extends Controller {
 	 */
 	public function index()
 	{
-        $projects = Project::orderBy('updated_at', 'desc')->get();
+
+            // $roles = App\User::find(1)->roles()->orderBy('name')->get();
+        $projects = Project::
+            where('role_id', 4)
+            ->orderBy('updated_at', 'desc')
+            ->get();
+        //$projects = Project::all();
+        //$projects = Project::orderBy('updated_at', 'desc')->get();
+        //$projects = Project::getAll();
 		return view('projects.index', compact('projects'));
 	}
 
