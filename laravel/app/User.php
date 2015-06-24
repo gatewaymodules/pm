@@ -37,7 +37,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function projects()
     {
-        return $this->belongsToMany('App\Project');
+        return $this->belongsToMany('App\Project')->orderBy('updated_at', 'desc');
     }
 
 }

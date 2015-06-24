@@ -11,15 +11,18 @@
     <!-- Bootstrap minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-
+    <!-- Used by Date Picker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
     <!-- Bootstrap theme -->
     <!--
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     -->
+
+    <!-- Our special rounded include table -->
     <style>
         .gm-rounded-table {
-            padding-top : 20px;
+            padding-top: 20px;
             background-color: #fff;
             border-color: #ddd;
             border-width: 2px;
@@ -124,6 +127,25 @@
 <!-- Scripts -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#datepicker").datepicker({
+            changeDay: true,
+            changeMonth: true,
+            changeYear: true
+        });
+        $("#calendar").datepicker({
+            changeDay: true,
+            changeMonth: true,
+            changeYear: true
+        });
+
+    });
+</script>
 
 </body>
 </html>

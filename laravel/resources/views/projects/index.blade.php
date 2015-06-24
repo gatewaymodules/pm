@@ -22,16 +22,9 @@
             <tbody>
             @foreach( $projects as $project )
                 <tr>
-                    <td width="98%"><a href="{{ route('projects.show', $project->slug) }}">{{ $project->name }}</a></td>
+                    <td><a href="{{ route('projects.show', $project->slug) }}">{{ $project->name }}</a></td>
                     <td width="1%">{!! link_to_route('projects.edit', 'Edit', array($project->slug), array('class' =>
-                        'btn
-                        btn-info')) !!}
-                    </td>
-                    <td width="1%">
-                        {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' =>
-                        array('projects.destroy', $project->slug))) !!}
-                        {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
-                        {!! Form::close() !!}
+                        'btn btn-sm btn-info')) !!}
                     </td>
                 <tr>
             @endforeach

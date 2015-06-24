@@ -10,23 +10,19 @@
     </ol>
 
     @if ( !$tasklist->tasks->count() )
-        <h2>{{ $tasklist->name }}
-            <span>
-            <a href="{{ route('projects.tasklists.tasks.create', [$project->slug, $tasklist->slug]) }}"
+        <h2>{{ $tasklist->name }} <small>List</small> <a href="{{ route('projects.tasklists.tasks.create', [$project->slug, $tasklist->slug]) }}"
                class="btn btn-primary">
                 <span class="glyphicon glyphicon-plus"></span> New Task</a>
-        </span>
         </h2>
         This list has no tasks.
         <p>
 
         </p>
     @else
-
         <table class="table table-hover">
             <thead>
             <tr>
-                <td colspan="3"><h2>{{ $tasklist->name }} <a
+                <td colspan="3"><h2>{{ $tasklist->name }} <small>List</small> <a
                                 href="{{ route('projects.tasklists.tasks.create', [$project->slug, $tasklist->slug]) }}"
                                 class="btn btn-primary">
                             <span class="glyphicon glyphicon-plus"></span> New Task</a>
@@ -58,7 +54,6 @@
                         {!! Form::close() !!}
                     </td>
                 </tr>
-
             @endforeach
             </tbody>
         </table>

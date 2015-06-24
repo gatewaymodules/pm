@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\User;
+use DB;
 use Input;
 use Auth;
 use Illuminate\Http\Request;
@@ -32,8 +33,9 @@ class ProjectsController extends Controller {
 	 */
 	public function index()
 	{
-        $id = Auth::user()->id;
-        $projects = User::find($id)->projects;
+        $user_id = Auth::user()->id;
+        $projects = User::find($user_id)->projects;
+        //$projects = User::find($id)->projects->orderBy('updated_at',desc)->get();
 
 //        $projects = Project::
 //            where('role_id', 4)
@@ -65,9 +67,13 @@ class ProjectsController extends Controller {
 	public function store(Request $request)
 	{
 		$this->validate($request, $this->rules);
-
-		$input = Input::all();
+        $input = Input::all();
 		Project::create( $input );
+
+        $project_id = DB::getPdo()->lastInsertId();
+
+        $user = Auth::user();
+        $user->projects()->attach($project_id);
 
 		return Redirect::route('projects.index')->with('message', 'Project created');
 	}

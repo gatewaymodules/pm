@@ -23,7 +23,6 @@ class TasklistsController extends Controller {
     protected $rules = [
         'name' => ['required', 'min:3'],
         'slug' => ['required'],
-        'description' => ['required'],
     ];
 
     /**
@@ -40,11 +39,6 @@ class TasklistsController extends Controller {
      */
     public function index(Project $project)
     {
-        //die("test");
-        //$tasklists = Tasklist::all();
-
-        //$tasklists = Tasklist::orderBy('updated_at', 'desc')->get();
-
         return view('tasklists.index', compact('tasklists'));
     }
 

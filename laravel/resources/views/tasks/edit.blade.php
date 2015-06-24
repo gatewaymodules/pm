@@ -10,7 +10,7 @@
         <li class="active">{{  $task->name }}</li>
     </ol>
 
-    <h2>Edit Task "{{ $task->name }}"</h2>
+    <h2><small>Task</small> Edit "{{ $task->name }}"</h2>
 
     {!! Form::model($task, ['method' => 'PATCH', 'route' => ['projects.tasklists.tasks.update', $project->slug, $tasklist->slug, $task->slug]]) !!}
         @include('tasks/partials/_form', ['submit_text' => 'Edit Task'])

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tasklist extends Model
 {
+    
     protected $guarded = [];
 
     protected $touches = ['project'];
@@ -18,7 +19,6 @@ class Tasklist extends Model
     public function tasks()
     {
         return $this->hasMany('App\Task')->orderBy('completed', 'asc')->orderBy('updated_at', 'desc');
-        //return $this->hasMany('App\Task');
     }
 
 }

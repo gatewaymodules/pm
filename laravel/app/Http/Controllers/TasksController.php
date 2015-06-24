@@ -23,7 +23,6 @@ class TasksController extends Controller {
 	protected $rules = [
 		'name' => ['required', 'min:3'],
 		'slug' => ['required'],
-		'description' => ['required'],
 	];
 
     /**

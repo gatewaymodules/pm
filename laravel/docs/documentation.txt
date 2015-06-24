@@ -1,3 +1,6 @@
+Date Picker Thread
+https://laracasts.com/discuss/channels/general-discussion/a-date-picker
+
 Bootstrap
 
 Implementing Form Groups Easily for Bootstrap Friendly Forms

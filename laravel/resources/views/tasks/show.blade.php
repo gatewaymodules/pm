@@ -9,6 +9,6 @@
         <li><a href="{{ route('projects.tasklists.show', [$project->slug, $tasklist->slug]) }}">{{ $tasklist->name }}</a></li>
         <li class="active">{{  $task->name }}</li>
     </ol>
-
-    {{ $task->description }}
+    <h2>{{ $task->name }} <small>Task</small></h2>
+    {!! nl2br(e($task->description)) !!}
 @endsection
