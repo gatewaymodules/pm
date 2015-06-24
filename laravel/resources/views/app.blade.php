@@ -6,18 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Project Manager</title>
 
+    <link rel="stylesheet" href="/css/normalize.css">
+
     <!-- Bootstrap minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+
+
     <!-- Bootstrap theme -->
+    <!--
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    -->
     <style>
         .gm-rounded-table {
+            padding-top : 20px;
             background-color: #fff;
             border-color: #ddd;
-            border-width: 1px;
+            border-width: 2px;
             border-radius: 4px 4px 0 0;
             border-style: dotted;
+            padding-bottom: 20px;
         }
     </style>
 
@@ -53,10 +61,12 @@
                 </button>
                 <a class="navbar-brand" href="/">Project Manager</a>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/auth/login">Login</a></li>
-                <li><a href="/auth/register">Register</a></li>
-            </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/auth/login">Login</a></li>
+                    <li><a href="/auth/register">Register</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 @else
@@ -109,7 +119,7 @@
 </div>
 
 <br>
-<p align="center">Project Management Server</p>
+<small><p align="center">Project Management Server</p></small>
 
 <!-- Scripts -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

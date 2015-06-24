@@ -18,9 +18,9 @@ class Project extends Model {
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function permissions()
+    public function users()
     {
-        return $this->belongsToMany('App\Permission');
+        return $this->belongsToMany('App\Users');
     }
 
 }

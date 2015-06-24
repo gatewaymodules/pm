@@ -1,3 +1,8 @@
+Bootstrap
+
+Implementing Form Groups Easily for Bootstrap Friendly Forms
+http://blog.stidges.com/post/easy-bootstrap-forms-in-laravel
+
 Authentication Model
 
 https://github.com/Zizaco/entrust

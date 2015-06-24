@@ -4,7 +4,7 @@
 
     <ol class="breadcrumb">
         <li><a href="/">Home</a></li>
-        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/projects/">Projects </a></li>
         </li>
         <li class="active">{{  $project->name }} </li>
     </ol>

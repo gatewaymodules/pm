@@ -9,12 +9,12 @@
     @else
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
-            <li><a href="/projects">Projects</a></li>
+            <li class="active">Projects</li>
         </ol>
         <table class="table table-hover">
             <thead>
             <tr>
-                <th colspan="3"><h2>Projects<a href="{{ route('projects.create') }}" class="btn btn-primary">
+                <th colspan="3"><h2>Projects <a href="{{ route('projects.create') }}" class="btn btn-primary">
                             <span class="glyphicon glyphicon-plus"></span> New Project</a>
                     </h2></th>
             </tr>

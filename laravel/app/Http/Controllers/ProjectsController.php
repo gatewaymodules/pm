@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Input;
-use Redirect;
 use App\Project;
+use App\User;
+use Input;
+use Auth;
 use Illuminate\Http\Request;
-//use App\Http\Controllers\Controller;
+use Redirect;
 
 class ProjectsController extends Controller {
 
@@ -31,12 +32,14 @@ class ProjectsController extends Controller {
 	 */
 	public function index()
 	{
+        $id = Auth::user()->id;
+        $projects = User::find($id)->projects;
 
-            // $roles = App\User::find(1)->roles()->orderBy('name')->get();
-        $projects = Project::
-            where('role_id', 4)
-            ->orderBy('updated_at', 'desc')
-            ->get();
+//        $projects = Project::
+//            where('role_id', 4)
+//            ->orderBy('updated_at', 'desc')
+//            ->get();
+
         //$projects = Project::all();
         //$projects = Project::orderBy('updated_at', 'desc')->get();
         //$projects = Project::getAll();

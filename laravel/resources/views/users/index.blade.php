@@ -2,10 +2,12 @@
 
 @section('content')
 
-    <h1>Users</h1>
+    <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">Users</li>
+    </ol>
 
-    <p>{!! link_to_route('users.create', 'Register new user') !!}</p>
-    <p><a href="{{ url('auth/logout') }}">Logout</a></p>
+    <h2>Users</h2>
 
     @if ($users->count())
         <table class="table table-striped table-bordered">
@@ -14,6 +16,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>Admin</th>
             </tr>
             </thead>
 
@@ -23,15 +26,15 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
-                    <td>{!! link_to_route('users.edit', 'Edit', array($user->id), array('class' => 'btn btn-info')) !!}</td>
-                    <td>
+                    <td>{{ $user->hasRole('admin')}}</td>
+                    <td width="1%">{!! link_to_route('users.edit', 'Edit', array($user->id), array('class' => 'btn btn-info')) !!}</td>
+                    <td width="1%">
                         {!! Form::open(array('method'=> 'DELETE', 'route' => array('users.destroy', $user->id))) !!}
                         {!! Form::submit('Delete', array('class'=> 'btn btn-danger')) !!}
                         {!! Form::close() !!}
                     </td>
                 </tr>
             @endforeach
-
             </tbody>
 
         </table>

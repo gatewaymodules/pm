@@ -1,17 +1,12 @@
-<table>
-<tr>
-    <td align="right">{!! Form::label('name', 'Name:') !!}</td>
-    <td>{!! Form::text('name') !!}</td>
-</tr>
-<tr>
-    <td align="right">{!! Form::label('slug', 'Slug:') !!}</td>
-    <td>{!! Form::text('slug') !!}</td>
-</tr>
+<div class="form-group">
+    {!! Form::label('name', 'Name:') !!}
+    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+</div>
 
-<tr>
-    <td align="right"></td>
-    <td>{!! Form::submit($submit_text) !!}</td>
-</tr>
-</table>
+<div class="form-group">
+    {!! Form::label('slug', 'Slug:') !!}
+    {!! Form::text('slug', null, ['class' => 'form-control']) !!}
+</div>
 
+{!! Form::button($submit_text, ['class' => 'btn btn-default']) !!}
 
