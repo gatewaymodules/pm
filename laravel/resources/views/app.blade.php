@@ -6,13 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Project Manager</title>
 
+    <!-- Special style to make table rows clickable -->
+    <style>
+        table#table-clickable td:hover {
+            cursor: pointer;
+        }
+    </style>
+
     <link rel="stylesheet" href="/css/normalize.css">
 
     <!-- Bootstrap minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-    <!-- Used by Date Picker -->
+    <!-- Used by date picker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <!-- Used to time picker -->
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.css">
 
     <!-- Bootstrap theme -->
     <!--
@@ -128,22 +138,24 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="/js/bootstrap-datetimepicker.js"></script>
 
 <script type="text/javascript">
     $(function () {
-        $("#datepicker").datepicker({
-            changeDay: true,
-            changeMonth: true,
-            changeYear: true
+        $('#datetimepicker').datetimepicker({
+                    autoclose: true,
+                    todayBtn: true,
+                    todayHighlight: true,
+                    format: 'yyyy-mm-dd hh:ii'
+                }
+        );
+        $('#table-clickable tbody tr').click(function () {
+            var href = $(this).find("a").attr("href");
+            if (href) {
+                window.location = href;
+            }
         });
-        $("#calendar").datepicker({
-            changeDay: true,
-            changeMonth: true,
-            changeYear: true
-        });
-
     });
 </script>
 

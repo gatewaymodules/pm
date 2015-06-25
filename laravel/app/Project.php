@@ -8,14 +8,6 @@ class Project extends Model {
 
     protected $guarded = [];
 
-//    public function save(array $options = array())
-//    {
-//        parent::save($options);
-//        $project_id = DB::getPdo()->lastInsertId();
-//        $user_id = Auth::user()->id;
-//
-//    }
-
     public function tasklists()
     {
         return $this->hasMany('App\Tasklist')->orderBy('updated_at', 'desc');

@@ -11,25 +11,22 @@
             <li><a href="/">Home</a></li>
             <li class="active">Projects</li>
         </ol>
-        <table class="table table-hover">
+        <table class="table table-hover" id="table-clickable">
             <thead>
             <tr>
-                <th colspan="3"><h2>Projects <a href="{{ route('projects.create') }}" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-plus"></span> New Project</a>
-                    </h2></th>
+                <th colspan="2"><h2>Project</h2></th>
             </tr>
             </thead>
             <tbody>
             @foreach( $projects as $project )
                 <tr>
                     <td><a href="{{ route('projects.show', $project->slug) }}">{{ $project->name }}</a></td>
-                    <td width="1%">{!! link_to_route('projects.edit', 'Edit', array($project->slug), array('class' =>
-                        'btn btn-sm btn-info')) !!}
-                    </td>
                 <tr>
             @endforeach
             </tbody>
         </table>
+        <a href="{{ route('projects.create') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span> New Project</a>
     @endif
 
 @endsection

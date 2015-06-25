@@ -116,7 +116,6 @@ class TasksController extends Controller {
 		$input = array_except(Input::all(), '_method');
 		$task->update($input);
 
-		//return Redirect::route('projects.tasklists.tasks.show', [$project->slug, $tasklist->slug, $task->slug])->with('message', 'Task updated.');
         return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('message', 'Task updated.');
 	}
 

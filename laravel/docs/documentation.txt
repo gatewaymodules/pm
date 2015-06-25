@@ -1,3 +1,12 @@
+Make entire row clickable
+http://www.electrictoolbox.com/jquey-make-entire-table-row-clickable/
+
+Time picker that has fast entry
+http://www.malot.fr/bootstrap-datetimepicker/demo.php
+
+Time Picker modified
+https://github.com/rendom/bootstrap-3-timepicker
+
 Date Picker Thread
 https://laracasts.com/discuss/channels/general-discussion/a-date-picker
 

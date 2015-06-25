@@ -10,15 +10,15 @@
     </ol>
 
     @if ( !$project->tasklists->count() )
-        <h2>{{ $project->name }}<span> <small>Project </small> <a href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
-            <span class="glyphicon glyphicon-plus"></span> New Task List</a></span></h2>
+        <h2>{{ $project->name }} <small>Project</small></h2>
         This project has no task lists.
+        <br>
     @else
-        <table class="table table-hover">
+        <table class="table table-hover" id="table-clickable">
             <thead>
             <tr>
-                <td colspan="3"><h2>{{ $project->name }} <small>Project</small> <a href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-plus"></span> New Task List</a>
+                <td colspan="2"><h2>{{ $project->name }} <small>Project</small> {!! link_to_route('projects.edit', 'Edit', array($project->slug), array('class' =>
+                        'btn btn-sm btn-info')) !!}
                     </h2></td>
             </tr>
             </thead>
@@ -28,15 +28,13 @@
                     <td>
                         <a href="{{ route('projects.tasklists.show', [$project->slug, $tasklist->slug]) }}">{{ $tasklist->name }}</a>
                     </td>
-                    <td width="1%">
-                        {!! link_to_route('projects.tasklists.edit', 'Edit', array($project->slug, $tasklist->slug),
-                        array('class' => 'btn btn-sm btn-info')) !!}
-                    </td>
                 </tr>
             @endforeach
             </tbody>
-        </table>
 
+        </table>
+        <a href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span> New Task List</a>
     @endif
 
 @endsection
