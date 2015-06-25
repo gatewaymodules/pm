@@ -40,7 +40,8 @@
                         </a>
                     </td>
                     <td>
-                        {{ $task->due_at }}
+                        {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $task->due_at)->diffForHumans() }}
+                        
                     </td>
                 </tr>
             @endforeach
