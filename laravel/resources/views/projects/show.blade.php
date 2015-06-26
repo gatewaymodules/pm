@@ -12,7 +12,7 @@
     @if ( !$project->tasklists->count() )
         <h2>{{ $project->name }} <small>Project</small></h2>
         This project has no task lists.
-        <br>
+        <br><br>
     @else
         <table class="table table-hover" id="table-clickable">
             <thead>
@@ -33,8 +33,8 @@
             </tbody>
 
         </table>
-        <a href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
-            <span class="glyphicon glyphicon-plus"></span> New Task List</a>
-    @endif
 
+    @endif
+    <a href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span> New Task List</a>
 @endsection
