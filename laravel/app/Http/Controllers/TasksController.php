@@ -2,13 +2,12 @@
 
 use Input;
 use Redirect;
-//use App\DB;
 use App\Project;
 use App\Tasklist;
 use App\Task;
+use App\User;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class TasksController extends Controller {
 
@@ -50,7 +49,8 @@ class TasksController extends Controller {
      */
     public function create(Project $project, Tasklist $tasklist)
 	{
-        return view('tasks.create', compact('project', 'tasklist'));
+        $users = User::lists('name', 'id');
+        return view('tasks.create', compact('project', 'tasklist', 'users'));
 	}
 
     /**
@@ -68,7 +68,44 @@ class TasksController extends Controller {
 
 		$input = Input::all();
 		$input['tasklist_id'] = $tasklist->id;
-		Task::create( $input );
+
+		$task = Task::create( $input );
+        //Task::create( $input );
+
+        $assigned_to = Input::get('assigned_to');
+        $task->users()->sync($assigned_to);
+
+        return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('Task created.');
+
+        echo "<pre>";
+        print_r($task, 1);
+        echo "xxx----<br>";
+
+
+
+        //die($task);
+//
+//        // Save the result ID for later use
+        $task_id = $task['id'];
+
+        print_r($task_id);
+        echo "yyy----<br>";
+
+        $assigned_to = $input['assigned_to'];
+
+        print_r($input['assigned_to']);
+
+        $task->user()->attach($assigned_to);
+
+//
+//        die($task);
+//
+//        // Store assigned_to
+        foreach (Input::get('assigned_to') as $user) {
+            $selected[] = New User(['user' => $user]);
+        }
+        //die(print_r($selected,1));
+//        Task::find($task_id)->users->saveMany($selected);
 
         // Log this event
         $name = $input['name'];
@@ -108,7 +145,9 @@ class TasksController extends Controller {
      */
     public function edit(Project $project, Tasklist $tasklist, Task $task)
 	{
-        return view('tasks.edit', compact('project', 'tasklist', 'task'));
+        $users = User::lists('name', 'id');
+        $selected_users = $task->users()->getRelatedIds()->toArray();
+        return view('tasks.edit', compact('project', 'tasklist', 'task', 'users', 'selected_users'));
 	}
 
     /**
@@ -127,6 +166,9 @@ class TasksController extends Controller {
 
 		$input = array_except(Input::all(), '_method');
 		$task->update($input);
+
+        $assigned_to = Input::get('assigned_to');
+        $task->users()->sync($assigned_to);
 
         return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('message', 'Task updated.');
 	}

@@ -6,11 +6,32 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-
-    protected $guarded = [];
-
+    /**
+     * Cascade updated_at changes up to the parent level
+     *
+     * @var array
+     */
     protected $touches = ['tasklist'];
 
+    /**
+     * @var array Added so that assigned to list can be submitted in HTML forms
+     */
+    protected $guarded = ['assigned_to'];
+
+    /**
+     * Returns a list of IDs used in HTML select multiple
+     *
+     * @return mixed
+     */
+    public function getUserIds() {
+        return $this->users()->getRelatedIds()->toArray();
+    }
+
+    public function users() {
+        return $this->belongsToMany('App\User');
+    }
+
+    // TODO Consider renaming to camel case
     public function due_at()
     {
         if ($this->due_at != "0000-00-00 00:00:00") {

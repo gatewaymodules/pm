@@ -1,3 +1,20 @@
+artisan make:migration:pivot tasks users
+artisan migrate
+
+Then found this:
+https://github.com/laracasts/Laravel-5-Generators-Extended
+composer require laracasts/generators --dev
+
+public function register()
+{
+    if ($this->app->environment() == 'local') {
+        $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
+    }
+}
+
+When I had to do a migration, I follow this to generate pivot, but it did not work:
+https://github.com/Zizaco/entrust/blob/master/src/views/generators/migration.blade.php
+
 Make entire row clickable
 http://www.electrictoolbox.com/jquey-make-entire-table-row-clickable/
 

@@ -35,6 +35,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+    public function tasks() {
+        return $this->belongsToMany('App\Tasks');
+    }
+
     public function projects()
     {
         return $this->belongsToMany('App\Project')->orderBy('updated_at', 'desc');

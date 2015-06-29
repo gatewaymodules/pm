@@ -18,6 +18,18 @@
     </label>
 </div>
 
+<div class="form-group">
+    {!! Form::label('assigned_to', 'Assigned To') !!}
+    {!! Form::select(
+        'assigned_to[]',
+        $users,
+        $task->getUserIds(),
+        ['multiple' =>'true',
+        'class' => 'form-control',
+        'size' =>'7x1']
+    ) !!}
+</div>
+
 <div class="checkbox">
     <label>
         {!! Form::hidden('completed',0) !!}
@@ -32,7 +44,10 @@
 
 <div class="form-group">
     {!! Form::label('description', 'Description') !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea(
+        'description',
+        null,
+        ['size' =>'1x3', 'class' => 'form-control']) !!}
 </div>
 
 {!! Form::submit($submit_text, ['class' => 'btn btn-default']) !!}
