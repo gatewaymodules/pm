@@ -2,6 +2,7 @@
 
 use Input;
 use Redirect;
+//use App\DB;
 use App\Project;
 use App\Tasklist;
 use App\Task;
@@ -47,11 +48,9 @@ class TasksController extends Controller {
      * @internal param Tasklist $tasklist
      * @internal param \App\Project $project
      */
-	//public function create(Tasklist $tasklist)
     public function create(Project $project, Tasklist $tasklist)
 	{
         return view('tasks.create', compact('project', 'tasklist'));
-		//return view('tasks.create', compact('tasklist'));
 	}
 
     /**
@@ -70,6 +69,19 @@ class TasksController extends Controller {
 		$input = Input::all();
 		$input['tasklist_id'] = $tasklist->id;
 		Task::create( $input );
+
+        // Log this event
+        $name = $input['name'];
+        $name = "<a href='" . route('projects.tasklists.show', [$project->slug, $tasklist->slug]) . "'>" . $name . "</a>";
+        $due_at_text = $input['due_at'];
+        if ($due_at_text <> '') {
+            $due_at_text = " due at " . $due_at_text;
+        } else {
+            $due_at_text = "";
+        }
+        $event = "New task {$name} $due_at_text was created.";
+        $user_id = \Auth::user()->id;
+        \DB::table('logs')->insert(["description"=>"$event", 'user_id'=>$user_id]);
 
 		return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('Task created.');
 	}

@@ -11,6 +11,10 @@ class Tasklist extends Model
 
     protected $touches = ['project'];
 
+    public function hasPriorityTasks() {
+        return $this->hasMany('App\Task')->where('priority', 1)->count();
+    }
+
     public function project()
     {
         return $this->belongsTo('App\Project');

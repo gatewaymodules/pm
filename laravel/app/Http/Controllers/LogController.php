@@ -2,23 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Input;
-use Redirect;
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
 use App\User;
-// use Illuminate\Http\Request;
+use App\Log;
 
-class UserController extends Controller
+
+class LogController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.index', compact('users'));
+        //
     }
 
     /**
@@ -37,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-//
+        //
     }
 
     /**
@@ -47,51 +40,50 @@ class UserController extends Controller
      */
     public function store()
     {
-//
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function show($id)
     {
-//
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function edit($id)
     {
-        return view('users.edit');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function update($id)
     {
-//
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function destroy($id)
     {
-//
+        //
     }
-
 }

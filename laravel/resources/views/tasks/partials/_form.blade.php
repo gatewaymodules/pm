@@ -3,16 +3,19 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
-<div class="form-group">
-    <div class="col-xs-2 input-group bootstrap-datetimepicker">
-        <input name="due_at" id="datetimepicker" type="text" class="form-control">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-    </div>
+<div>
+    {!! Form::label('due_at', 'Due at') !!}
+    {!! Form::text('due_at',
+        null,
+        ['class' => 'form-control',
+        'id' => 'datetimepicker']) !!}
 </div>
 
-<div class="form-group">
-    {!! Form::label('slug', 'Slug') !!}
-    {!! Form::text('slug', null, ['class' => 'form-control']) !!}
+<div class="checkbox">
+    <label>
+        {!! Form::hidden('priority',0) !!}
+        {!! Form::checkbox('priority') !!} Priority
+    </label>
 </div>
 
 <div class="checkbox">
@@ -20,6 +23,11 @@
         {!! Form::hidden('completed',0) !!}
         {!! Form::checkbox('completed') !!} Completed
     </label>
+</div>
+
+<div class="form-group">
+    {!! Form::label('slug', 'Slug') !!}
+    {!! Form::text('slug', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

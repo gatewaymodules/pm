@@ -144,10 +144,12 @@
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker').datetimepicker({
+                    startDate : "1970-01-01",
                     autoclose: true,
                     todayBtn: true,
                     todayHighlight: true,
-                    format: 'yyyy-mm-dd hh:ii'
+                    format: 'yyyy-mm-dd hh:ii',
+                    pickerPosition : 'bottom-right'
                 }
         );
         $('#table-clickable tbody tr').click(function () {

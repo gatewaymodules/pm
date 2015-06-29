@@ -7,7 +7,6 @@ use App\Tasklist;
 use App\Task;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class TasklistsController extends Controller {
 
@@ -17,7 +16,7 @@ class TasklistsController extends Controller {
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     protected $rules = [
@@ -69,7 +68,7 @@ class TasklistsController extends Controller {
         $input['project_id'] = $project->id;
         Tasklist::create( $input );
 
-        return Redirect::route('projects.show', $project->slug)->with('Tasklist created.');
+        return Redirect::route('projects.show', $project->slug)->with('Task list created.');
     }
 
     /**
@@ -115,7 +114,7 @@ class TasklistsController extends Controller {
         $input = array_except(Input::all(), '_method');
         $tasklist->update($input);
 
-        return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('message', 'Tasklist updated.');
+        return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('message', 'Task list updated.');
     }
 
     /**

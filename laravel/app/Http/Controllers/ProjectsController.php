@@ -35,16 +35,6 @@ class ProjectsController extends Controller {
 	{
         $user_id = Auth::user()->id;
         $projects = User::find($user_id)->projects;
-        //$projects = User::find($id)->projects->orderBy('updated_at',desc)->get();
-
-//        $projects = Project::
-//            where('role_id', 4)
-//            ->orderBy('updated_at', 'desc')
-//            ->get();
-
-        //$projects = Project::all();
-        //$projects = Project::orderBy('updated_at', 'desc')->get();
-        //$projects = Project::getAll();
 		return view('projects.index', compact('projects'));
 	}
 
