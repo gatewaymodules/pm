@@ -40,17 +40,20 @@ class TasksController extends Controller {
     /**
      * Show the form for creating a new resource.
      *
+     * Task is sent for getRelatedIds but will always be an empty array as on creation there are no selected items
+     *
      * @param Project $project
      * @param Tasklist $tasklist
+     * @param Task $task
      * @return Response
      * @internal param Tasklist $task
      * @internal param Tasklist $tasklist
      * @internal param \App\Project $project
      */
-    public function create(Project $project, Tasklist $tasklist)
+    public function create(Project $project, Tasklist $tasklist, Task $task)
 	{
         $users = User::lists('name', 'id');
-        return view('tasks.create', compact('project', 'tasklist', 'users'));
+        return view('tasks.create', compact('project', 'tasklist', 'users', 'task'));
 	}
 
     /**
@@ -73,39 +76,12 @@ class TasksController extends Controller {
         //Task::create( $input );
 
         $assigned_to = Input::get('assigned_to');
-        $task->users()->sync($assigned_to);
-
-        return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('Task created.');
-
-        echo "<pre>";
-        print_r($task, 1);
-        echo "xxx----<br>";
-
-
-
-        //die($task);
-//
-//        // Save the result ID for later use
-        $task_id = $task['id'];
-
-        print_r($task_id);
-        echo "yyy----<br>";
-
-        $assigned_to = $input['assigned_to'];
-
-        print_r($input['assigned_to']);
-
-        $task->user()->attach($assigned_to);
-
-//
-//        die($task);
-//
-//        // Store assigned_to
-        foreach (Input::get('assigned_to') as $user) {
-            $selected[] = New User(['user' => $user]);
+        // Only sync if an assigned to user was selected
+        if ($assigned_to) {
+            $task->users()->sync($assigned_to);
         }
-        //die(print_r($selected,1));
-//        Task::find($task_id)->users->saveMany($selected);
+
+        //return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('Task created.');
 
         // Log this event
         $name = $input['name'];

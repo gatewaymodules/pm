@@ -13,6 +13,8 @@
         }
     </style>
 
+    <link rel="stylesheet" href="/css/twitter.example.css">
+
     <link rel="stylesheet" href="/css/normalize.css">
 
     <!-- Bootstrap minified CSS -->
@@ -32,10 +34,10 @@
     <!-- Our special rounded include table -->
     <style>
         .gm-rounded-table {
-            padding-top: 20px;
-            background-color: #fff;
+            padding-top: 0px;
+            background-color: #fff;When stock expires, colour code the item to make it obvious that it's not under warranty anymore
             border-color: #ddd;
-            border-width: 2px;
+            border-width: 1px;
             border-radius: 4px 4px 0 0;
             border-style: dotted;
             padding-bottom: 20px;
@@ -97,6 +99,16 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li>
+                        {!! Form::open(['url' => '/profile', 'method' => 'get']) !!}
+                        <div id="multiple-datasets">
+                        {!! Form::text('user', null, ['class'=>'typeahead tt-input']) !!}
+                        {!! Form::submit('GO') !!}
+                        </div>
+
+                        {!! Form::close() !!}
+                    </li>
+                    <li><a href="/home">Dashboard</a></li>
                     <li><a href="/projects">Projects</a></li>
                     <li><a href="/users">Users</a></li>
                 </ul>
@@ -135,7 +147,14 @@
 <small><p align="center">Project Management Server</p></small>
 
 <!-- Scripts -->
+
+
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script src="//twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -152,6 +171,7 @@
                     pickerPosition : 'bottom-right'
                 }
         );
+        // Make zebra table rows clickable (the whole row)
         $('#table-clickable tbody tr').click(function () {
             var href = $(this).find("a").attr("href");
             if (href) {
@@ -159,6 +179,65 @@
             }
         });
     });
+
+    var the_tasks = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: '/queryTasks?user=%QUERY',
+            wildcard: '%QUERY'
+        }
+    });
+
+    var the_lists = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: '/queryTasklists?user=%QUERY',
+            wildcard: '%QUERY'
+        }
+    });
+
+    var the_projects = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: '/queryProjects?user=%QUERY',
+            wildcard: '%QUERY'
+        }
+    });
+
+    $('#multiple-datasets .typeahead').typeahead({
+                highlight: true
+            },
+
+            {
+                name: 'my-lists',
+                display: 'name',
+                source: the_lists,
+                templates: {
+                    header: '<h4 class="league-name">Lists</h4>'
+                }
+            },
+            {
+                name: 'my-projects',
+                display: 'name',
+                source: the_projects,
+                templates: {
+                    header: '<h4 class="league-name">Projects</h4>'
+                }
+            },
+            {
+                name: 'my-tasks',
+                display: 'name',
+                source: the_tasks,
+                templates: {
+                    header: '<h4 class="league-name">Tasks</h4>'
+                }
+            }
+
+    );
+
 </script>
 
 </body>

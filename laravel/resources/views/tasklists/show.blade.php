@@ -23,6 +23,7 @@
             <tr>
                 <th>Task
                 </th>
+                <th>Assigned to</th>
                 <th>Due at</th>
             </tr>
             </thead>
@@ -46,6 +47,11 @@
                                 @if ( $task->completed )
                             </del>
                         @endif
+                    </td>
+                    <td>
+                        @foreach( $task->users as $user )
+                            {{ $user->name }},
+                        @endforeach
                     </td>
                     <td>
                         {{ $task->due_at() }}

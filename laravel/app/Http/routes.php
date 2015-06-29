@@ -11,10 +11,15 @@
 |
 */
 
-
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
+
+Route::get('/search', 'SearchController@index');
+
+Route::get('/queryTasks', 'SearchController@queryTasks');
+Route::get('/queryTasklists', 'SearchController@queryTasklists');
+Route::get('/queryProjects', 'SearchController@queryProjects');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -44,3 +49,4 @@ Route::bind('projects', function($value, $route) {
 Route::resource('projects', 'ProjectsController');
 Route::resource('projects.tasklists', 'TasklistsController');
 Route::resource('projects.tasklists.tasks', 'TasksController');
+

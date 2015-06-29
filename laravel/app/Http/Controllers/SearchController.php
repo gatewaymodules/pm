@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests;
+
 use Input;
 use Redirect;
+use Response;
 use App\User;
+use App\Task;
+use App\Tasklist;
+use App\Project;
 
-class UserController extends Controller
+class SearchController extends Controller
 {
 
     /**
@@ -18,6 +24,27 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    public function queryTasks()
+    {
+        $query = Input::get('user');
+        $res   = Task::where('name', 'LIKE', "%$query%")->get();
+        return Response::json($res);
+    }
+
+    public function queryTasklists()
+    {
+        $query = Input::get('user');
+        $res   = Tasklist::where('name', 'LIKE', "%$query%")->get();
+        return Response::json($res);
+    }
+
+    public function queryProjects()
+    {
+        $query = Input::get('user');
+        $res   = Project::where('name', 'LIKE', "%$query%")->get();
+        return Response::json($res);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,8 +52,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.index', compact('users'));
+        //return View::make('search.index');
+        return view('search.index');
     }
 
     /**
@@ -36,7 +63,7 @@ class UserController extends Controller
      */
     public function create()
     {
-//
+        //
     }
 
     /**
@@ -46,51 +73,50 @@ class UserController extends Controller
      */
     public function store()
     {
-//
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function show($id)
     {
-//
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function edit($id)
     {
-        return view('users.edit');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function update($id)
     {
-//
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function destroy($id)
     {
-//
+        //
     }
-
 }

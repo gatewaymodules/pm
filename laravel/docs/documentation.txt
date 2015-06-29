@@ -1,3 +1,15 @@
+Typeahead Multiple Datasets
+https://twitter.github.io/typeahead.js/examples/#multiple-datasets
+
+Need a wildcard flag to make work
+https://github.com/twitter/typeahead.js/issues/1219
+
+Uncaught ReferenceError: Bloodhound is not defined
+http://stackoverflow.com/questions/28643099/uncaught-referenceerror-bloodhound-is-not-defined
+
+Typeahead.js & Laravel
+https://gist.github.com/ctf0/cd1a0eba0e99e92454c0
+
 artisan make:migration:pivot tasks users
 artisan migrate
 
