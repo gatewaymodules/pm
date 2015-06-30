@@ -103,7 +103,8 @@
                         {!! Form::open(['url' => '/profile', 'method' => 'get']) !!}
                         <div id="multiple-datasets">
                         {!! Form::text('user', null, ['class'=>'typeahead tt-input']) !!}
-                        {!! Form::submit('GO') !!}
+
+                            {!! Form::submit('GO') !!}
                         </div>
 
                         {!! Form::close() !!}
