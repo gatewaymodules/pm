@@ -76,7 +76,7 @@ class TasksController extends Controller {
         //Task::create( $input );
 
         $assigned_to = Input::get('assigned_to');
-        // Only sync if an assigned to user was selected
+        // Only sync if assigned_to multi select had some data
         if ($assigned_to) {
             $task->users()->sync($assigned_to);
         }
@@ -144,7 +144,10 @@ class TasksController extends Controller {
 		$task->update($input);
 
         $assigned_to = Input::get('assigned_to');
-        $task->users()->sync($assigned_to);
+        // Only sync if assigned_to multi select had some data
+        if ($assigned_to) {
+            $task->users()->sync($assigned_to);
+        }
 
         return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('message', 'Task updated.');
 	}

@@ -13,7 +13,7 @@
         }
     </style>
 
-    <link rel="stylesheet" href="/css/twitter.example.css">
+    <link rel="stylesheet" href="/css/search.css">
 
     <link rel="stylesheet" href="/css/normalize.css">
 
@@ -35,7 +35,7 @@
     <style>
         .gm-rounded-table {
             padding-top: 0px;
-            background-color: #fff;When stock expires, colour code the item to make it obvious that it's not under warranty anymore
+            background-color: #fff;
             border-color: #ddd;
             border-width: 1px;
             border-radius: 4px 4px 0 0;
@@ -211,29 +211,36 @@
     $('#multiple-datasets .typeahead').typeahead({
                 highlight: true
             },
-
+            {
+                name: 'my-tasks',
+                minLength: 3,
+                display: 'name',
+                displayKey: 'id',
+                source: the_tasks,
+                templates: {
+                    empty: ['<h4 class="item-type-name">Tasks</h4><div class="empty-message">No task results</div>'],
+                    header: '<h4 class="item-type-name">Tasks</h4>'
+                }
+            },
             {
                 name: 'my-lists',
-                display: 'name',
+                minLength: 3,
+                display: 'id',
+                displayKey: 'id',
                 source: the_lists,
                 templates: {
-                    header: '<h4 class="league-name">Lists</h4>'
+                    empty: ['<h4 class="item-type-name">Lists</h4><div class="empty-message">No task list results</div>'],
+                    header: '<h4 class="item-type-name">Lists</h4>'
                 }
             },
             {
                 name: 'my-projects',
+                minLength: 3,
                 display: 'name',
                 source: the_projects,
                 templates: {
-                    header: '<h4 class="league-name">Projects</h4>'
-                }
-            },
-            {
-                name: 'my-tasks',
-                display: 'name',
-                source: the_tasks,
-                templates: {
-                    header: '<h4 class="league-name">Tasks</h4>'
+                    empty: ['<h4 class="item-type-name">Projects</h4><div class="empty-message">No project results</div>'],
+                    header: '<h4 class="item-type-name">Projects</h4>'
                 }
             }
 
