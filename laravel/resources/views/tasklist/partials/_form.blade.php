@@ -9,10 +9,11 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('description', 'Description:') !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+    {!! Form::label('description', 'Description') !!}
+    {!! Form::textarea(
+    'description',
+    null,
+    ['size' =>'1x3', 'class' => 'form-control']) !!}
 </div>
 
-    {!! Form::submit($submit_text, ['class' => 'btn btn-default']) !!}
-
-
+{!! Form::submit($submit_text, ['class' => 'btn btn-default']) !!}

@@ -27,26 +27,25 @@ Route::controllers([
 ]);
 
 Route::resource('users', 'UserController');
-
 Route::resource('roles', 'RoleController');
 
-Route::model('tasks', 'Task');
-Route::model('tasklists', 'Tasklist');
 Route::model('projects', 'Project');
+Route::model('tasklists', 'Tasklist');
+Route::model('tasks', 'Task');
 
-Route::bind('tasks', function($value, $route) {
-	return App\Task::whereSlug($value)->first();
+Route::bind('project', function($value, $route) {
+    return App\Project::whereSlug($value)->first();
 });
 
-Route::bind('tasklists', function($value, $route) {
+Route::bind('tasklist', function($value, $route) {
     return App\Tasklist::whereSlug($value)->first();
 });
 
-Route::bind('projects', function($value, $route) {
-	return App\Project::whereSlug($value)->first();
+Route::bind('task', function($value, $route) {
+	return App\Task::whereSlug($value)->first();
 });
 
-Route::resource('projects', 'ProjectsController');
-Route::resource('projects.tasklists', 'TasklistsController');
-Route::resource('projects.tasklists.tasks', 'TasksController');
+Route::resource('project', 'ProjectController');
+Route::resource('project.tasklist', 'TasklistController');
+Route::resource('project.tasklist.task', 'TaskController');
 

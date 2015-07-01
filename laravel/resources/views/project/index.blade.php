@@ -21,10 +21,10 @@
             <tbody>
             @foreach( $projects as $project )
                 <tr>
-                    <td><a href="{{ route('projects.show', $project->slug) }}">{{ $project->name }}</a></td>
+                    <td><a href="{{ route('project.show', $project->slug) }}">{{ $project->name }}</a></td>
                     <td>
                     @foreach( $project->tasklists as $tasklist )
-                            <a href="{{ route('projects.tasklists.show', [$project->slug, $tasklist->slug]) }}">
+                            <a href="{{ route('project.tasklist.show', [$project->slug, $tasklist->slug]) }}">
                                 @if ( $tasklist->hasPriorityTasks())
                                     <font color="red">
                                         @endif
@@ -39,7 +39,7 @@
             @endforeach
             </tbody>
         </table>
-        <a href="{{ route('projects.create') }}" class="btn btn-primary">
+        <a href="{{ route('project.create') }}" class="btn btn-primary">
             <span class="glyphicon glyphicon-plus"></span> New Project</a>
     @endif
 

@@ -110,7 +110,7 @@
                         {!! Form::close() !!}
                     </li>
                     <li><a href="/home">Dashboard</a></li>
-                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/project">Projects</a></li>
                     <li><a href="/users">Users</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -181,6 +181,11 @@
         });
     });
 
+    //
+    $("#name").bind('keyup', function (e) {
+        $("#slug").val(($("#name").val()).replace(/\W+/g, '-').toLowerCase());
+    });
+
     var the_tasks = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -215,7 +220,6 @@
                 name: 'my-tasks',
                 minLength: 3,
                 display: 'name',
-                displayKey: 'id',
                 source: the_tasks,
                 templates: {
                     empty: ['<h4 class="item-type-name">Tasks</h4><div class="empty-message">No task results</div>'],
@@ -225,8 +229,7 @@
             {
                 name: 'my-lists',
                 minLength: 3,
-                display: 'id',
-                displayKey: 'id',
+                display: 'name',
                 source: the_lists,
                 templates: {
                     empty: ['<h4 class="item-type-name">Lists</h4><div class="empty-message">No task list results</div>'],

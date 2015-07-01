@@ -8,7 +8,7 @@ use App\Task;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class TasklistsController extends Controller {
+class TasklistController extends Controller {
 
     /**
      * Create a new controller instance.
@@ -38,7 +38,7 @@ class TasklistsController extends Controller {
      */
     public function index(Project $project)
     {
-        return view('tasklists.index', compact('tasklists'));
+        return view('tasklist.index', compact('tasklists'));
     }
 
 
@@ -50,7 +50,7 @@ class TasklistsController extends Controller {
      */
     public function create(Project $project)
     {
-        return view('tasklists.create', compact('project'));
+        return view('tasklist.create', compact('project'));
     }
 
     /**
@@ -68,7 +68,7 @@ class TasklistsController extends Controller {
         $input['project_id'] = $project->id;
         Tasklist::create( $input );
 
-        return Redirect::route('projects.show', $project->slug)->with('Task list created.');
+        return Redirect::route('project.show', $project->slug)->with('Task list created.');
     }
 
     /**
@@ -82,7 +82,7 @@ class TasklistsController extends Controller {
      */
     public function show(Project $project, Tasklist $tasklist, Task $task)
     {
-        return view('tasklists.show', compact('project', 'tasklist', 'task'));
+        return view('tasklist.show', compact('project', 'tasklist', 'task'));
     }
 
     /**
@@ -95,7 +95,7 @@ class TasklistsController extends Controller {
      */
     public function edit(Project $project, Tasklist $tasklist)
     {
-        return view('tasklists.edit', compact('project', 'tasklist'));
+        return view('tasklist.edit', compact('project', 'tasklist'));
     }
 
     /**
@@ -114,7 +114,7 @@ class TasklistsController extends Controller {
         $input = array_except(Input::all(), '_method');
         $tasklist->update($input);
 
-        return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('message', 'Task list updated.');
+        return Redirect::route('project.tasklist.show', [$project->slug, $tasklist->slug])->with('message', 'Task list updated.');
     }
 
     /**
@@ -129,7 +129,7 @@ class TasklistsController extends Controller {
     {
         $tasklist->delete();
 
-        return Redirect::route('projects.show', $project->slug)->with('message', 'Tasklist deleted.');
+        return Redirect::route('project.show', $project->slug)->with('message', 'Task list deleted.');
     }
 
 }

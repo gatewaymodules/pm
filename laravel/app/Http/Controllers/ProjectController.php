@@ -10,7 +10,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Redirect;
 
-class ProjectsController extends Controller {
+class ProjectController extends Controller {
 
     /**
      * Create a new controller instance.
@@ -35,7 +35,7 @@ class ProjectsController extends Controller {
 	{
         $user_id = Auth::user()->id;
         $projects = User::find($user_id)->projects;
-		return view('projects.index', compact('projects'));
+		return view('project.index', compact('projects'));
 	}
 
 	/**
@@ -45,7 +45,7 @@ class ProjectsController extends Controller {
 	 */
 	public function create()
 	{
-		return view('projects.create');
+		return view('project.create');
 	}
 
 	/**
@@ -65,7 +65,7 @@ class ProjectsController extends Controller {
         $user = Auth::user();
         $user->projects()->attach($project_id);
 
-		return Redirect::route('projects.index')->with('message', 'Project created');
+		return Redirect::route('project.index')->with('message', 'Project created');
 	}
 
 	/**
@@ -74,9 +74,9 @@ class ProjectsController extends Controller {
 	 * @param  \App\Project $project
 	 * @return Response
 	 */
-	public function show(Project $project)
+    public function show(Project $project)
 	{
-		return view('projects.show', compact('project'));
+		return view('project.show', compact('project'));
 	}
 
 	/**
@@ -87,7 +87,7 @@ class ProjectsController extends Controller {
 	 */
 	public function edit(Project $project)
 	{
-		return view('projects.edit', compact('project'));
+		return view('project.edit', compact('project'));
 	}
 
 	/**
@@ -104,7 +104,7 @@ class ProjectsController extends Controller {
 		$input = array_except(Input::all(), '_method');
 		$project->update($input);
 
-		return Redirect::route('projects.show', $project->slug)->with('message', 'Project updated.');
+		return Redirect::route('project.show', $project->slug)->with('message', 'Project updated.');
 	}
 
 	/**
@@ -117,7 +117,7 @@ class ProjectsController extends Controller {
 	{
 		$project->delete();
 
-		return Redirect::route('projects.index')->with('message', 'Project deleted.');
+		return Redirect::route('project.index')->with('message', 'Project deleted.');
 	}
 
 }

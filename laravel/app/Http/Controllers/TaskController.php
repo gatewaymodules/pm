@@ -9,7 +9,7 @@ use App\User;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class TasksController extends Controller {
+class TaskController extends Controller {
 
     /**
      * Create a new controller instance.
@@ -53,7 +53,7 @@ class TasksController extends Controller {
     public function create(Project $project, Tasklist $tasklist, Task $task)
 	{
         $users = User::lists('name', 'id');
-        return view('tasks.create', compact('project', 'tasklist', 'users', 'task'));
+        return view('task.create', compact('project', 'tasklist', 'users', 'task'));
 	}
 
     /**
@@ -81,11 +81,9 @@ class TasksController extends Controller {
             $task->users()->sync($assigned_to);
         }
 
-        //return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('Task created.');
-
         // Log this event
         $name = $input['name'];
-        $name = "<a href='" . route('projects.tasklists.show', [$project->slug, $tasklist->slug]) . "'>" . $name . "</a>";
+        $name = "<a href='" . route('project.tasklist.show', [$project->slug, $tasklist->slug]) . "'>" . $name . "</a>";
         $due_at_text = $input['due_at'];
         if ($due_at_text <> '') {
             $due_at_text = " due at " . $due_at_text;
@@ -96,7 +94,7 @@ class TasksController extends Controller {
         $user_id = \Auth::user()->id;
         \DB::table('logs')->insert(["description"=>"$event", 'user_id'=>$user_id]);
 
-		return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('Task created.');
+		return Redirect::route('project.tasklist.show', [$project->slug, $tasklist->slug])->with('Task created.');
 	}
 
     /**
@@ -107,7 +105,7 @@ class TasksController extends Controller {
      */
     public function show(Project $project, Tasklist $tasklist, Task $task)
 	{
-        return view('tasks.show', compact('project', 'tasklist', 'task'));
+        return view('task.show', compact('project', 'tasklist', 'task'));
 	}
 
     /**
@@ -123,7 +121,7 @@ class TasksController extends Controller {
 	{
         $users = User::lists('name', 'id');
         $selected_users = $task->users()->getRelatedIds()->toArray();
-        return view('tasks.edit', compact('project', 'tasklist', 'task', 'users', 'selected_users'));
+        return view('task.edit', compact('project', 'tasklist', 'task', 'users', 'selected_users'));
 	}
 
     /**
@@ -149,7 +147,7 @@ class TasksController extends Controller {
             $task->users()->sync($assigned_to);
         }
 
-        return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('message', 'Task updated.');
+        return Redirect::route('project.tasklist.show', [$project->slug, $tasklist->slug])->with('message', 'Task updated.');
 	}
 
     /**
@@ -165,7 +163,7 @@ class TasksController extends Controller {
 	{
 		$task->delete();
 
-		return Redirect::route('projects.tasklists.show', [$project->slug, $tasklist->slug])->with('message', 'Task deleted.');
+		return Redirect::route('project.tasklist.show', [$project->slug, $tasklist->slug])->with('message', 'Task deleted.');
 	}
 
 }

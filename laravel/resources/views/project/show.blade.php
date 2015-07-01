@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <h2>{{ $project->name }} <small>Project</small> {!! link_to_route('projects.edit', 'Edit', array($project->slug), array('class' =>'btn btn-sm btn-info')) !!}
+    <h2>{{ $project->name }} <small>Project</small> {!! link_to_route('project.edit', 'Edit', array($project->slug), array('class' =>'btn btn-sm btn-info')) !!}
     </h2>
 
     <ol class="breadcrumb">
-        <li><a href="/projects/">Projects </a></li>
+        <li><a href="/project/">Projects </a></li>
         </li>
         <li class="active">{{  $project->name }} </li>
     </ol>
@@ -26,14 +26,14 @@
             @foreach( $project->tasklists as $tasklist )
                 <tr>
                     <td>
-                        <a href="{{ route('projects.tasklists.show', [$project->slug, $tasklist->slug]) }}">{{ $tasklist->name }}</a>
+                        <a href="{{ route('project.tasklist.show', [$project->slug, $tasklist->slug]) }}">{{ $tasklist->name }}</a>
                     </td>
                     <td>
                         @foreach( $tasklist->tasks as $task )
                             @if ( $task->completed )
                                 <del>
                                     @endif
-                                    <a href="{{ route('projects.tasklists.tasks.show', [$project->slug, $tasklist->slug, $task->slug]) }}">
+                                    <a href="{{ route('project.tasklist.task.show', [$project->slug, $tasklist->slug, $task->slug]) }}">
                                         @if ( $task->priority )
                                             <font color="red">
                                                 @endif
@@ -54,6 +54,6 @@
         </table>
 
     @endif
-    <a href="{{ route('projects.tasklists.create', $project->slug) }}" class="btn btn-primary">
+    <a href="{{ route('project.tasklist.create', $project->slug) }}" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus"></span> New Task List</a>
 @endsection
