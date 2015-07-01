@@ -81,8 +81,8 @@ return [
 
     'key' => env('APP_KEY', 'SomeRandomString'),
 
-    //'cipher' => 'AES-256-CBC',
-    'cipher' => 'AES-128-CBC',
+    'cipher' => 'AES-256-CBC',
+    //'cipher' => 'AES-128-CBC',
 
     /*
     |--------------------------------------------------------------------------
@@ -139,6 +139,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        Laravel\Socialite\SocialiteServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
 
@@ -197,6 +198,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Form'      => Illuminate\Html\FormFacade::class,
         'HTML'      => Illuminate\Html\HtmlFacade::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,

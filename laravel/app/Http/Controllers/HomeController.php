@@ -32,9 +32,7 @@ class HomeController extends Controller {
 	public function index()
 	{
         $logs = Log::orderBy('created_at', 'desc')->get();
-        //$logs = Log::all();
         return view('home', compact('logs'));
-		//return view('home');
 	}
 
 }

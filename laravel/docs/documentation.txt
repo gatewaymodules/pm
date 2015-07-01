@@ -1,3 +1,22 @@
+Implementation of Github authentication
+https://github.com/laracasts/Laravel-OAuth-and-Socialite/blob/master/app/Http/Controllers/AuthController.php
+Possibly created redundant access_token field
+
+Also check this on Stack about duplicate users and Google access fields:
+http://stackoverflow.com/questions/28817830/laravel-socialite-google-register-and-login
+
+More detail for creating generic auth providers
+http://www.codeanchor.net/blog/complete-laravel-socialite-tutorial/
+
+$user->token = $userData->token;
+        $user->google_id = $userData->id;
+        $user->name = $userData->name;
+        $user->avatar = $userData->avatar;
+        $user->first_name = $userData->user['name']['givenName'];
+        $user->last_name = $userData->user['name']['familyName'];
+        $user->save();
+
+
 Typeahead Multiple Datasets
 https://twitter.github.io/typeahead.js/examples/#multiple-datasets
 

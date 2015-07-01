@@ -48,26 +48,36 @@
         <div>
             <button type="button" class="btn btn-default navbar-btn" data-target="/auth/">Sign in</button>
         </div>
-
-        @if (Session::has('message'))
-            <br>
-            <div class="flash alert-error">
-                {{ Session::get('message') }}
-            </div>
-        @endif
-
     </div>
 </div>
 
+
+    @if (Session::has('message'))
+        <div class="flash alert-info">
+            <p>{{ Session::get('message') }}</p>
+        </div>
+    @endif
+
+    @if ($errors->any())
+        <div class='flash alert-danger'>
+            @foreach ( $errors->all() as $error )
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+
+
+
+
 <!-- Scripts -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script>
-        $('.btn').on('click', function (event) {
-            event.preventDefault();
-            var url = $(this).data('target');
-            location.replace(url);
-        });
-    </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>
+    $('.btn').on('click', function (event) {
+        event.preventDefault();
+        var url = $(this).data('target');
+        location.replace(url);
+    });
+</script>
 </body>
 </html>

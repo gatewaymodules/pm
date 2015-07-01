@@ -14,6 +14,24 @@ return [
     |
     */
 
+    'google' => [
+        'client_id' => '768348812743-phvgvfnulkeuo4ppupalprgi6kg2ivkt.apps.googleusercontent.com',
+        'client_secret' => 'JMbiN45uCRC2vKkF7wMdc21n',
+        'redirect' => 'http://pm.snowball.co.za/login/google',
+    ],
+
+    'facebook' => [
+        'client_id' => '842996059083385',
+        'client_secret' => '2167c934400d6bcd889ae0381cfcbea1',
+        'redirect' => 'http://pm.snowball.co.za/login/facebook',
+    ],
+
+    'github' => [
+        'client_id' => '6b395ace151665393bb4',
+        'client_secret' => '882c2fa69d9ce8725ee1f971de02df3581475a3a',
+        'redirect' => 'http://pm.snowball.co.za/login/github',
+    ],
+
     'mailgun' => [
         'domain' => '',
         'secret' => '',
