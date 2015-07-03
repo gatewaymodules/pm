@@ -26,6 +26,9 @@
                             </tbody>
 
                         </table>
+
+                        {!! $logs->render() !!}
+
                     @else
                         There are no log events
                     @endif

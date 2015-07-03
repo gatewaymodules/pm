@@ -40,7 +40,10 @@
             @endforeach
             </tbody>
         </table>
+
+        {!! $projects->render() !!}<br>
+
     @endif
     <a href="{{ route('project.create') }}" class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus"></span> New Project</a>
+        <span class="glyphicon glyphicon-plus"></span>New Project</a>
 @endsection

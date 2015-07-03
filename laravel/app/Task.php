@@ -18,16 +18,22 @@ class Task extends Model
      */
     protected $guarded = ['assigned_to'];
 
+//    public function getDueAtAttribute($value) {
+//        return $value == "0000-00-00 00:00:00" ? "" : $value;
+//    }
+
     /**
      * Returns a list of IDs used in HTML select multiple
      *
      * @return mixed
      */
-    public function getUserIds() {
+    public function getUserIds()
+    {
         return $this->users()->getRelatedIds()->toArray();
     }
 
-    public function users() {
+    public function users()
+    {
         return $this->belongsToMany('App\User');
     }
 
@@ -37,7 +43,7 @@ class Task extends Model
         if ($this->due_at != "0000-00-00 00:00:00") {
             return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->due_at)->diffForHumans();
         } else {
-            return "";
+            return '';
         }
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Project;
 use App\User;
 use DB;
+use Illuminate\Pagination\Paginator;
 use Input;
 use Auth;
 use Illuminate\Http\Request;
@@ -34,8 +35,8 @@ class ProjectController extends Controller {
 	public function index()
 	{
         $user_id = Auth::user()->id;
-        $projects = User::find($user_id)->projects;
-		return view('project.index', compact('projects'));
+        $projects = User::find($user_id)->projects()->paginate(10);
+		return view('project.index', compact('projects', 'paginator'));
 	}
 
     /**

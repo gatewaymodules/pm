@@ -9,7 +9,7 @@
         <li><a href="/project/">Projects</a></li>
         <li><a href="{{ route('project.show', [$project->slug]) }}">{{ $project->name }}</a></li>
         <li><a href="{{ route('project.tasklist.show', [$project->slug, $tasklist->slug]) }}">{{ $tasklist->name }}</a></li>
-        <li class="active">{{  $task->name }}</li>
+        <li class="active">Edit Task</li>
     </ol>
 
     {!! Form::model($task, ['method' => 'PATCH', 'route' => ['project.tasklist.task.update', $project->slug, $tasklist->slug, $task->slug]]) !!}

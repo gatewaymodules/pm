@@ -120,7 +120,12 @@ class TaskController extends Controller {
 	{
         $users = User::orderBy('name')->lists('name', 'id');
         $selected_users = $task->users()->getRelatedIds()->toArray();
-        return view('task.edit', compact('project', 'tasklist', 'task', 'users', 'selected_users'));
+        if ($task->due_at == '0000-00-00 00:00:00') {
+            $due_at_default = '';
+        } else {
+            $due_at_default = null;
+        }
+        return view('task.edit', compact('project', 'tasklist', 'task', 'users', 'selected_users', 'due_at_default'));
 	}
 
     /**

@@ -24,7 +24,7 @@
                 <th>Task
                 </th>
                 <th>Assigned to</th>
-                <th>Due</th>
+                <th>Due at</th>
             </tr>
             </thead>
             <tbody>

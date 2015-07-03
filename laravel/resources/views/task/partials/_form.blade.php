@@ -16,9 +16,9 @@
 </div>
 
 <div>
-    {!! Form::label('due_at', 'Due at') !!}
+    {!! Form::label('due_at', 'Due') !!}
     {!! Form::text('due_at',
-    null,
+     $due_at_default,
     ['class' => 'form-control',
     'id' => 'datetimepicker']) !!}
 </div>
