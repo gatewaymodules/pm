@@ -25,7 +25,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::orderBy('name')->get();
+        //$users = User::all();
         return view('users.index', compact('users'));
     }
 
@@ -68,7 +69,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('users.edit');
+        $user = User::find($id);
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -79,7 +81,11 @@ class UserController extends Controller
      */
     public function update($id)
     {
-//
+        // TODO Validation of user fields missing
+        $input = Input::all();
+        User::find($id)->update($input);
+
+        return Redirect::route('users.index')->with('message', 'User updated.');
     }
 
     /**

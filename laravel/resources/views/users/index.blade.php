@@ -2,12 +2,12 @@
 
 @section('content')
 
+    <h3>Users</h3>
+
     <ol class="breadcrumb">
         <li><a href="/">Home</a></li>
         <li class="active">Users</li>
     </ol>
-
-    <h2>Users</h2>
 
     @if ($users->count())
         <table class="table table-striped table-bordered">
@@ -16,7 +16,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Admin</th>
+                <th>Role</th>
             </tr>
             </thead>
 

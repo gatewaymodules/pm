@@ -38,14 +38,16 @@ class ProjectController extends Controller {
 		return view('project.index', compact('projects'));
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param Project $project
+     * @return Response
+     */
+	public function create(Project $project)
 	{
-		return view('project.create');
+        $users = User::orderBy('name')->lists('name', 'id');
+		return view('project.create', compact('project', 'users'));
 	}
 
 	/**
@@ -57,13 +59,21 @@ class ProjectController extends Controller {
 	public function store(Request $request)
 	{
 		$this->validate($request, $this->rules);
+
         $input = Input::all();
-		Project::create( $input );
+		$project = Project::create( $input );
 
         $project_id = DB::getPdo()->lastInsertId();
 
-        $user = Auth::user();
-        $user->projects()->attach($project_id);
+        $assigned_to = Input::get('assigned_to');
+        dd($assigned_to);
+        // Only sync if assigned_to multi select had some data
+        if ($assigned_to) {
+            $project->users()->sync($assigned_to);
+        } else { // If no users are selected to the assigned project, assign the logged in user
+            $user = Auth::user();
+            $user->projects()->attach($project_id);
+        }
 
 		return Redirect::route('project.index')->with('message', 'Project created');
 	}
@@ -87,7 +97,9 @@ class ProjectController extends Controller {
 	 */
 	public function edit(Project $project)
 	{
-		return view('project.edit', compact('project'));
+        $users = User::orderBy('name')->lists('name', 'id');
+        $selected_users = $project->users()->getRelatedIds()->toArray();
+		return view('project.edit', compact('project', 'users', 'selected_users'));
 	}
 
 	/**
@@ -104,7 +116,13 @@ class ProjectController extends Controller {
 		$input = array_except(Input::all(), '_method');
 		$project->update($input);
 
-		return Redirect::route('project.show', $project->slug)->with('message', 'Project updated.');
+        $assigned_to = Input::get('assigned_to');
+        // Only sync if assigned_to multi select had some data
+        if ($assigned_to) {
+            $project->users()->sync($assigned_to);
+        }
+
+        return Redirect::route('project.show', $project->slug)->with('message', 'Project updated.');
 	}
 
 	/**

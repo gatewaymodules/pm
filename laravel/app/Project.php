@@ -6,7 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model {
 
-    protected $guarded = [];
+    /**
+     * @var array Added so that assigned to list can be submitted in HTML forms
+     */
+    protected $guarded = ['assigned_to'];
+
+    /**
+     * Returns a list of IDs used in HTML select multiple
+     *
+     * @return mixed
+     */
+    public function getUserIds() {
+        return $this->users()->getRelatedIds()->toArray();
+    }
 
     public function tasklists()
     {
@@ -20,7 +32,7 @@ class Project extends Model {
      */
     public function users()
     {
-        return $this->belongsToMany('App\Users');
+        return $this->belongsToMany('App\User');
     }
 
 }

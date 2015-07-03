@@ -73,7 +73,6 @@ class TaskController extends Controller {
 		$input['tasklist_id'] = $tasklist->id;
 
 		$task = Task::create( $input );
-        //Task::create( $input );
 
         $assigned_to = Input::get('assigned_to');
         // Only sync if assigned_to multi select had some data
