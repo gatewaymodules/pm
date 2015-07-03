@@ -45,6 +45,7 @@
         <br>
 
         <div class="quote">{{ Inspiring::quote() }}</div>
+
         <br><br>
 
         <legend>Sign in with</legend>

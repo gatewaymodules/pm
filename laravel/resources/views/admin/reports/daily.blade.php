@@ -4,11 +4,11 @@
     <h3>Dashboard</h3>
 
     <label for = "daily-reports">Tasks Created<br />
-    <canvas id="daily-reports" width="400" height="300"></canvas>
+    <canvas id="daily-reports" width="342" height="300"></canvas>
     </label>
 
     <label for = "daily-reports">Tasks Updated<br />
-    <canvas id="tasks-updated-report" width="400" height="300"></canvas>
+    <canvas id="tasks-updated-report" width="342" height="300"></canvas>
     </label>
 
     <h3>Amount of Tasks Created</h3>

@@ -53,7 +53,8 @@ class TaskController extends Controller {
     public function create(Project $project, Tasklist $tasklist, Task $task)
 	{
         $users = User::orderBy('name')->lists('name', 'id');
-        return view('task.create', compact('project', 'tasklist', 'users', 'task'));
+            $due_at_default = null;
+        return view('task.create', compact('project', 'tasklist', 'users', 'task', 'due_at_default'));
 	}
 
     /**

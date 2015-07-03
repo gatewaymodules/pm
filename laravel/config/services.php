@@ -32,6 +32,12 @@ return [
         'redirect' => 'http://pm.snowball.co.za/login/github',
     ],
 
+    'twitter' => [
+        'client_id' => 'UeFmpUQneQsjjU6awDki4Btbe',
+        'client_secret' => 'wzerSaRLOAf0ca3kovEnyfJAMDC4d1GMaciiDwuWRBpzmPgGg0',
+        'redirect' => 'http://pm.snowball.co.za/login/twitter',
+    ],
+
     'mailgun' => [
         'domain' => '',
         'secret' => '',
