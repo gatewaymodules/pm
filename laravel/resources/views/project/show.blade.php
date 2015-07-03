@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <h2>{{ $project->name }} <small>Project</small> {!! link_to_route('project.edit', 'Edit', array($project->slug), array('class' =>'btn btn-sm btn-info')) !!}
-    </h2>
+    <h3>{{ $project->name }} <small>Project</small> {!! link_to_route('project.edit', 'Edit', array($project->slug), array('class' =>'btn btn-sm btn-info')) !!}
+    </h3>
 
     <ol class="breadcrumb">
         <li><a href="/project/">Projects </a></li>

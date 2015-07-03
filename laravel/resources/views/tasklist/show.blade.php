@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <h2>{{ $tasklist->name }}
+    <h3>{{ $tasklist->name }}
         <small>List</small>
         {!! link_to_route('project.tasklist.edit', 'Edit', array($project->slug, $tasklist->slug),
         array('class' => 'btn btn-sm btn-info')) !!}
-    </h2>
+    </h3>
 
     <ol class="breadcrumb">
         <li><a href="/project/">Projects</a></li>
@@ -24,7 +24,7 @@
                 <th>Task
                 </th>
                 <th>Assigned to</th>
-                <th>Due at</th>
+                <th>Due</th>
             </tr>
             </thead>
             <tbody>

@@ -13,9 +13,10 @@
 
 Route::get('/', 'WelcomeController@index');
 
+Route::get('home', 'ReportController@index');
 //Route::get('home', 'HomeController@index');
 
-Route::get('home', 'ReportController@index');
+Route::get('log', 'LogController@index');
 
 Route::get('/search', 'SearchController@index');
 
@@ -50,7 +51,6 @@ Route::bind('task', function($value, $route) {
 Route::resource('project', 'ProjectController');
 Route::resource('project.tasklist', 'TasklistController');
 Route::resource('project.tasklist.task', 'TaskController');
-
 
 // Just a dummy page to demonstrate the authentication (or lack of).
 get('/auth', function()

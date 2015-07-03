@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <h2>Dashboard</h2>
+    <h3>Dashboard</h3>
 
     <label for = "daily-reports">Tasks Created<br />
     <canvas id="daily-reports" width="400" height="300"></canvas>
@@ -11,7 +11,7 @@
     <canvas id="tasks-updated-report" width="400" height="300"></canvas>
     </label>
 
-    <h2>Tasks Created Drill Down</h2>
+    <h3>Amount of Tasks Created</h3>
     @foreach ($totals as $index => $dailyAmounts)
         <li><strong>{{ $dates[$index] }}</strong> {{ $dailyAmounts}}</li>
     @endforeach

@@ -1,7 +1,8 @@
 @extends('app')
 
 @section('content')
-    <h2>Projects</h2>
+
+    <h3>All Projects</h3>
 
     <ol class="breadcrumb">
         <li class="active">Projects</li>
@@ -39,8 +40,7 @@
             @endforeach
             </tbody>
         </table>
-        <a href="{{ route('project.create') }}" class="btn btn-primary">
-            <span class="glyphicon glyphicon-plus"></span> New Project</a>
     @endif
-
+    <a href="{{ route('project.create') }}" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span> New Project</a>
 @endsection

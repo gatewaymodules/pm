@@ -52,7 +52,7 @@ class TaskController extends Controller {
      */
     public function create(Project $project, Tasklist $tasklist, Task $task)
 	{
-        $users = User::lists('name', 'id');
+        $users = User::orderBy('name')->lists('name', 'id');
         return view('task.create', compact('project', 'tasklist', 'users', 'task'));
 	}
 
@@ -119,7 +119,7 @@ class TaskController extends Controller {
      */
     public function edit(Project $project, Tasklist $tasklist, Task $task)
 	{
-        $users = User::lists('name', 'id');
+        $users = User::orderBy('name')->lists('name', 'id');
         $selected_users = $task->users()->getRelatedIds()->toArray();
         return view('task.edit', compact('project', 'tasklist', 'task', 'users', 'selected_users'));
 	}
