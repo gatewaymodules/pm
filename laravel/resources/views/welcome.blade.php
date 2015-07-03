@@ -2,6 +2,7 @@
 <head>
     <title>Project Manager</title>
     <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
     <style>
         body {
@@ -39,15 +40,18 @@
 <body>
 <div class="container">
     <div class="content">
+
         <div class="title">Project Manager</div>
         <br>
 
         <div class="quote">{{ Inspiring::quote() }}</div>
         <br><br>
 
-        <div>
-            <button type="button" class="btn btn-default navbar-btn" data-target="/auth/">Sign in</button>
-        </div>
+        <legend>Sign in with</legend>
+
+        <a href="/login/google" class="google-plus" title="Google"> <i class="fa fa-google fa-3x"></i> </a>
+        <a href="/login/facebook" class="facebook" title="Facebook"> <i class="fa fa-facebook fa-3x"></i> </a>
+        <a href="/login/github" class="github" title="GitHub"> <i class="fa fa-github fa-3x"></i> </a>
 
         @if (Session::has('message'))
             <br>
@@ -60,14 +64,14 @@
 </div>
 
 <!-- Scripts -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script>
-        $('.btn').on('click', function (event) {
-            event.preventDefault();
-            var url = $(this).data('target');
-            location.replace(url);
-        });
-    </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>
+    $('.btn').on('click', function (event) {
+        event.preventDefault();
+        var url = $(this).data('target');
+        location.replace(url);
+    });
+</script>
 </body>
 </html>

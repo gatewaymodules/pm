@@ -2,48 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
-use Input;
-use Redirect;
-use Response;
-use App\Task;
-use App\Tasklist;
-use App\Project;
+use PDO;
+use View;
+use DB;
 
-class SearchController extends Controller
+class ReportController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    public function queryTasks()
-    {
-        $query = Input::get('user');
-        $res   = Task::where('name', 'LIKE', "%$query%")->get();
-        return Response::json($res);
-    }
-
-    public function queryTasklists()
-    {
-        $query = Input::get('user');
-        $res   = Tasklist::where('name', 'LIKE', "%$query%")->get();
-        return Response::json($res);
-    }
-
-    public function queryProjects()
-    {
-        $query = Input::get('user');
-        $res   = Project::where('name', 'LIKE', "%$query%")->get();
-        return Response::json($res);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -51,8 +20,23 @@ class SearchController extends Controller
      */
     public function index()
     {
-        //return View::make('search.index');
-        return view('search.index');
+        $updatedTasks = DB::table('tasks')
+            ->select(DB::raw('DATE(updated_at) as updatedDate'), DB::raw('count(id) as updatedTask'))
+            ->groupBy(DB::raw('DATE(updated_at)'))
+            ->get();
+
+        $daily = DB::table('tasks')
+            ->select(DB::raw('DATE(created_at) as date'), DB::raw('count(id) as total'))
+            ->groupBy(DB::raw('DATE(created_at)'))
+            ->get();
+
+        return View::make('admin.reports.daily')
+            ->with([
+                'updatedDates' => array_pluck($updatedTasks, 'updatedDate'),
+                'updatedTasks' => array_pluck($updatedTasks, 'updatedTask'),
+                'dates' => array_pluck($daily, 'date'),
+                'totals' => array_pluck($daily, 'total')
+            ]);
     }
 
     /**
