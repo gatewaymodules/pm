@@ -73,6 +73,8 @@ class TaskController extends Controller {
 		$input = Input::all();
 		$input['tasklist_id'] = $tasklist->id;
 
+        $url = route('project.tasklist.task.show', [$project->slug, $tasklist->slug, $input['slug']]);
+        $input['url'] = $url;
 		$task = Task::create( $input );
 
         $assigned_to = Input::get('assigned_to');
@@ -83,6 +85,7 @@ class TaskController extends Controller {
 
         // Log this event
         $name = $input['name'];
+
         $name = "<a href='" . route('project.tasklist.show', [$project->slug, $tasklist->slug]) . "'>" . $name . "</a>";
         $due_at_text = $input['due_at'];
         if ($due_at_text <> '') {
@@ -144,6 +147,10 @@ class TaskController extends Controller {
 		$this->validate($request, $this->rules);
 
 		$input = array_except(Input::all(), '_method');
+
+        $url = route('project.tasklist.task.show', [$project->slug, $tasklist->slug, $input['slug']]);
+        $input['url'] = $url;
+
 		$task->update($input);
 
         $assigned_to = Input::get('assigned_to');

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Project;
+use App\Tasklist;
+use App\Task;
 use PDO;
 use View;
 use DB;
@@ -18,14 +21,20 @@ class ReportController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Project $project, Tasklist $tasklist)
     {
+        $yesterday = \Carbon\Carbon::now()->subDays(0);
+
+        $highPriorityTasks = Task::where('priority', '1')
+            ->where('due_at', '<=', $yesterday)
+            ->get();
+
         $updatedTasks = DB::table('tasks')
             ->select(DB::raw('DATE(updated_at) as updatedDate'), DB::raw('count(id) as updatedTask'))
             ->groupBy(DB::raw('DATE(updated_at)'))
             ->get();
 
-        $daily = DB::table('tasks')
+        $createdTasks = DB::table('tasks')
             ->select(DB::raw('DATE(created_at) as date'), DB::raw('count(id) as total'))
             ->groupBy(DB::raw('DATE(created_at)'))
             ->get();
@@ -34,9 +43,13 @@ class ReportController extends Controller
             ->with([
                 'updatedDates' => array_pluck($updatedTasks, 'updatedDate'),
                 'updatedTasks' => array_pluck($updatedTasks, 'updatedTask'),
-                'dates' => array_pluck($daily, 'date'),
-                'totals' => array_pluck($daily, 'total')
-            ]);
+                'dates' => array_pluck($createdTasks, 'date'),
+                'totals' => array_pluck($createdTasks, 'total'),
+                    'highPriorityTasks' => $highPriorityTasks,
+                    'project' => $project,
+                    'tasklist' => $tasklist,
+                ]
+            );
     }
 
     /**
