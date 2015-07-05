@@ -38,6 +38,8 @@
     ['size' =>'1x3', 'class' => 'form-control']) !!}
 </div>
 
+{!! Form::hidden('old_task_status', $old_task_status) !!}
+
 <div class="checkbox">
     <label>
         {!! Form::hidden('completed',0) !!}

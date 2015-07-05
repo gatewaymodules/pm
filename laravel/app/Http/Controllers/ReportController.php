@@ -27,7 +27,17 @@ class ReportController extends Controller
 
         $highPriorityTasks = Task::where('priority', '1')
             ->where('due_at', '<=', $yesterday)
+            ->orderBy('due_at', 'ASC')
             ->get();
+
+        // Graphs
+
+        $completedTasks = DB::table('tasks')
+            ->select(DB::raw('DATE(completed_at) as completedDate'), DB::raw('count(id) as completedTask'))
+            ->orWhereNotNull('completed_at')
+            ->groupBy(DB::raw('DATE(completed_at)'))
+            ->get();
+        //dd(DB::getQueryLog());
 
         $updatedTasks = DB::table('tasks')
             ->select(DB::raw('DATE(updated_at) as updatedDate'), DB::raw('count(id) as updatedTask'))
@@ -41,10 +51,13 @@ class ReportController extends Controller
 
         return View::make('admin.reports.daily')
             ->with([
-                'updatedDates' => array_pluck($updatedTasks, 'updatedDate'),
-                'updatedTasks' => array_pluck($updatedTasks, 'updatedTask'),
-                'dates' => array_pluck($createdTasks, 'date'),
-                'totals' => array_pluck($createdTasks, 'total'),
+                    'completedDates' => array_pluck($completedTasks, 'completedDate'),
+                    'completedTasks' => array_pluck($completedTasks, 'completedTask'),
+                    'updatedDates' => array_pluck($updatedTasks, 'updatedDate'),
+                    'updatedTasks' => array_pluck($updatedTasks, 'updatedTask'),
+                    'dates' => array_pluck($createdTasks, 'date'),
+                    'totals' => array_pluck($createdTasks, 'total'),
+
                     'highPriorityTasks' => $highPriorityTasks,
                     'project' => $project,
                     'tasklist' => $tasklist,

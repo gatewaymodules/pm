@@ -53,8 +53,9 @@ class TaskController extends Controller {
     public function create(Project $project, Tasklist $tasklist, Task $task)
 	{
         $users = User::orderBy('name')->lists('name', 'id');
-            $due_at_default = null;
-        return view('task.create', compact('project', 'tasklist', 'users', 'task', 'due_at_default'));
+        $old_task_status = 0;
+        $due_at_default = null;
+        return view('task.create', compact('project', 'tasklist', 'users', 'task', 'due_at_default','old_task_status'));
 	}
 
     /**
@@ -77,12 +78,14 @@ class TaskController extends Controller {
         $input['url'] = $url;
 		$task = Task::create( $input );
 
+        // Sync many to many table
         $assigned_to = Input::get('assigned_to');
         // Only sync if assigned_to multi select had some data
         if ($assigned_to) {
             $task->users()->sync($assigned_to);
         }
 
+        // TODO Redo logging framework
         // Log this event
         $name = $input['name'];
 
@@ -124,12 +127,13 @@ class TaskController extends Controller {
 	{
         $users = User::orderBy('name')->lists('name', 'id');
         $selected_users = $task->users()->getRelatedIds()->toArray();
+        $old_task_status = $task->completed;
         if ($task->due_at == '0000-00-00 00:00:00') {
             $due_at_default = '';
         } else {
             $due_at_default = null;
         }
-        return view('task.edit', compact('project', 'tasklist', 'task', 'users', 'selected_users', 'due_at_default'));
+        return view('task.edit', compact('project', 'tasklist', 'task', 'users', 'selected_users', 'due_at_default', 'old_task_status'));
 	}
 
     /**
@@ -148,11 +152,18 @@ class TaskController extends Controller {
 
 		$input = array_except(Input::all(), '_method');
 
+        // Update the URL
         $url = route('project.tasklist.task.show', [$project->slug, $tasklist->slug, $input['slug']]);
         $input['url'] = $url;
 
+        // Get task completion status and update database if value changed
+        if ($input['old_task_status'] == 0 && $input['completed'] == 1) {
+            $input['completed_at'] = \Carbon\Carbon::now();
+        }
+
 		$task->update($input);
 
+        // Sync many to many
         $assigned_to = Input::get('assigned_to');
         // Only sync if assigned_to multi select had some data
         if ($assigned_to) {

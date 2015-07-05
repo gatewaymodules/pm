@@ -23,7 +23,7 @@
     <!-- Used by date picker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
-    <!-- Used to time picker -->
+    <!-- Used by date time picker -->
     <link rel="stylesheet" href="/css/bootstrap-datetimepicker.css">
 
     <!-- Bootstrap theme -->
@@ -96,8 +96,7 @@
                     <li>
                         {!! Form::open(['url' => '/profile', 'method' => 'get']) !!}
                         <div id="multiple-datasets">
-                        {!! Form::text('user', null, ['class'=>'typeahead tt-input']) !!}
-
+                            {!! Form::text('user', null, ['class'=>'typeahead tt-input']) !!}
                             {!! Form::submit('GO') !!}
                         </div>
 
@@ -154,12 +153,12 @@
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker').datetimepicker({
-                    startDate : "1970-01-01",
+                    startDate: "1970-01-01",
                     autoclose: true,
                     todayBtn: true,
                     todayHighlight: true,
                     format: 'yyyy-mm-dd hh:ii',
-                    pickerPosition : 'bottom-right'
+                    pickerPosition: 'bottom-right'
                 }
         );
         // Make zebra table rows clickable (the whole row)
@@ -236,7 +235,6 @@
                     header: '<h4 class="item-type-name">Projects</h4>'
                 }
             }
-
     );
 
 </script>

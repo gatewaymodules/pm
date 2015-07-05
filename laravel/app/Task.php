@@ -16,11 +16,7 @@ class Task extends Model
     /**
      * @var array Added so that assigned to list can be submitted in HTML forms
      */
-    protected $guarded = ['assigned_to'];
-
-//    public function getDueAtAttribute($value) {
-//        return $value == "0000-00-00 00:00:00" ? "" : $value;
-//    }
+    protected $guarded = ['assigned_to', 'old_task_status'];
 
     /**
      * Returns a list of IDs used in HTML select multiple
