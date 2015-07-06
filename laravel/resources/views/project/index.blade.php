@@ -40,8 +40,9 @@
             @endforeach
             </tbody>
         </table>
-
+        {{--
         {!! $projects->render() !!}<br>
+        --}}
 
     @endif
     <a href="{{ route('project.create') }}" class="btn btn-primary">

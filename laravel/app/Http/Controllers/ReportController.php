@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Project;
 use App\Tasklist;
 use App\Task;
+use Illuminate\Support\Facades\Auth;
 use PDO;
 use View;
 use DB;
@@ -25,8 +27,11 @@ class ReportController extends Controller
     {
         $yesterday = \Carbon\Carbon::now()->subDays(0);
 
-        $highPriorityTasks = Task::where('priority', '1')
+        $highPriorityTasks = User::find(Auth::user()->id)
+            ->tasks()
+            ->where('completed', '<>', 1)
             ->where('due_at', '<=', $yesterday)
+            ->where('due_at', '<>', '0000-00-00 00:00:00')
             ->orderBy('due_at', 'ASC')
             ->get();
 
@@ -36,17 +41,20 @@ class ReportController extends Controller
             ->select(DB::raw('DATE(completed_at) as completedDate'), DB::raw('count(id) as completedTask'))
             ->orWhereNotNull('completed_at')
             ->groupBy(DB::raw('DATE(completed_at)'))
+            ->orderBy('completed_at', 'DESC')
             ->get();
         //dd(DB::getQueryLog());
 
         $updatedTasks = DB::table('tasks')
             ->select(DB::raw('DATE(updated_at) as updatedDate'), DB::raw('count(id) as updatedTask'))
             ->groupBy(DB::raw('DATE(updated_at)'))
+            ->orderBy('updated_at', 'DESC')
             ->get();
 
         $createdTasks = DB::table('tasks')
             ->select(DB::raw('DATE(created_at) as date'), DB::raw('count(id) as total'))
             ->groupBy(DB::raw('DATE(created_at)'))
+            ->orderBy('created_at', 'DESC')
             ->get();
 
         return View::make('admin.reports.daily')

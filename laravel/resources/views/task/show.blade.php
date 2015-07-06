@@ -7,7 +7,7 @@
     </h3>
 
     <ol class="breadcrumb">
-        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/project/">Projects</a></li>
         <li><a href="{{ route('project.show', [$project->slug]) }}">{{ $project->name }}</a></li>
         <li><a href="{{ route('project.tasklist.show', [$project->slug, $tasklist->slug]) }}">{{ $tasklist->name }}</a></li>
         <li class="active">{{  $task->name }}</li>

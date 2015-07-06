@@ -3,12 +3,23 @@
 @section('content')
     <h3>Dashboard</h3>
 
+        <a href="#overdue-and-high-priority">Overdue and High Priority</a> |
+        <a href="#tasks-completed-graph">Tasks Completed</a> |
+        <a href="#tasks-created-graph">Tasks Created</a> |
+        <a href="#tasks-updated-graph">Tasks Updated</a> |
+        <a href="#number-tasks-created-list">Number of Tasks Created</a>
+
     @if ( $highPriorityTasks->count() )
-        Overdue high priority tasks:
+        <a name="overdue-and-high-priority"></a>
+        <h4>Overdue and high priority tasks</h4>
         <div class="table-responsive">
         <table class="table table-hover table-condensed" id="table-clickable" >
         <thead>
-            <th>Task</th><th>Assigned To</th><th>Due</th>
+            <th>Task</th>
+            <th>Due</th>
+            <th>Task list</th>
+            <th>Project</th>
+            <th>Assigned To</th>
         </thead>
         @foreach( $highPriorityTasks as $task )
             <tr>
@@ -17,16 +28,23 @@
                     {{ $task->name }}</font>
                     </a>
                 </td>
+                <td><font color="red">{{ $task->due_at() }}</font></td>
+                <td>
+                    {{ $task->tasklist->name }}
+                </td>
+                <td>
+                    {{ $task->tasklist->project->name }}
+                </td>
                 <td>
                     @foreach( $task->users as $user )
                         {{ $user->name }},
                     @endforeach
                 </td>
-                <td>{{ $task->due_at() }}</td>
             </tr>
         @endforeach
     </table>
             </div>
+        <hr>
     @endif
 
     {{--
@@ -43,19 +61,25 @@
     @endif
     --}}
 
+    <a name="tasks-completed-graph"></a>
     <label for = "tasks-completed-report">Tasks Completed<br />
         <canvas id="tasks-completed-report" width="342" height="300"></canvas>
     </label>
 
-    <label for = "daily-reports">Tasks Created<br />
-        <canvas id="daily-reports" width="342" height="300"></canvas>
-    </label>
-
+    <a name="tasks-updated-graph"></a>
     <label for = "daily-reports">Tasks Updated<br />
         <canvas id="tasks-updated-report" width="342" height="300"></canvas>
     </label>
 
-    <h3>Amount of Tasks Created</h3>
+    <a name="tasks-created-graph"></a>
+    <label for = "daily-reports">Tasks Created<br />
+        <canvas id="daily-reports" width="342" height="300"></canvas>
+    </label>
+
+    <hr>
+
+    <a name="number-tasks-created-list"></a>
+    <h3>Number of Tasks Created</h3>
     @foreach ($totals as $index => $dailyAmounts)
         <li><strong>{{ $dates[$index] }}</strong> {{ $dailyAmounts}}</li>
     @endforeach
@@ -82,9 +106,9 @@
                 labels: {!! json_encode($updatedDates)  !!},
                 datasets: [{
                     data: {{ json_encode($updatedTasks) }},
-                    fillColor : "#f8b1aa",
-                    strokeColor : "#bb574e",
-                    pointColor : "#bb574e"
+                    fillColor : "#3366FF",
+                    strokeColor : "#000099",
+                    pointColor : "#000000"
                 }]
             };
             new Chart(ctx).Bar(chart, { bezierCurve: false });
@@ -96,8 +120,8 @@
                 labels: {!! json_encode($dates)  !!},
                 datasets: [{
             data: {{ json_encode($totals) }},
-            fillColor : "#f8b1aa",
-            strokeColor : "#bb574e",
+            fillColor : "#CC00FF",
+            strokeColor : "#CC0099",
             pointColor : "#bb574e"
         }]
         };

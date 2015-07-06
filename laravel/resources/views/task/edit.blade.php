@@ -13,7 +13,7 @@
     </ol>
 
     {!! Form::model($task, ['method' => 'PATCH', 'route' => ['project.tasklist.task.update', $project->slug, $tasklist->slug, $task->slug]]) !!}
-        @include('task/partials/_form', ['submit_text' => 'Edit Task'])
+        @include('task/partials/_form', ['submit_text' => 'Save'])
     {!! Form::close() !!}
     
 @endsection

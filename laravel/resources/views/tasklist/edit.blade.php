@@ -12,6 +12,6 @@
     </ol>
 
     {!! Form::model($tasklist, ['method' => 'PATCH', 'route' => ['project.tasklist.update', $project->slug, $tasklist->slug]]) !!}
-        @include('tasklist.partials._form', ['submit_text' => 'Edit Tasklist'])
+        @include('tasklist.partials._form', ['submit_text' => 'Save'])
     {!! Form::close() !!}
 @endsection

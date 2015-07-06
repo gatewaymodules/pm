@@ -35,7 +35,8 @@ class ProjectController extends Controller {
 	public function index()
 	{
         $user_id = Auth::user()->id;
-        $projects = User::find($user_id)->projects()->paginate(10);
+        $projects = User::find($user_id)->projects()->get();
+        //$projects = User::find($user_id)->projects()->paginate(10);
 		return view('project.index', compact('projects', 'paginator'));
 	}
 
