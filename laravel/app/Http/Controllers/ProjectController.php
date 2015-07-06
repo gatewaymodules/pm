@@ -68,7 +68,7 @@ class ProjectController extends Controller {
         $project_id = DB::getPdo()->lastInsertId();
 
         $assigned_to = Input::get('assigned_to');
-        
+
         // Only sync if assigned_to multi select had some data
         if ($assigned_to) {
             $project->users()->sync($assigned_to);

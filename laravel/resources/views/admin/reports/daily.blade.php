@@ -3,7 +3,8 @@
 @section('content')
     <h3>Dashboard</h3>
 
-        <a href="#overdue-and-high-priority">Overdue and High Priority</a> |
+        <a href="#overdue-and-high-priority">Overdue and High Priority Owned</a> |
+        <a href="#overdue-and-high-priority-unassigned">Overdue and High Priority Unassigned</a> |
         <a href="#tasks-completed-graph">Tasks Completed</a> |
         <a href="#tasks-created-graph">Tasks Created</a> |
         <a href="#tasks-updated-graph">Tasks Updated</a> |
@@ -11,7 +12,7 @@
 
     @if ( $highPriorityTasks->count() )
         <a name="overdue-and-high-priority"></a>
-        <h4>Overdue and high priority tasks</h4>
+        <h4>Overdue and high priority owned tasks</h4>
         <div class="table-responsive">
         <table class="table table-hover table-condensed" id="table-clickable" >
         <thead>
@@ -45,6 +46,48 @@
     </table>
             </div>
         <hr>
+    @endif
+
+    @if ( $user->hasRole('admin'))
+
+    @if ( $highPriorityTasksUnassigned->count() )
+        <a name="overdue-and-high-priority-unassigned"></a>
+        <h4>Overdue and high priority tasks unassigned</h4>
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed" id="table-clickable" >
+                <thead>
+                <th>Task</th>
+                <th>Due</th>
+                <th>Task list</th>
+                <th>Project</th>
+                <th>Assigned To</th>
+                </thead>
+                @foreach( $highPriorityTasksUnassigned as $task )
+                    <tr>
+                        <td>
+                            <a href="{{ $task->url }}"><font color="red">
+                                    {{ $task->name }}</font>
+                            </a>
+                        </td>
+                        <td><font color="red">{{ $task->due_at() }}</font></td>
+                        <td>
+                            {{ $task->tasklist->name }}
+                        </td>
+                        <td>
+                            {{ $task->tasklist->project->name }}
+                        </td>
+                        <td>
+                            @foreach( $task->users as $user )
+                                {{ $user->name }},
+                            @endforeach
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+        <hr>
+    @endif
+
     @endif
 
     {{--

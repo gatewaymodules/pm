@@ -35,6 +35,13 @@ class ReportController extends Controller
             ->orderBy('due_at', 'ASC')
             ->get();
 
+        $highPriorityTasksUnassigned = Task::where('completed', '<>', 1)
+            ->where('due_at', '<=', $yesterday)
+            ->where('due_at', '<>', '0000-00-00 00:00:00')
+            ->orderBy('due_at', 'ASC')
+            ->get();
+        //dd($highPriorityTasksUnassigned);
+
         // Graphs
 
         $completedTasks = DB::table('tasks')
@@ -57,6 +64,9 @@ class ReportController extends Controller
             ->orderBy('created_at', 'DESC')
             ->get();
 
+        //$user = User::Auth();
+        $user = User::find(Auth::user()->id);
+
         return View::make('admin.reports.daily')
             ->with([
                     'completedDates' => array_pluck($completedTasks, 'completedDate'),
@@ -67,8 +77,10 @@ class ReportController extends Controller
                     'totals' => array_pluck($createdTasks, 'total'),
 
                     'highPriorityTasks' => $highPriorityTasks,
+                    'highPriorityTasksUnassigned' => $highPriorityTasksUnassigned,
                     'project' => $project,
                     'tasklist' => $tasklist,
+                    'user' => $user
                 ]
             );
     }

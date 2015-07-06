@@ -38,6 +38,13 @@
     ['size' =>'1x3', 'class' => 'form-control']) !!}
 </div>
 
+<div class="checkbox">
+    <label>
+        {!! Form::hidden('milestone',0) !!}
+        {!! Form::checkbox('milestone') !!} Milestone
+    </label>
+</div>
+
 {!! Form::hidden('old_task_status', $old_task_status) !!}
 
 <div class="checkbox">
