@@ -19,6 +19,21 @@ class Task extends Model
     protected $guarded = ['assigned_to', 'old_task_status'];
 
     /**
+     * Below was to be the inverse of Assigned To tasks, but couldn't do $task->tasklist->name in blade
+     * @param $query
+     * @param $user_id
+     */
+    public function scopeWhereNotRelatedToUser($query, $user_id)
+    {
+        $query->whereNotIn('id', function ($query) use ($user_id)
+        {
+            $query->select('task_id')
+                ->from('task_user')
+                ->where('user_id', '=', $user_id);
+        });
+    }
+
+    /**
      * Returns a list of IDs used in HTML select multiple
      *
      * @return mixed
