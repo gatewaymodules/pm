@@ -35,26 +35,12 @@ class ReportController extends Controller
             ->orderBy('due_at', 'ASC')
             ->get();
 
-        $user_id = Auth::user()->id;
-
-        $highPriorityTasksUnassigned = Task::whereNotRelatedToUser($user_id)->get();
-
-//        $highPriorityTasksUnassigned = new Task();
-//        $highPriorityTasksUnassigned = $highPriorityTasksUnassigned->users()->where('id','=','16');
-//        dd($highPriorityTasksUnassigned);
-
-        //dd($highPriorityTasksUnassigned->users()->id(1)->toArray());
-        //dd($highPriorityTasksUnassigned->users()->where('id','<>','1'));
-        //dd($highPriorityTasksUnassigned->users()->where('id','=','1'));
-
-//        $highPriorityTasksUnassigned = Task::where('completed', '<>', 1)
-//            ->where('due_at', '<=', $yesterday)
-//            ->where('due_at', '<>', '0000-00-00 00:00:00')
-//            ->users()->id('1')
-//            ->orderBy('due_at', 'ASC')
-//            ->get();
-
-        //dd($highPriorityTasksUnassigned);
+        // TODO Stack Overflow Create a filter so that tasks which are not assigned to is listed but no which belongs to me
+        $highPriorityTasksUnassigned = Task::where('completed', '<>', 1)
+            ->where('due_at', '<=', $yesterday)
+            ->where('due_at', '<>', '0000-00-00 00:00:00')
+            ->orderBy('due_at', 'ASC')
+            ->get();
 
         // Graphs
 

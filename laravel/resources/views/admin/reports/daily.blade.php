@@ -58,8 +58,9 @@
                 <thead>
                 <th>Task</th>
                 <th>Due</th>
+                {{--
                 <th>Task list</th>
-                <th>Project</th>
+                <th>Project</th> --}}
                 <th>Assigned To</th>
                 </thead>
                 @foreach( $highPriorityTasksUnassigned as $task )
@@ -70,12 +71,14 @@
                             </a>
                         </td>
                         <td><font color="red">{{ $task->due_at() }}</font></td>
+                        {{--
                         <td>
-                            {{ $task->tasklist->name }}
+                            {{ $task->tasklist()->get() }}
                         </td>
                         <td>
-                            {{ $task->tasklist->project->name }}
+                         {{ $task->tasklist()->project()->name }}
                         </td>
+                        --}}
                         <td>
                             @foreach( $task->users as $user )
                                 {{ $user->name }},

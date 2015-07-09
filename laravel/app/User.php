@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DB;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -34,6 +35,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+//      This was supposed to help for getting Unassigned user tasks
+//        $highPriorityTasksUnassigned = Auth::user()->availableTasks();
+
+//    // User model
+//    public function availableTasks()
+//    {
+//        $ids = DB::table('task_user')->where('user_id', '=', $this->id)->lists('user_id');
+//        return \App\Task::whereNotIn('id', $ids)->get();
+//    }
 
     public function tasks() {
         return $this->belongsToMany('App\Task');
