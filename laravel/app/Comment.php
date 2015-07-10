@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 
+    /**
+     * Cascade updated_at changes up to the parent level
+     *
+     * @var array
+     */
+    protected $touches = ['task'];
+
     public function created_at()
     {
         if ($this->created_at != "0000-00-00 00:00:00") {

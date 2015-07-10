@@ -99,7 +99,7 @@ class TaskController extends Controller {
             $due_at_text = "";
         }
         $event = "New task {$name} $due_at_text was created.";
-        //$user_id = \Auth::user()->id;
+
         \DB::table('logs')->insert(["description"=>"$event", 'user_id'=>$user_id]);
 
 		return Redirect::route('project.tasklist.show', [$project->slug, $tasklist->slug])->with('Task created.');
