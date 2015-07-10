@@ -35,6 +35,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+
+
+
 //      This was supposed to help for getting Unassigned user tasks
 //        $highPriorityTasksUnassigned = Auth::user()->availableTasks();
 

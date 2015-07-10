@@ -76,6 +76,8 @@ class TaskController extends Controller {
 
         $url = route('project.tasklist.task.show', [$project->slug, $tasklist->slug, $input['slug']]);
         $input['url'] = $url;
+        $user_id = \Auth::user()->id;
+        $input['user_id'] = $user_id;
 		$task = Task::create( $input );
 
         // Sync many to many table
@@ -97,7 +99,7 @@ class TaskController extends Controller {
             $due_at_text = "";
         }
         $event = "New task {$name} $due_at_text was created.";
-        $user_id = \Auth::user()->id;
+        //$user_id = \Auth::user()->id;
         \DB::table('logs')->insert(["description"=>"$event", 'user_id'=>$user_id]);
 
 		return Redirect::route('project.tasklist.show', [$project->slug, $tasklist->slug])->with('Task created.');
@@ -111,7 +113,8 @@ class TaskController extends Controller {
      */
     public function show(Project $project, Tasklist $tasklist, Task $task)
 	{
-        return view('task.show', compact('project', 'tasklist', 'task'));
+        $id = $task->id;
+        return view('task.show', compact('project', 'tasklist', 'task', 'id'));
 	}
 
     /**
@@ -188,5 +191,7 @@ class TaskController extends Controller {
 
 		return Redirect::route('project.tasklist.show', [$project->slug, $tasklist->slug])->with('message', 'Task deleted.');
 	}
+
+    // User defined methods
 
 }

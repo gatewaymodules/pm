@@ -8,7 +8,7 @@
                     <div class="panel-heading">Dashboard</div>
 
                     @if ($logs->count())
-                        <table class="table table-striped table-bordered">
+                        <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th>Description</th>

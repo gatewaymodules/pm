@@ -8,7 +8,7 @@
 
     <!-- Special style to make table rows clickable -->
     <style>
-        table#table-clickable td:hover {
+        table#table-clickable table td:hover {
             cursor: pointer;
         }
     </style>
@@ -53,6 +53,10 @@
 
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
+    <style>
+        table { table-striped table-border
+    </style>
 
 </head>
 <body>
@@ -149,6 +153,8 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="//twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
 <script src="/js/bootstrap-datetimepicker.js"></script>
+
+@yield('javascript')
 
 <script type="text/javascript">
     $(function () {

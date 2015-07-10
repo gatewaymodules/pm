@@ -56,6 +56,10 @@
                     <td>
                         {{ $task->due_at() }}
                     </td>
+                    <td>
+                        {!! link_to_route('project.tasklist.task.edit', 'Edit', array($project->slug,
+                        $tasklist->slug, $task->slug), array('class' => 'btn btn-sm btn-info')) !!}
+                    </td>
                 </tr>
             @endforeach
             </tbody>

@@ -18,18 +18,13 @@ class Task extends Model
      */
     protected $guarded = ['assigned_to', 'old_task_status'];
 
-    public function scopeWhereNotRelatedToUser($query, $user_id)
-    {
-        $query->whereNotIn('id', function ($query) use ($user_id)
-        {
-            $query->select('task_id')
-                ->from('task_user')
-                ->where('user_id', '=', $user_id);
-        });
+    public function comments() {
+        return $this->hasMany('App\Comment')->orderBy('created_at', 'desc');;
     }
 
     /**
-     * Below was to be the inverse of Assigned To tasks, but couldn't do $task->tasklist->name in blade
+     * Used in Reports to show tasks that don't below to own
+     *
      * @param $query
      * @param $user_id
      */
@@ -56,6 +51,15 @@ class Task extends Model
     public function users()
     {
         return $this->belongsToMany('App\User');
+    }
+
+    public function created_at()
+    {
+        if ($this->created_at != "0000-00-00 00:00:00") {
+            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->diffForHumans();
+        } else {
+            return '';
+        }
     }
 
     // TODO Consider renaming to camel case
