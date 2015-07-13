@@ -71,14 +71,12 @@
                             </a>
                         </td>
                         <td><font color="red">{{ $task->due_at() }}</font></td>
-                        {{--
                         <td>
-                            {{ $task->tasklist()->get() }}
+                            {{ $task->tasklist->name }}
                         </td>
                         <td>
-                         {{ $task->tasklist()->project()->name }}
+                         {{ $task->tasklist->project->name }}
                         </td>
-                        --}}
                         <td>
                             @foreach( $task->users as $user )
                                 {{ $user->name }},

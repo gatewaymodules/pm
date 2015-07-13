@@ -54,10 +54,6 @@
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
-    <style>
-        table { table-striped table-border
-    </style>
-
 </head>
 <body>
 
@@ -108,7 +104,7 @@
                     </li>
                     <li><a href="/home">Dashboard</a></li>
                     <li><a href="/project">Projects</a></li>
-                    <li><a href="/users">Users</a></li>
+                    <li><a href="/users">People</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">

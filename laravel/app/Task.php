@@ -66,7 +66,7 @@ class Task extends Model
     public function due_at()
     {
         if ($this->due_at != "0000-00-00 00:00:00") {
-            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->due_at)->diffForHumans();
+            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->due_at, 'Africa/Johannesburg')->diffForHumans();
         } else {
             return '';
         }

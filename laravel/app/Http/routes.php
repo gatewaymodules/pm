@@ -11,6 +11,8 @@
 |
 */
 
+Route::resource('usertasks', 'UsertasksController');
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'ReportController@index');

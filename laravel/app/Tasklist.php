@@ -12,7 +12,7 @@ class Tasklist extends Model
     protected $touches = ['project'];
 
     public function hasPriorityTasks() {
-        return $this->hasMany('App\Task')->where('priority', 1)->count();
+        return $this->hasMany('App\Task')->where('completed', 0)->where('priority', 1)->count();
     }
 
     public function project()
@@ -22,7 +22,7 @@ class Tasklist extends Model
 
     public function tasks()
     {
-        return $this->hasMany('App\Task')->orderBy('completed', 'asc')->orderBy('updated_at', 'desc');
+        return $this->hasMany('App\Task')->where('completed', '<>', '1')->orderBy('completed', 'asc')->orderBy('updated_at', 'desc');
     }
 
 }

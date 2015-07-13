@@ -6,6 +6,8 @@ use App\Comment;
 use App\Project;
 use App\Task;
 use App\Tasklist;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Input;
 
@@ -42,13 +44,16 @@ class CommentController extends Controller
      * @param Project $project
      * @param Tasklist $tasklist
      * @param Task $task
-     * @param $id
-     * @param Request $request
-     * @return Response
      */
     public function store(Project $project, Tasklist $tasklist, Task $task)
     {
-        //dd($id);
+        if(Input::get('register')) {
+            $user = Auth::user();
+            Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+                $m->to($user->email, $user->name)->subject('Your Reminder!');
+            });
+        }
+
         $new_comment = Input::get('comment');
         //$new_comment = Input::get('comment');
         //$task_id = $id;
@@ -60,8 +65,7 @@ class CommentController extends Controller
         $comment->task_id = $task_id;
         $comment->user_id = $user_id;
         $comment->save();
-        return Redirect::route('project.tasklist.task.show', [$project->slug, $tasklist->slug, $task->slug])->with('Comment added.');
-
+        return Redirect::route('project.tasklist.task.show', [$project->slug, $tasklist->slug, $task->slug])->with('message', 'Comment added.');
     }
 
     /**

@@ -50,7 +50,7 @@
                     </td>
                     <td>
                         @foreach( $task->users as $user )
-                            {{ $user->name }},
+                            {{ $user->name() }},
                         @endforeach
                     </td>
                     <td>
@@ -58,7 +58,7 @@
                     </td>
                     <td>
                         {!! link_to_route('project.tasklist.task.edit', 'Edit', array($project->slug,
-                        $tasklist->slug, $task->slug), array('class' => 'btn btn-sm btn-info')) !!}
+                        $tasklist->slug, $task->slug), array('class' => 'btn btn-info')) !!}
                     </td>
                 </tr>
             @endforeach
@@ -68,4 +68,13 @@
     <a href="{{ route('project.tasklist.task.create', [$project->slug, $tasklist->slug]) }}"
        class="btn btn-primary">
         <span class="glyphicon glyphicon-plus"></span> New Task</a>
+
+    @if (!$tasklist->tasks->count() && Auth::user()->hasRole('admin') && config('projectmanager.superusermode'))
+        <br><br>
+        {!! Form::open(array('method'=> 'DELETE', 'route' => array('project.tasklist.destroy', $project->slug,
+        $tasklist->slug))) !!}
+        {!! Form::submit('Delete', array('class'=> 'btn btn-danger')) !!}
+        {!! Form::close() !!}
+    @endif
+
 @endsection

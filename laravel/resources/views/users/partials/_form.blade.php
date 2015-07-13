@@ -1,6 +1,11 @@
 <div class="form-group">
-    {!! Form::label('name', 'User Name') !!}
+    {!! Form::label('name', 'Name') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('firstname', 'First Name') !!}
+    {!! Form::text('firstname', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

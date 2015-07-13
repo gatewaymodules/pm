@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <h3>Users</h3>
+    <h3>People</h3>
 
     <ol class="breadcrumb">
         <li><a href="/">Home</a></li>
-        <li class="active">Users</li>
+        <li class="active">People</li>
     </ol>
 
     @if ($users->count())
@@ -14,6 +14,7 @@
             <thead>
             <tr>
                 <th>Name</th>
+                <th>First Name</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Role</th>
@@ -23,16 +24,12 @@
             <tbody>
             @foreach ($users as $user)
                 <tr>
-                    <td>{{ $user->name }}</td>
+                    <td><a href="{{ route('usertasks.show', $user->id, $user->name()) }}">{{ $user->name }}</a></td>
+                    <td>{{ $user->name() }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
                     <td>{{ $user->hasRole('admin')}}</td>
                     <td width="1%">{!! link_to_route('users.edit', 'Edit', array($user->id), array('class' => 'btn btn-info')) !!}</td>
-                    <td width="1%">
-                        {!! Form::open(array('method'=> 'DELETE', 'route' => array('users.destroy', $user->id))) !!}
-                        {!! Form::submit('Delete', array('class'=> 'btn btn-danger')) !!}
-                        {!! Form::close() !!}
-                    </td>
                 </tr>
             @endforeach
             </tbody>

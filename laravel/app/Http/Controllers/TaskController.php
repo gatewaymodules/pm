@@ -145,7 +145,7 @@ class TaskController extends Controller {
      * @param Project $project
      * @param Tasklist $tasklist
      * @param  \App\Task $task
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $requestif ($task->due_at())
      * @return Response
      * @internal param \App\Project $project
      */
@@ -173,7 +173,7 @@ class TaskController extends Controller {
             $task->users()->sync($assigned_to);
         }
 
-        return Redirect::route('project.tasklist.show', [$project->slug, $tasklist->slug])->with('message', 'Task updated.');
+        return Redirect::route('project.tasklist.task.show', [$project->slug, $tasklist->slug, $task->slug])->with('message', 'Task updated.');
 	}
 
     /**
