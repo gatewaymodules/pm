@@ -47,16 +47,16 @@ class CommentController extends Controller
      */
     public function store(Project $project, Tasklist $tasklist, Task $task)
     {
-        if(Input::get('register')) {
+        $new_comment = Input::get('comment');
+
+        if(Input::get('comment_and_notify')) {
+        //if(Input::get('register')) {
             $user = Auth::user();
-            Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-                $m->to($user->email, $user->name)->subject('Your Reminder!');
+            Mail::send('emails.reminder', ['user' => $user, 'comment' => $new_comment], function ($m) use ($user, $task) {
+                $m->to($user->email, $user->name)->subject($task->name)->from(array($user->email=>$user->name));
             });
         }
 
-        $new_comment = Input::get('comment');
-        //$new_comment = Input::get('comment');
-        //$task_id = $id;
         $task_id = Input::get('task_id');
         $user_id = Input::get('user_id');
         echo "Storing comment " . $new_comment;

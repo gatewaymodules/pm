@@ -13,6 +13,7 @@
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
+                <th></th>
                 <th>Name</th>
                 <th>First Name</th>
                 <th>Email</th>
@@ -24,6 +25,7 @@
             <tbody>
             @foreach ($users as $user)
                 <tr>
+                    <td><img width="50" height="50" src="{{ $user->avatar }}"></td>
                     <td><a href="{{ route('usertasks.show', $user->id, $user->name()) }}">{{ $user->name }}</a></td>
                     <td>{{ $user->name() }}</td>
                     <td>{{ $user->email }}</td>
