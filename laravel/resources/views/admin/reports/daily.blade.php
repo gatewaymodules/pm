@@ -18,8 +18,8 @@
         <thead>
             <th>Task</th>
             <th>Due</th>
-            <th>Task list</th>
-            <th>Project</th>
+            <th>Updated</th>
+            <th>Project/Task list</th>
             <th>Assigned To</th>
         </thead>
         @foreach( $highPriorityTasks as $task )
@@ -29,12 +29,19 @@
                     {{ $task->name }}</font>
                     </a>
                 </td>
+
                 <td><font color="red">{{ $task->due_at() }}</font></td>
+
+                <td>{{ $task->updated_at() }}</td>
                 <td>
-                    {{ $task->tasklist->name }}
+                    <a href="{{ 'project/' . $task->tasklist->project->slug }}">
+                        {{ $task->tasklist->project->name }}
+                        </a>/<a href="{{ 'project/' . $task->tasklist->project->slug . '/tasklist/' . $task->tasklist->slug }}">
+                        {{ $task->tasklist->name }}
+                        </a>
                 </td>
                 <td>
-                    {{ $task->tasklist->project->name }}
+
                 </td>
                 <td>
                     @foreach( $task->users as $user )

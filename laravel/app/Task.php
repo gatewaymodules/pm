@@ -53,6 +53,15 @@ class Task extends Model
         return $this->belongsToMany('App\User');
     }
 
+    public function updated_at()
+    {
+        if ($this->updated_at != "0000-00-00 00:00:00") {
+            return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->updated_at)->diffForHumans();
+        } else {
+            return '';
+        }
+    }
+
     public function created_at()
     {
         if ($this->created_at != "0000-00-00 00:00:00") {

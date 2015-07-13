@@ -54,6 +54,10 @@
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
+    <!-- Bootstrap disable URL printing -->
+    <!-- http://stackoverflow.com/questions/7301989/need-to-remove-href-values-when-printing-in-chrome -->
+    <style>@media print{a[href]:after{content:none}}</style>
+
 </head>
 <body>
 
