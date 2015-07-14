@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Task;
-use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
-class UsertasksController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -29,10 +25,8 @@ class UsertasksController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::user()->id;
-        $tasks = User::find($user_id)->tasks()->get();
-        //$tasks = User::find($user_id)->tasks()->paginate(10);
-        return view('usertasks.index', compact('tasks', 'paginator'));
+        //
+        return view("dashboard.index");
     }
 
     /**
@@ -58,45 +52,12 @@ class UsertasksController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $user
+     * @param  int  $id
      * @return Response
-     * @internal param int $id
      */
     public function show($id)
     {
-        $user = User::find($id);
-        $tasks = User::find($id)->tasks()->get();
-
-
-        //$tasks = \App\User::tasks()->whereIn('id',['14', '17']);
-        //dd($tasks);
-
-        //dd(DB::getQueryLog());
-        // toSql()
-
-        //dd($users->toSql());
-
-        //dd($users);
-
-
-        //$user_id = Auth::user()->id;
-
-        //$tasks = User::find($id)->whereIn('id', [14, 17])->tasks();
-
-//        $tasks = Task::whereHas('users', function($q)
-//        {
-//            //$q->WhereIn('id', [14,17]);
-//            $q->WhereIn('id', [14]);
-//        }
-//        )->get();
-
-        //dd($tasks);
-
-        $tasks = User::find($id)->tasks()->get();
-
-        //$tasks = User::find($user_id)->tasks()->get();
-
-        return view('usertasks.index', compact('tasks', 'user', 'paginator'));
+        //
     }
 
     /**

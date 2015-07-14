@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/dashboard', 'DashboardController@index');
+
 Route::resource('usertasks', 'UsertasksController');
 
 Route::get('/', 'WelcomeController@index');
