@@ -23,6 +23,25 @@ class Task extends Model
     }
 
     /**
+     * Used to filter tasks belonging to self (but which may also be assigned to others)
+     *
+     * Order is very specific, current user logged in first, and then user who want to compare
+     *
+     * @param $query
+     * @param $userIds Array
+     * @internal param $user_id
+     */
+    public function scopeWhereAssignedToUsers($query, $userIds)
+    {
+        $query->whereIn('id', function ($query) use ($userIds)
+        {
+            $query->select('task_id')
+                ->from('task_user')
+                ->whereRaw('user_id = ' . $userIds[0] . ' AND '. $userIds[1]);
+        });
+    }
+
+    /**
      * Used in Reports to show tasks that don't below to own
      *
      * @param $query

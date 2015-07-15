@@ -21,32 +21,17 @@ class AuthenticateUser
         $this->auth = $auth;
     }
 
-//    public function execute($request, $listener, $provider)
-//    {
-//        if (!$request) return $this->getAuthorizationFirst($provider);
-//        $user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider));
-//
-//        $this->auth->login($user, true);
-//
-//        return $listener->userHasLoggedIn($user);
-//    }
-
     public function execute($request = null, $provider) {
-        //dd("Hello");
+
         if (!$request) return $this->getAuthorizationFirst($provider);
 
         $user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider), $provider);
         if(!$user) {
             return redirect('/')->with('message', 'Email is already in use');
         }
-//        (config('easyAuthenticator.flash_session')) ?:
-//            Session::flash(
-//                config('easyAuthenticator.flash_session_key'),
-//                config('easyAuthenticator.flash_session_login')
-//            );
 
         $this->auth->login($user, true);
-        //dd($user);
+
         return $this->userHasLoggedIn($user);
     }
 

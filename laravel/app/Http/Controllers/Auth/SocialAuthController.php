@@ -19,11 +19,7 @@ class SocialAuthController extends Controller implements
      */
     public function login(AuthenticateUser $authenticateUser, Request $request, $provider = null)
     {
-        //dd($provider);
         return $authenticateUser->execute($request->all(), $provider);
-        //return $authenticateUser->execute($request->all(), $this, $provider);
-        //$hasCode = $request->has('code');
-        //return $authenticateUser->execute($hasCode, $this);
     }
 
     /**

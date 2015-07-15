@@ -37,7 +37,7 @@
         <li><a href="/project/">Projects</a></li>
         <li><a href="{{ route('project.show', [$project->slug]) }}">{{ $project->name }}</a></li>
         <li><a href="{{ route('project.tasklist.show', [$project->slug, $tasklist->slug]) }}">{{ $tasklist->name }}
-                list</a></li>
+                </a></li>
 
     </ol>
 
@@ -101,11 +101,13 @@
         null,
         ['size' =>'1x3', 'class' => 'form-control', 'placeholder' => 'Write a comment']) !!}
     </div>
+
     {!! Form::hidden('task_id', $id) !!}
     {!! Form::hidden('user_id', Auth::user()->id) !!}
     {!! Form::submit('Comment', ['class' => 'btn btn-default']) !!}
     {!! Form::submit('Comment & Notify', ['name' => 'comment_and_notify', 'class' => 'btn btn-default']) !!}
-    {!! Form::submit('Complete Task', ['class' => 'btn btn-default']) !!}
+    {!! Form::submit('Postpone 24 Hours', ['name' => 'postpone', 'class' => 'btn btn-default']) !!}
+    {!! Form::submit('Complete Task', ['name' => 'complete_task', 'class' => 'btn btn-default']) !!}
     {!! Form::close() !!}
 
     <hr>

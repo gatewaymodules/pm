@@ -62,10 +62,5 @@ get('/auth', function()
     if (Auth::check()) return 'Welcome back, '  . Auth::user()->username;
     return 'Hi guest. ' . link_to('login/google', 'Login with Google') . " " . link_to('login/github', 'Login With Github or ') . " " . link_to('login/facebook', 'Login with Facebook');
 });
-// Login a user with GitHub (or any provider).
-//get('login', 'Auth\SocialAuthController@login');
 
 Route::get('login/{provider?}', 'Auth\SocialAuthController@login');
-
-//Route::get('github/login', 'Auth\SocialLoginsController@socialLogin');
-//Route::get('github/login', 'Auth\SocialLoginsController@userHasLoggedIn');

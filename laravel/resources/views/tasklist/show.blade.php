@@ -24,7 +24,8 @@
                 <th>Task
                 </th>
                 <th>Assigned to</th>
-                <th>Due at</th>
+                <th>Due</th>
+                <th>Created</th>
             </tr>
             </thead>
             <tbody>
@@ -55,6 +56,9 @@
                     </td>
                     <td>
                         {{ $task->due_at() }}
+                    </td>
+                    <td>
+                        {{ $task->created_at() }}
                     </td>
                     <td>
                         {!! link_to_route('project.tasklist.task.edit', 'Edit', array($project->slug,

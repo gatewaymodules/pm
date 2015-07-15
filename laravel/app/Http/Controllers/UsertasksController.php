@@ -31,7 +31,6 @@ class UsertasksController extends Controller
     {
         $user_id = Auth::user()->id;
         $tasks = User::find($user_id)->tasks()->get();
-        //$tasks = User::find($user_id)->tasks()->paginate(10);
         return view('usertasks.index', compact('tasks', 'paginator'));
     }
 
@@ -65,36 +64,22 @@ class UsertasksController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $tasks = User::find($id)->tasks()->get();
 
+        $this_user_id = Auth::user()->id;
 
-        //$tasks = \App\User::tasks()->whereIn('id',['14', '17']);
-        //dd($tasks);
+        $userIds = array($this_user_id, $id);
 
-        //dd(DB::getQueryLog());
-        // toSql()
+        $tasks = Task::WhereAssignedToUsers($userIds)
+            ->where('completed', '<>', 1)
+            ->get();
 
-        //dd($users->toSql());
+//        $tasks = Task::WhereAssignedToUsers($userIds)
+//            ->where('completed', '<>', 1)
+//            ->toSql();
+//
+//        dd($tasks);
 
-        //dd($users);
-
-
-        //$user_id = Auth::user()->id;
-
-        //$tasks = User::find($id)->whereIn('id', [14, 17])->tasks();
-
-//        $tasks = Task::whereHas('users', function($q)
-//        {
-//            //$q->WhereIn('id', [14,17]);
-//            $q->WhereIn('id', [14]);
-//        }
-//        )->get();
-
-        //dd($tasks);
-
-        $tasks = User::find($id)->tasks()->get();
-
-        //$tasks = User::find($user_id)->tasks()->get();
+        //$tasks = User::find($id)->tasks()->get();
 
         return view('usertasks.index', compact('tasks', 'user', 'paginator'));
     }

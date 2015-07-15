@@ -1,5 +1,8 @@
 <?php
 
+// For troubleshooting queries, don't use dd(DB::getQueryLog());
+// Use ->toSql() instead of ->get();
+
 namespace App\Http\Controllers;
 
 use App\User;
@@ -36,20 +39,48 @@ class ReportController extends Controller
     {
         $yesterday = \Carbon\Carbon::now()->subDays(0);
 
-        $highPriorityTasks = User::find(Auth::user()->id)
+        $overdueHighPriorityTasks = User::find(Auth::user()->id)
             ->tasks()
             ->where('completed', '<>', 1)
+            ->where('priority', '=', 1)
             ->where('due_at', '<=', $yesterday)
             ->where('due_at', '<>', '0000-00-00 00:00:00')
             ->orderBy('due_at', 'ASC')
             ->get();
 
-        $user_id = Auth::user()->id;
-        $highPriorityTasksUnassigned = Task::whereNotRelatedToUser($user_id)
+        $overdueTasks = User::find(Auth::user()->id)
+            ->tasks()
             ->where('completed', '<>', 1)
+            ->where('priority', '=', 0)
             ->where('due_at', '<=', $yesterday)
             ->where('due_at', '<>', '0000-00-00 00:00:00')
             ->orderBy('due_at', 'ASC')
+            ->get();
+
+        $user = Auth::user();
+        $user_id = $user->id;
+
+        $overdueHighPriorityTasksOther = Task::whereNotRelatedToUser($user_id)
+            ->where('completed', '<>', 1)
+            ->where('priority', '=', 1)
+            ->where('due_at', '<=', $yesterday)
+            ->where('due_at', '<>', '0000-00-00 00:00:00')
+            ->orderBy('due_at', 'ASC')
+            ->get();
+
+        $overdueTasksOther = Task::whereNotRelatedToUser($user_id)
+            ->where('completed', '<>', 1)
+            ->where('priority', '=', 0)
+            ->where('due_at', '<=', $yesterday)
+            ->where('due_at', '<>', '0000-00-00 00:00:00')
+            ->orderBy('due_at', 'ASC')
+            ->get();
+
+        $oldestTasks = User::find(Auth::user()->id)
+            ->tasks()
+            ->where('completed', '<>', 1)
+            ->orderBy('created_at', 'ASC')
+            ->take(5)
             ->get();
 
         // Graphs
@@ -60,7 +91,6 @@ class ReportController extends Controller
             ->groupBy(DB::raw('DATE(completed_at)'))
             ->orderBy('completed_at', 'DESC')
             ->get();
-        //dd(DB::getQueryLog());
 
         $updatedTasks = DB::table('tasks')
             ->select(DB::raw('DATE(updated_at) as updatedDate'), DB::raw('count(id) as updatedTask'))
@@ -69,19 +99,20 @@ class ReportController extends Controller
             ->orderBy('updated_at', 'DESC')
             ->get();
 
-        //dd($updatedTasks); // use ->toSql(); instead of ->get(); to output raw sql
-        //dd(DB::getQueryLog());
-
         $createdTasks = DB::table('tasks')
             ->select(DB::raw('DATE(created_at) as date'), DB::raw('count(id) as total'))
             ->groupBy(DB::raw('DATE(created_at)'))
             ->orderBy('created_at', 'DESC')
             ->get();
 
-        $user = User::find(Auth::user()->id);
-
         return View::make('admin.reports.daily')
             ->with([
+                    'overdueHighPriorityTasks' => $overdueHighPriorityTasks,
+                    'overdueTasks' => $overdueTasks,
+                    'overdueHighPriorityTasksOther' => $overdueHighPriorityTasksOther,
+                    'overdueTasksOther' => $overdueTasksOther,
+                    'oldestTasks' => $oldestTasks,
+
                     'completedDates' => array_pluck($completedTasks, 'completedDate'),
                     'completedTasks' => array_pluck($completedTasks, 'completedTask'),
                     'updatedDates' => array_pluck($updatedTasks, 'updatedDate'),
@@ -89,8 +120,6 @@ class ReportController extends Controller
                     'dates' => array_pluck($createdTasks, 'date'),
                     'totals' => array_pluck($createdTasks, 'total'),
 
-                    'highPriorityTasks' => $highPriorityTasks,
-                    'highPriorityTasksUnassigned' => $highPriorityTasksUnassigned,
                     'project' => $project,
                     'tasklist' => $tasklist,
                     'user' => $user

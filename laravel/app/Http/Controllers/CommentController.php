@@ -58,7 +58,6 @@ class CommentController extends Controller
         $new_comment = Input::get('comment');
 
         if(Input::get('comment_and_notify')) {
-        //if(Input::get('register')) {
             $user = Auth::user();
             Mail::send('emails.reminder', ['user' => $user, 'comment' => $new_comment], function ($m) use ($user, $task) {
                 $m->to($user->email, $user->name)->subject($task->name)->from(array($user->email=>$user->name));
@@ -66,13 +65,32 @@ class CommentController extends Controller
         }
 
         $task_id = Input::get('task_id');
-        $user_id = Input::get('user_id');
-        echo "Storing comment " . $new_comment;
-        $comment = new Comment();
-        $comment->comment = $new_comment;
-        $comment->task_id = $task_id;
-        $comment->user_id = $user_id;
-        $comment->save();
+
+        if(Input::get('complete_task')) {
+            $task = Task::find($task_id);
+            $task->completed = 1;
+            // TODO find on stack exchange a method to automatically update completed_at when flag is set
+            $task->completed_at = \Carbon\Carbon::now();
+            $task->save();
+        }
+
+        if(Input::get('postpone')) {
+            $task = Task::find($task_id);
+            $task->due_at = \Carbon\Carbon::now()
+                ->addHours(24)
+                ->timezone('Africa/Johannesburg');
+            $task->save();
+        }
+
+        if ($new_comment) {
+            $user_id = Input::get('user_id');
+            //echo "Storing comment " . $new_comment;
+            $comment = new Comment();
+            $comment->comment = $new_comment;
+            $comment->task_id = $task_id;
+            $comment->user_id = $user_id;
+            $comment->save();
+        }
         return Redirect::route('project.tasklist.task.show', [$project->slug, $tasklist->slug, $task->slug])->with('message', 'Comment added.');
     }
 
