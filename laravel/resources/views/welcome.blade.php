@@ -53,6 +53,8 @@
         <a href="/login/google" class="google-plus" title="Google"> <i class="fa fa-google fa-3x"></i> </a>
         <a href="/login/facebook" class="facebook" title="Facebook"> <i class="fa fa-facebook fa-3x"></i> </a>
         <a href="/login/github" class="github" title="GitHub"> <i class="fa fa-github fa-3x"></i> </a>
+        <br>
+        <a href="/auth/login" class="project-isizwe" title="Project Isizwe"><img src="Project_Isizwe_Free_Wi_Fi_For_Africa.png" width="50" align="top"></a>
 
         @if (Session::has('message'))
             <br>

@@ -26,13 +26,14 @@
         @endif
     @endif
 
-    @if ($oldestTasks->count())
-        <a href="#oldest-tasks">Oldest Tasks ({{ $overdueTasks->count() }})</a> |
-    @endif
-
     <a href="#tasks-completed-graph">Tasks Completed</a> |
     <a href="#tasks-updated-graph">Tasks Updated</a> |
     <a href="#tasks-created-graph">Tasks Created</a> |
+
+    @if ($oldestTasks->count())
+        <a href="#oldest-tasks">Oldest Tasks ({{ $oldestTasks->count() }})</a> |
+    @endif
+
     <a href="#number-tasks-created-list">Number of Tasks Created</a>
 
     <hr>
@@ -138,10 +139,11 @@
                             </td>
                             <td><font color="red">{{ $task->due_at() }}</font></td>
                             <td>
-                                {{ $task->tasklist->name }}
-                            </td>
-                            <td>
-                                {{ $task->tasklist->project->name }}
+                                <a href="{{ 'project/' . $task->tasklist->project->slug }}">
+                                    {{ $task->tasklist->project->name }}
+                                </a>/<a href="{{ 'project/' . $task->tasklist->project->slug . '/tasklist/' . $task->tasklist->slug }}">
+                                    {{ $task->tasklist->name }}
+                                </a>
                             </td>
                             <td>
                                 @foreach( $task->users as $user )
@@ -174,10 +176,11 @@
                             </td>
                             <td>{{ $task->due_at() }}</td>
                             <td>
-                                {{ $task->tasklist->name }}
-                            </td>
-                            <td>
-                                {{ $task->tasklist->project->name }}
+                                <a href="{{ 'project/' . $task->tasklist->project->slug }}">
+                                    {{ $task->tasklist->project->name }}
+                                </a>/<a href="{{ 'project/' . $task->tasklist->project->slug . '/tasklist/' . $task->tasklist->slug }}">
+                                    {{ $task->tasklist->name }}
+                                </a>
                             </td>
                             <td>
                                 @foreach( $task->users as $user )
@@ -191,43 +194,6 @@
             <hr>
         @endif
 
-    @endif
-
-    @if ( $oldestTasks->count() )
-        <a name="oldest_tasks"></a>
-        <h4>Oldest Tasks</h4>
-        <div class="table-responsive">
-            <table class="table table-hover table-condensed" id="table-clickable">
-                <thead>
-                <th>Task</th>
-                <th>Created</th>
-
-                <th>Assigned To</th>
-                </thead>
-                @foreach( $oldestTasks as $task )
-                    <tr>
-                        <td>
-                            <a href="{{ route('project.tasklist.task.show', [$task->tasklist->project->slug, $task->tasklist->slug, $task->slug]) }}">
-                                {{ $task->name }}
-                            </a>
-                        </td>
-                        <td>{{ $task->created_at() }}</td>
-                        <td>
-                            {{ $task->tasklist->name }}
-                        </td>
-                        <td>
-                            {{ $task->tasklist->project->name }}
-                        </td>
-                        <td>
-                            @foreach( $task->users as $user )
-                                {{ $user->name }},
-                            @endforeach
-                        </td>
-                    </tr>
-                @endforeach
-            </table>
-        </div>
-        <hr>
     @endif
 
     <a name="tasks-completed-graph"></a>
@@ -246,6 +212,51 @@
     </label>
 
     <hr>
+
+    @if ( $oldestTasks->count() )
+        <a name="oldest-tasks"></a>
+        <h4>5 Oldest Tasks</h4>
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed" id="table-clickable">
+                <thead>
+                <th>Task</th>
+                <th>Created</th>
+                <th>Assigned To</th>
+                <th>Last updated</th>
+                <th>Project / List</th>
+                </thead>
+                @foreach( $oldestTasks as $task )
+                    <tr>
+                        <td>
+                            <a href="{{ route('project.tasklist.task.show', [$task->tasklist->project->slug, $task->tasklist->slug, $task->slug]) }}">
+                                @if ($task->priority) <font color="red"> @endif
+                                {{ $task->name }}
+                                    @if ($task->priority) </font> @endif
+                            </a>
+                        </td>
+                        <td>{{ $task->created_at() }}</td>
+                        <td>
+                            @foreach( $task->users as $user )
+                                {{ $user->name }},
+                            @endforeach
+                        </td>
+                        <td>
+                            {{ $task->updated_at() }}
+                        </td>
+                        <td>
+                            <a href="{{ 'project/' . $task->tasklist->project->slug }}">
+                                {{ $task->tasklist->project->name }}
+                            </a>/<a href="{{ 'project/' . $task->tasklist->project->slug . '/tasklist/' . $task->tasklist->slug }}">
+                                {{ $task->tasklist->name }}
+                            </a>
+                        </td>
+
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+        <hr>
+    @endif
 
     <a name="number-tasks-created-list"></a>
     <h3>Number of Tasks Created</h3>

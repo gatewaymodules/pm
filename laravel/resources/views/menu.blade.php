@@ -13,7 +13,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/auth/login">Login</a></li>
+                    <li><a href="/">Login</a></li>
                     <li><a href="/auth/register">Register</a></li>
                 </ul>
             </div>
