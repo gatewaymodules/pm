@@ -55,6 +55,7 @@
         <a href="/login/github" class="github" title="GitHub"> <i class="fa fa-github fa-3x"></i> </a>
         <br>
         <a href="/auth/login" class="project-isizwe" title="Project Isizwe"><img src="Project_Isizwe_Free_Wi_Fi_For_Africa.png" width="50" align="top"></a>
+        <a href="/auth/login" class="hero-telecoms" title="Hero Telecoms"><img src="herotel_logo.png" width="50" align="top"></a>
 
         @if (Session::has('message'))
             <br>

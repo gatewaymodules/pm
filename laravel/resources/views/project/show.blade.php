@@ -15,6 +15,7 @@
         This project has no task lists.
         <br><br>
     @else
+
         <table class="table table-hover" id="table-clickable">
             <thead>
             <tr>

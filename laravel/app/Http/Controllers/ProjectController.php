@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\GoogleCalendar;
 use App\Project;
 use App\User;
 use DB;
@@ -87,6 +88,7 @@ class ProjectController extends Controller {
 	 */
     public function show(Project $project)
 	{
+        //$this->getCalendarEvents();
 		return view('project.show', compact('project'));
 	}
 
@@ -138,5 +140,24 @@ class ProjectController extends Controller {
 
 		return Redirect::route('project.index')->with('message', 'Project deleted.');
 	}
+
+    public function functionName()
+        //public function functionName(GoogleCalendar $calendar)
+    {
+
+        $calendar = new GoogleCalendar;
+        $calendarId = "snowball.co.za_peppqg1qtce9ivdo8a2vpv6fqg@group.calendar.google.com";
+        $result = $calendar->get($calendarId);
+
+        //dd ($result);
+
+    }
+
+    public function getCalendarEvents() {
+        $calendar = new GoogleCalendar;
+        $calendarId = "snowball.co.za_peppqg1qtce9ivdo8a2vpv6fqg@group.calendar.google.com";
+        $events = $calendar->getEvents($calendarId)->count();
+        //dd($events);
+    }
 
 }

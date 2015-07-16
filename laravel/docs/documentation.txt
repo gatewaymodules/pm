@@ -1,3 +1,14 @@
+PHP JavaScript Calendar:
+
+http://fullcalendar.io/docs/google_calendar/
+
+
+Laravel Calendar working nicely:
+
+https://laracasts.com/discuss/channels/tips/google-api-service-account-connection-laravel-5
+
+
+
 Implementation of Github authentication
 https://github.com/laracasts/Laravel-OAuth-and-Socialite/blob/master/app/Http/Controllers/AuthController.php
 Possibly created redundant access_token field

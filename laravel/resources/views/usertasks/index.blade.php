@@ -25,11 +25,13 @@
             @foreach( $tasks as $task )
                 <tr>
                     <td>
-                        <a href="{{ $task->url }}">
-                            @if ($task->priority) <font color='red'>@endif
-                                {{$task->name}}
+
+                        <a href="{{ route('project.tasklist.task.show', [$task->tasklist->project->slug, $task->tasklist->slug, $task->slug]) }}">
+                            @if ($task->priority) <font color="red"> @endif
+                                {{ $task->name }}
                                 @if ($task->priority) </font> @endif
                         </a>
+
                     </td>
                     <td>
                         {{ $task->tasklist->name }}

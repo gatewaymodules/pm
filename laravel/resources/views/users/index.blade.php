@@ -18,7 +18,7 @@
                 <th>First Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Role</th>
+
             </tr>
             </thead>
 
@@ -30,7 +30,7 @@
                     <td>{{ $user->name() }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
-                    <td>{{ $user->hasRole('admin')}}</td>
+
                     <td width="1%">{!! link_to_route('users.edit', 'Edit', array($user->id), array('class' => 'btn btn-info')) !!}</td>
                 </tr>
             @endforeach
