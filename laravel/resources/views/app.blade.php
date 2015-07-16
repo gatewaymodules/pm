@@ -181,6 +181,11 @@
             }
     );
 
+    $('input[name=name]').on('typeahead:selected', function (evt, item) {
+        $('#tasklist').val(item.id);
+        $('#type').val(item.type);
+    });
+
 </script>
 
 </body>

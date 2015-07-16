@@ -37,8 +37,14 @@
                     <li>
                         {!! Form::open(['url' => '/profile', 'method' => 'get']) !!}
                         <div id="multiple-datasets">
-                            {!! Form::text('user', null, ['class'=>'typeahead tt-input']) !!}
+                            {!! Form::text('user', null, ['name'=>'name', 'class'=>'typeahead tt-input']) !!}
                             {!! Form::submit('GO') !!}
+                        </div>
+                        <div class="form-group">
+                            <input name="tasklist" id="tasklist" type="text" class="form-control" placeholder="Tasklist">
+                        </div>
+                        <div class="form-group">
+                            <input name="type" id="type" type="text" class="form-control" placeholder="Type">
                         </div>
 
                         {!! Form::close() !!}

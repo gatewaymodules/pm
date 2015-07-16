@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\DB;
 use Input;
 use Redirect;
 use Response;
-use App\Task;
-use App\Tasklist;
-use App\Project;
 
 class SearchController extends Controller
 {
@@ -26,22 +24,22 @@ class SearchController extends Controller
     public function queryTasks()
     {
         $query = Input::get('user');
-        $res   = Task::where('name', 'LIKE', "%$query%")->get();
-        return Response::json($res);
+        $res = DB::select("select 'task' AS `type`, tasks.* from tasks where name like ?", ['%'.$query.'%']);
+        return response()->json($res);
     }
 
     public function queryTasklists()
     {
         $query = Input::get('user');
-        $res   = Tasklist::where('name', 'LIKE', "%$query%")->get();
-        return Response::json($res);
+        $res = DB::select("select 'tasklist' AS `type`, tasklists.* from tasklists where name like ?", ['%'.$query.'%']);
+        return response()->json($res);
     }
 
     public function queryProjects()
     {
         $query = Input::get('user');
-        $res   = Project::where('name', 'LIKE', "%$query%")->get();
-        return Response::json($res);
+        $res = DB::select("select 'project' AS `type`, projects.* from projects where name like ?", ['%'.$query.'%']);
+        return response()->json($res);
     }
 
     /**
@@ -51,7 +49,6 @@ class SearchController extends Controller
      */
     public function index()
     {
-        //return View::make('search.index');
         return view('search.index');
     }
 
