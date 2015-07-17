@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h3>All tasks assigned to {{$user->name()}}</h3>
+    <h3>All tasks assigned to {{$user->name()}} and {{ Auth::user()->name  }}</h3>
 
     <ol class="breadcrumb">
         <li class="active">Tasks by Person</li>

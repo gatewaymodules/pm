@@ -33,11 +33,12 @@ class Task extends Model
      */
     public function scopeWhereAssignedToUsers($query, $userIds)
     {
+        // select task_id from task_user as t where user_id = 16 and (select task_id from task_user where user_id = 33 and t.task_id = task_id);
         $query->whereIn('id', function ($query) use ($userIds)
         {
             $query->select('task_id')
-                ->from('task_user')
-                ->whereRaw('user_id = ' . $userIds[0] . ' AND '. $userIds[1]);
+                ->from('task_user AS t')
+                ->whereRaw('user_id = ' . $userIds[0] . ' AND (select task_id from task_user where user_id = ' . $userIds[1] . ' and t.task_id = task_id)');
         });
     }
 

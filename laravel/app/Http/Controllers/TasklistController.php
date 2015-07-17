@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Input;
 use Redirect;
 use App\Project;
@@ -38,7 +40,8 @@ class TasklistController extends Controller {
      */
     public function index(Project $project)
     {
-        return view('tasklist.index', compact('tasklists'));
+        // TODO Not ever used
+        //return view('tasklist.index', compact('tasklists'));
     }
 
 
@@ -66,7 +69,19 @@ class TasklistController extends Controller {
 
         $input = Input::all();
         $input['project_id'] = $project->id;
-        Tasklist::create( $input );
+        $tasklist = Tasklist::create( $input );
+
+        $tasklist_id = DB::getPdo()->lastInsertId();
+
+        $assigned_to = Input::get('assigned_to');
+
+        // Only sync if assigned_to multi select had some data
+        if ($assigned_to) {
+            $tasklist->users()->sync($assigned_to);
+        } else { // If no users are selected to the assigned list, assign the logged in user
+            $user = Auth::user();
+            $user->tasklists()->attach($tasklist_id);
+        }
 
         return Redirect::route('project.show', $project->slug)->with('Task list created.');
     }
@@ -96,7 +111,9 @@ class TasklistController extends Controller {
      */
     public function edit(Project $project, Tasklist $tasklist)
     {
-        return view('tasklist.edit', compact('project', 'tasklist'));
+        $users = User::orderBy('name')->lists('name', 'id');
+        $selected_users = $tasklist->users()->getRelatedIds()->toArray();
+        return view('tasklist.edit', compact('project', 'tasklist', 'users', 'selected_users'));
     }
 
     /**
@@ -114,6 +131,12 @@ class TasklistController extends Controller {
 
         $input = array_except(Input::all(), '_method');
         $tasklist->update($input);
+
+        $assigned_to = Input::get('assigned_to');
+        // Only sync if assigned_to multi select had some data
+        if ($assigned_to) {
+            $tasklist->users()->sync($assigned_to);
+        }
 
         return Redirect::route('project.tasklist.show', [$project->slug, $tasklist->slug])->with('message', 'Task list updated.');
     }

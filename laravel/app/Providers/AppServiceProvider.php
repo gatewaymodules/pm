@@ -30,9 +30,9 @@ class AppServiceProvider extends ServiceProvider {
 			'App\Services\Registrar'
 		);
 
-//        if ($this->app->environment() == 'local') {
-//            $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
-//        }
+        if ($this->app->environment() == 'local') {
+            $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
+        }
 
 	}
 

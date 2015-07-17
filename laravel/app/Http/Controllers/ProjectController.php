@@ -88,8 +88,9 @@ class ProjectController extends Controller {
 	 */
     public function show(Project $project)
 	{
-        //$this->getCalendarEvents();
-		return view('project.show', compact('project'));
+        $user_id = Auth::user()->id;
+        $tasklists = User::find($user_id)->tasklists()->where('project_id','=',$project->id)->get();
+		return view('project.show', compact('project','tasklists'));
 	}
 
 	/**

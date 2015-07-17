@@ -24,7 +24,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach( $project->tasklists as $tasklist )
+            @foreach( $tasklists as $tasklist )
                 <tr>
                     <td>
                         <a href="{{ route('project.tasklist.show', [$project->slug, $tasklist->slug]) }}">{{ $tasklist->name }}</a>

@@ -73,6 +73,9 @@ class UsertasksController extends Controller
             ->where('completed', '<>', 1)
             ->get();
 
+
+
+
 //        $tasks = Task::WhereAssignedToUsers($userIds)
 //            ->where('completed', '<>', 1)
 //            ->toSql();

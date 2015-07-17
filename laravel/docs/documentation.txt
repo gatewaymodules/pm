@@ -2,12 +2,9 @@ PHP JavaScript Calendar:
 
 http://fullcalendar.io/docs/google_calendar/
 
-
 Laravel Calendar working nicely:
 
 https://laracasts.com/discuss/channels/tips/google-api-service-account-connection-laravel-5
-
-
 
 Implementation of Github authentication
 https://github.com/laracasts/Laravel-OAuth-and-Socialite/blob/master/app/Http/Controllers/AuthController.php
@@ -26,7 +23,6 @@ $user->token = $userData->token;
         $user->first_name = $userData->user['name']['givenName'];
         $user->last_name = $userData->user['name']['familyName'];
         $user->save();
-
 
 Typeahead Multiple Datasets
 https://twitter.github.io/typeahead.js/examples/#multiple-datasets

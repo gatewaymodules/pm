@@ -4,6 +4,18 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('assigned_to', 'Assigned To') !!}
+    {!! Form::select(
+    'assigned_to[]',
+    $users,
+    $tasklist->getUserIds(),
+    ['multiple' =>'true',
+    'class' => 'form-control',
+    'size' =>'7x1']
+    ) !!}
+</div>
+
+<div class="form-group">
     {!! Form::label('description', 'Description') !!}
     {!! Form::textarea(
     'description',
