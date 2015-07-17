@@ -57,8 +57,9 @@ class UsertasksController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $user
+     * @param $id
      * @return Response
+     * @internal param $user
      * @internal param int $id
      */
     public function show($id)
@@ -69,21 +70,13 @@ class UsertasksController extends Controller
 
         $userIds = array($this_user_id, $id);
 
-        $tasks = Task::WhereAssignedToUsers($userIds)
-            ->where('completed', '<>', 1)
-            ->get();
-
-
-
-
-//        $tasks = Task::WhereAssignedToUsers($userIds)
-//            ->where('completed', '<>', 1)
-//            ->toSql();
-//
-//        dd($tasks);
-
-        //$tasks = User::find($id)->tasks()->get();
-
+        if (Auth::user()->hasRole('admin')) {
+            $tasks = User::find($id)->tasks()->get();
+        } else {
+            $tasks = Task::WhereAssignedToUsers($userIds)
+                ->where('completed', '<>', 1)
+                ->get();
+        }
         return view('usertasks.index', compact('tasks', 'user', 'paginator'));
     }
 
