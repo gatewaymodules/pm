@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Project;
-use App\Tasklist;
-use Input;
 use App\Task;
 use App\User;
 use Illuminate\Http\Request;
@@ -32,16 +29,9 @@ class UsertasksController extends Controller
      */
     public function index()
     {
-
-//        $query = Input::get('type');
-//        dd($query);
-
-//        $auth_user_id = Auth::user()->id;
-//
-//        $user = User::find($auth_user_id);
-//
-//        $tasks = User::find($auth_user_id)->tasks()->get();
-//        return view('usertasks.index', compact('tasks', 'user', 'paginator'));
+        $user_id = Auth::user()->id;
+        $tasks = User::find($user_id)->tasks()->get();
+        return view('usertasks.index', compact('tasks', 'paginator'));
     }
 
     /**
@@ -67,11 +57,6 @@ class UsertasksController extends Controller
     /**
      * Display the specified resource.
      *
-     * The SQL that produces search results is
-     * select * from `tasks`
-     * inner join `task_user` on `tasks`.`id` = `task_user`.`task_id`
-     * where `task_user`.`user_id` = 16 and `id` = 20;
-     *
      * @param $id
      * @return Response
      * @internal param $user
@@ -80,12 +65,14 @@ class UsertasksController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $auth_user_id = Auth::user()->id;
 
-        if (Auth::user()->hasRole('admin') && config('projectmanager.superusermode')) {
+        $this_user_id = Auth::user()->id;
+
+        $userIds = array($this_user_id, $id);
+
+        if (Auth::user()->hasRole('admin')) {
             $tasks = User::find($id)->tasks()->get();
         } else {
-            $userIds = array($auth_user_id, $id);
             $tasks = Task::WhereAssignedToUsers($userIds)
                 ->where('completed', '<>', 1)
                 ->get();
@@ -96,7 +83,7 @@ class UsertasksController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function edit($id)
@@ -107,7 +94,7 @@ class UsertasksController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function update($id)
@@ -118,7 +105,7 @@ class UsertasksController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function destroy($id)

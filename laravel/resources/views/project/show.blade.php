@@ -21,7 +21,7 @@
             <tr>
                 <th>List</th>
                 <th>Tasks</th>
-                <th>Members</th>
+                <th>Team</th>
             </tr>
             </thead>
             <tbody>
