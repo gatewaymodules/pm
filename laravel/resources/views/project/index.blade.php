@@ -17,6 +17,7 @@
             <tr>
                 <th>Project</th>
                 <th>Lists</th>
+                <th>Members</th>
             </tr>
             </thead>
             <tbody>
@@ -36,6 +37,11 @@
                             </a>
                     @endforeach
                     </td>
+
+                    <td>
+                        @foreach ($project->users as $user) {{ $user->name()  }}, @endforeach
+                    </td>
+
                 <tr>
             @endforeach
             </tbody>

@@ -2,6 +2,7 @@
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Input;
 use Redirect;
 use App\Project;
@@ -51,13 +52,14 @@ class TasklistController extends Controller {
      * @param  \App\Project $project
      * @return Response
      */
-    public function create(Project $project)
+    public function create(Project $project, Tasklist $tasklist)
     {
-        return view('tasklist.create', compact('project'));
+        $users = User::orderBy('name')->lists('name', 'id');
+        return view('tasklist.create', compact('project', 'tasklist', 'users'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a **newly** created resource in storage.
      *
      * @param  \App\Project $project
      * @param \Illuminate\Http\Request $request
@@ -68,22 +70,25 @@ class TasklistController extends Controller {
         $this->validate($request, $this->rules);
 
         $input = Input::all();
+        // Link the project to this task list
         $input['project_id'] = $project->id;
-        $tasklist = Tasklist::create( $input );
 
-        $tasklist_id = DB::getPdo()->lastInsertId();
+        $input['creator_id'] = Auth::user()->id;
+        $tasklist = Tasklist::create( $input );
 
         $assigned_to = Input::get('assigned_to');
 
         // Only sync if assigned_to multi select had some data
         if ($assigned_to) {
             $tasklist->users()->sync($assigned_to);
-        } else { // If no users are selected to the assigned list, assign the logged in user
+        //}
+        } else { // If no users are selected to the member list, assign the logged in user
             $user = Auth::user();
-            $user->tasklists()->attach($tasklist_id);
+            $user->tasklists()->attach($tasklist->id);
         }
 
         return Redirect::route('project.show', $project->slug)->with('Task list created.');
+        //return Redirect::route('project.tasklist.show', $project, $tasklist)->with('Task list created.');
     }
 
     /**
@@ -95,10 +100,14 @@ class TasklistController extends Controller {
      * @return Response
      * @internal param Task $task
      */
-    public function show(Project $project, Tasklist $tasklist, Task $task)
+    public function show(Project $project, Tasklist $tasklist)
+        //public function show(Project $project, Tasklist $tasklist, Task $task)
     {
         // TODO In this view I would like to return by created at, but I don't know how. StackOverflow  opportunity.
-        return view('tasklist.show', compact('project', 'tasklist', 'task'));
+        //return view('tasklist.show', compact('project', 'tasklist', 'task'));
+        $completed_tasks = Auth::User()->tasks()->where('completed','=',1)->where('tasklist_id','=',$tasklist->id)->get();
+        //dd($completed_tasks);
+        return view('tasklist.show', compact('project', 'tasklist', 'completed_tasks'));
     }
 
     /**

@@ -17,6 +17,12 @@
     @if ( !$tasklist->tasks->count() )
         This list has no tasks.
         <br><br>
+{{--
+            There are {{ $completed_tasks->count() }} completed tasks
+--}}
+
+
+
     @else
         <table class="table table-hover" id="table-clickable">
             <thead>

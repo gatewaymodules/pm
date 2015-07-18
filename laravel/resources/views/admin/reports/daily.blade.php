@@ -125,10 +125,8 @@
                     <thead>
                     <th>Task</th>
                     <th>Due</th>
-                    {{--
-                    <th>Task list</th>
-                    <th>Project</th> --}}
                     <th>Assigned To</th>
+                    <th>Project/Task list</th>
                     </thead>
                     @foreach( $overdueHighPriorityTasksOther as $task )
                         <tr>
@@ -150,7 +148,15 @@
                                     {{ $user->name }},
                                 @endforeach
                             </td>
+                            <td>
+                                <a href="{{ 'project/' . $task->tasklist->project->slug }}">
+                                    {{ $task->tasklist->project->name }}
+                                </a>/<a href="{{ 'project/' . $task->tasklist->project->slug . '/tasklist/' . $task->tasklist->slug }}">
+                                    {{ $task->tasklist->name }}
+                                </a>
+                            </td>
                         </tr>
+
                     @endforeach
                 </table>
             </div>
@@ -166,6 +172,7 @@
                     <th>Task</th>
                     <th>Due</th>
                     <th>Assigned To</th>
+                    <th>Project/Task list</th>
                     </thead>
                     @foreach( $overdueTasksOther as $task )
                         <tr>
@@ -186,6 +193,13 @@
                                 @foreach( $task->users as $user )
                                     {{ $user->name }},
                                 @endforeach
+                            </td>
+                            <td>
+                                <a href="{{ 'project/' . $task->tasklist->project->slug }}">
+                                    {{ $task->tasklist->project->name }}
+                                </a>/<a href="{{ 'project/' . $task->tasklist->project->slug . '/tasklist/' . $task->tasklist->slug }}">
+                                    {{ $task->tasklist->name }}
+                                </a>
                             </td>
                         </tr>
                     @endforeach

@@ -63,6 +63,8 @@ class ProjectController extends Controller {
 		$this->validate($request, $this->rules);
 
         $input = Input::all();
+        $user_id = Auth::user()->id;
+        $input['creator_id'] = $user_id;
 		$project = Project::create( $input );
 
         $project_id = DB::getPdo()->lastInsertId();

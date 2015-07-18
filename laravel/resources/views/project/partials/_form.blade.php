@@ -4,7 +4,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('assigned_to', 'Assigned To') !!}
+    {!! Form::label('assigned_to', 'Members') !!}
     {!! Form::select(
     'assigned_to[]',
     $users,

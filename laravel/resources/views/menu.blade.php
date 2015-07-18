@@ -35,18 +35,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        {!! Form::open(['url' => '/profile', 'method' => 'get']) !!}
+                        {!! Form::open(['url' => '/search/', 'method' => 'get']) !!}
+                        <input name="type" id="type" type="hidden" class="form-control" placeholder="Type">
+                        <input name="id" id="tasklist" type="hidden" class="form-control" placeholder="Tasklist">
                         <div id="multiple-datasets">
                             {!! Form::text('user', null, ['name'=>'name', 'class'=>'typeahead tt-input']) !!}
                             {!! Form::submit('GO') !!}
                         </div>
-                        <div class="form-group">
-                            <input name="tasklist" id="tasklist" type="text" class="form-control" placeholder="Tasklist">
-                        </div>
-                        <div class="form-group">
-                            <input name="type" id="type" type="text" class="form-control" placeholder="Type">
-                        </div>
-
                         {!! Form::close() !!}
                     </li>
                     <li><a href="/home">Dashboard</a></li>

@@ -123,7 +123,7 @@
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
-            url: '/queryTasks?user=%QUERY',
+            url: '/queryTasks?name=%QUERY',
             wildcard: '%QUERY'
         }
     });
@@ -132,7 +132,7 @@
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
-            url: '/queryTasklists?user=%QUERY',
+            url: '/queryTasklists?name=%QUERY',
             wildcard: '%QUERY'
         }
     });
@@ -141,7 +141,7 @@
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
-            url: '/queryProjects?user=%QUERY',
+            url: '/queryProjects?name=%QUERY',
             wildcard: '%QUERY'
         }
     });

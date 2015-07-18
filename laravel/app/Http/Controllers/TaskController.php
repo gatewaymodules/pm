@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use Auth;
 use Input;
 use Redirect;
 use App\Project;
@@ -74,10 +75,10 @@ class TaskController extends Controller {
 		$input = Input::all();
 		$input['tasklist_id'] = $tasklist->id;
 
-        $url = route('project.tasklist.task.show', [$project->slug, $tasklist->slug, $input['slug']]);
-        $input['url'] = $url;
-        $user_id = \Auth::user()->id;
-        $input['user_id'] = $user_id;
+        //$url = route('project.tasklist.task.show', [$project->slug, $tasklist->slug, $input['slug']]);
+        //$input['url'] = $url;
+        $user_id = Auth::user()->id;
+        $input['creator_id'] = $user_id;
 		$task = Task::create( $input );
 
         // Sync many to many table

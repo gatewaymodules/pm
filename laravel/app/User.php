@@ -54,9 +54,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function tasks2() {
-        return $this->id->belongsToMany('App\Task');
-    }
+//    public function tasks2() {
+//        return $this->id->belongsToMany('App\Task');
+//    }
 
     public function tasks() {
         return $this->belongsToMany('App\Task');

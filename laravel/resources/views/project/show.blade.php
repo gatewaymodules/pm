@@ -21,6 +21,7 @@
             <tr>
                 <th>List</th>
                 <th>Tasks</th>
+                <th>Members</th>
             </tr>
             </thead>
             <tbody>
@@ -47,6 +48,9 @@
                                 </del>
                             @endif
                         @endforeach
+                    </td>
+                    <td>
+                        @foreach ($tasklist->users as $user) {{ $user->name()  }}, @endforeach
                     </td>
                 </tr>
             @endforeach

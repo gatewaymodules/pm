@@ -1,5 +1,5 @@
 <?php
 return array(
-    'superusermode' => false,
+    'superusermode' => true,
     'api_key' => 'the_key'
 );

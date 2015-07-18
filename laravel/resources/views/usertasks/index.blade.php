@@ -2,7 +2,10 @@
 
 @section('content')
 
-    <h3>All tasks assigned to {{$user->name()}} and {{ Auth::user()->name  }}</h3>
+    <h3>All tasks assigned to {{$user->name()}}
+        @if ($user->id <> Auth::user()->id) and {{ Auth::user()->name()  }}
+    @endif
+    </h3>
 
     <ol class="breadcrumb">
         <li class="active">Tasks by Person</li>
@@ -16,9 +19,9 @@
             <thead>
             <tr>
                 <th>Task</th>
-                <th>Project</th>
-                <th>Task list</th>
                 <th>Due</th>
+                <th>Assigned To</th>
+                <th>Project / Task list</th>
             </tr>
             </thead>
             <tbody>
@@ -34,13 +37,19 @@
 
                     </td>
                     <td>
-                        {{ $task->tasklist->name }}
+                        {{$task->due_at()}}</td>
                     </td>
                     <td>
-                        {{ $task->tasklist->project->name }}
+                        @foreach( $task->users as $user )
+                            {{ $user->name() }},
+                        @endforeach
                     </td>
                     <td>
-                        {{$task->due_at}}</td>
+                        <a href="{{ 'project/' . $task->tasklist->project->slug }}">
+                            {{ $task->tasklist->project->name }}
+                        </a>/<a href="{{ 'project/' . $task->tasklist->project->slug . '/tasklist/' . $task->tasklist->slug }}">
+                            {{ $task->tasklist->name }}
+                        </a>
                     </td>
                 </tr>
             @endforeach

@@ -47,7 +47,7 @@
                 Created
             </td>
             <td>
-                {{ $task->created_at }} ({{  ($task->created_at()) }}) by {{ App\User::find($task->user_id)->name() }}
+                {{  ($task->created_at()) }} by {{ App\User::find($task->creator_id)->name() }}
             </td>
         </tr>
         @if ($task->users->count() )

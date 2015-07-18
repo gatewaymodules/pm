@@ -11,6 +11,8 @@
 |
 */
 
+Route::resource('search', 'SearchController@index');
+
 Route::get('/dashboard', 'DashboardController@index');
 
 Route::resource('usertasks', 'UsertasksController');
