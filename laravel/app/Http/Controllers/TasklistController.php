@@ -101,11 +101,10 @@ class TasklistController extends Controller {
      * @internal param Task $task
      */
     public function show(Project $project, Tasklist $tasklist)
-        //public function show(Project $project, Tasklist $tasklist, Task $task)
     {
-        // TODO In this view I would like to return by created at, but I don't know how. StackOverflow  opportunity.
-        //return view('tasklist.show', compact('project', 'tasklist', 'task'));
-        $completed_tasks = Auth::User()->tasks()->where('completed','=',1)->where('tasklist_id','=',$tasklist->id)->get();
+
+        //$completed_tasks = Auth::User()->tasks()->where('completed','=',1)->where('tasklist_id','=',$tasklist->id)->get();
+        $completed_tasks = Task::where('completed','=',1)->where('tasklist_id','=',$tasklist->id)->get();
         //dd($completed_tasks);
         return view('tasklist.show', compact('project', 'tasklist', 'completed_tasks'));
     }

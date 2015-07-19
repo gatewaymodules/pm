@@ -38,6 +38,23 @@
 
     <hr>
 
+    <a name="tasks-completed-graph"></a>
+    <label for="tasks-completed-report">Tasks Completed<br/>
+        <canvas id="tasks-completed-report" width="342" height="300"></canvas>
+    </label>
+
+    <a name="tasks-updated-graph"></a>
+    <label for="daily-reports">Tasks Updated<br/>
+        <canvas id="tasks-updated-report" width="342" height="300"></canvas>
+    </label>
+
+    <a name="tasks-created-graph"></a>
+    <label for="daily-reports">Tasks Created<br/>
+        <canvas id="daily-reports" width="342" height="300"></canvas>
+    </label>
+
+    <hr>
+
     @if ( $overdueHighPriorityTasks->count() )
         <a name="overdue-high-priority-tasks"></a>
         <h4>Overdue High Priority Tasks</h4>
@@ -209,21 +226,6 @@
         @endif
 
     @endif
-
-    <a name="tasks-completed-graph"></a>
-    <label for="tasks-completed-report">Tasks Completed<br/>
-        <canvas id="tasks-completed-report" width="342" height="300"></canvas>
-    </label>
-
-    <a name="tasks-updated-graph"></a>
-    <label for="daily-reports">Tasks Updated<br/>
-        <canvas id="tasks-updated-report" width="342" height="300"></canvas>
-    </label>
-
-    <a name="tasks-created-graph"></a>
-    <label for="daily-reports">Tasks Created<br/>
-        <canvas id="daily-reports" width="342" height="300"></canvas>
-    </label>
 
     <hr>
 

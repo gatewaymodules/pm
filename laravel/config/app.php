@@ -139,6 +139,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+
         Laravel\Socialite\SocialiteServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
@@ -197,6 +199,8 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Form'      => Illuminate\Html\FormFacade::class,

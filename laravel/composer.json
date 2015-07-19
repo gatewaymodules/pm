@@ -10,7 +10,8 @@
         "illuminate/html": "~5.0",
 	"zizaco/entrust": "dev-laravel-5",
         "laravel/socialite": "^3.0@dev",
-        "google/apiclient": "^1.1@dev"
+        "google/apiclient": "^1.1@dev",
+        "maddhatter/laravel-fullcalendar": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

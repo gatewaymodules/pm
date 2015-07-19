@@ -17,6 +17,7 @@
     @if ( !$tasklist->tasks->count() )
         This list has no tasks.
         <br><br>
+
 {{--
             There are {{ $completed_tasks->count() }} completed tasks
 --}}
@@ -78,7 +79,9 @@
     <a href="{{ route('project.tasklist.task.create', [$project->slug, $tasklist->slug]) }}"
        class="btn btn-primary">
         <span class="glyphicon glyphicon-plus"></span> New Task</a>
-
+{{-- This breaks if hyperlinking from a search page
+    <br>There are {{ $completed_tasks->count() }} completed tasks
+--}}
     @if (!$tasklist->tasks->count() && Auth::user()->hasRole('admin') && config('projectmanager.superusermode'))
         <br><br>
         {!! Form::open(array('method'=> 'DELETE', 'route' => array('project.tasklist.destroy', $project->slug,

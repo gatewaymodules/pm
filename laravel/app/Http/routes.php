@@ -11,6 +11,8 @@
 |
 */
 
+Route::resource('calendar', 'CalendarController@index');
+
 Route::resource('search', 'SearchController@index');
 
 Route::get('/dashboard', 'DashboardController@index');
