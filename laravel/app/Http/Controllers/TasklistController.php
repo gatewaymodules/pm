@@ -102,7 +102,6 @@ class TasklistController extends Controller {
      */
     public function show(Project $project, Tasklist $tasklist)
     {
-
         //$completed_tasks = Auth::User()->tasks()->where('completed','=',1)->where('tasklist_id','=',$tasklist->id)->get();
         $completed_tasks = Task::where('completed','=',1)->where('tasklist_id','=',$tasklist->id)->get();
         //dd($completed_tasks);

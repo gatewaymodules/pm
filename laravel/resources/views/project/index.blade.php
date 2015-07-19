@@ -17,7 +17,7 @@
             <tr>
                 <th>Project</th>
                 <th>Lists</th>
-                <th>Members</th>
+                <th>Team</th>
             </tr>
             </thead>
             <tbody>

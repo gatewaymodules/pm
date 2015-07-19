@@ -3,9 +3,10 @@
 @section('content')
 
     <h3>{{ $tasklist->name }}
-        <small>List</small>
+        <small>Task List</small>
         {!! link_to_route('project.tasklist.edit', 'Edit', array($project->slug, $tasklist->slug),
         array('class' => 'btn btn-sm btn-info')) !!}
+        <a href="{{ route('calendar.index', ['project' => $project, 'tasklist' => $tasklist]) }}" style="float:right" class="btn btn-sm btn-success">Calendar</a>
     </h3>
 
     <ol class="breadcrumb">
