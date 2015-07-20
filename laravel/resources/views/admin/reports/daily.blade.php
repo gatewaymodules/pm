@@ -5,7 +5,25 @@
 @section('content')
     <h3>Dashboard</h3>
 
+    @if ( $overdueHighPriorityTasks->count() )
+        <a name="most-recent-projects"></a>
+        <h4>Most recently worked on projects</h4>
+
+        @foreach( $mostRecentProjects as $project )
+            <a href="{{ 'project/' . $project->slug }}">
+                {{ $project->name }}
+            </a> |
+        @endforeach
+
+    @endif
+
+    <h4>Other Reports</h4>
+
     {{-- Only display hyperlinks if there are items --}}
+
+    <a href="#tasks-completed-graph">Tasks Completed</a> |
+    <a href="#tasks-updated-graph">Tasks Updated</a> |
+    <a href="#tasks-created-graph">Tasks Created</a> |
 
     @if ($overdueHighPriorityTasks->count())
         <a href="#overdue-high-priority-tasks">Overdue High Priority Tasks ({{ $overdueHighPriorityTasks->count() }}
@@ -25,10 +43,6 @@
             <a href="#overdue-tasks-other">Overdue Tasks Other ({{ $overdueTasksOther->count() }})</a> |
         @endif
     @endif
-
-    <a href="#tasks-completed-graph">Tasks Completed</a> |
-    <a href="#tasks-updated-graph">Tasks Updated</a> |
-    <a href="#tasks-created-graph">Tasks Created</a> |
 
     @if ($oldestTasks->count())
         <a href="#oldest-tasks">Oldest Tasks ({{ $oldestTasks->count() }})</a> |
@@ -86,7 +100,7 @@
                         <td>
                         </td>
                     </tr>
-                    <?php break; ?>
+
                 @endforeach
             </table>
         </div>
@@ -124,7 +138,7 @@
                         <td>
                         </td>
                     </tr>
-                    <?php break; ?>
+
                 @endforeach
             </table>
         </div>
@@ -136,7 +150,7 @@
 
         @if ( $overdueHighPriorityTasksOther->count() )
             <a name="overdue-high-priority-tasks-other"></a>
-            <h4>Overdue high priority tasks assigned to staff or none</h4>
+            <h4>Overdue high priority tasks unassigned or assigned to other</h4>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed" id="table-clickable">
                     <thead>
@@ -182,7 +196,7 @@
 
         @if ( $overdueTasksOther->count() )
             <a name="overdue-tasks-other"></a>
-            <h4>Overdue tasks assigned to staff or none</h4>
+            <h4>Overdue tasks unassigned or assigned to other</h4>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed" id="table-clickable">
                     <thead>
@@ -231,7 +245,7 @@
 
     @if ( $oldestTasks->count() )
         <a name="oldest-tasks"></a>
-        <h4>5 Oldest Tasks</h4>
+        <h4>Oldest Tasks</h4>
         <div class="table-responsive">
             <table class="table table-hover table-condensed" id="table-clickable">
                 <thead>

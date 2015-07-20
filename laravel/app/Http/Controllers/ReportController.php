@@ -38,6 +38,13 @@ class ReportController extends Controller
     public function index(Project $project, Tasklist $tasklist)
     {
         $yesterday = \Carbon\Carbon::now()->subDays(0);
+        $max_items = 3;
+
+        $mostRecentProjects = User::find(Auth::user()->id)
+            ->projects()
+            ->orderBy('updated_at','DESC')
+            ->take($max_items)
+            ->get();
 
         $overdueHighPriorityTasks = User::find(Auth::user()->id)
             ->tasks()
@@ -46,7 +53,8 @@ class ReportController extends Controller
             ->where('due_at', '<=', $yesterday)
             ->where('due_at', '<>', '0000-00-00 00:00:00')
             ->orderBy('due_at', 'ASC')
-            ->get(); 
+            ->take($max_items)
+            ->get();
 
         $overdueTasks = User::find(Auth::user()->id)
             ->tasks()
@@ -55,6 +63,7 @@ class ReportController extends Controller
             ->where('due_at', '<=', $yesterday)
             ->where('due_at', '<>', '0000-00-00 00:00:00')
             ->orderBy('due_at', 'ASC')
+            ->take($max_items)
             ->get();
 
         $user = Auth::user();
@@ -66,6 +75,7 @@ class ReportController extends Controller
             ->where('due_at', '<=', $yesterday)
             ->where('due_at', '<>', '0000-00-00 00:00:00')
             ->orderBy('due_at', 'ASC')
+            ->take($max_items)
             ->get();
 
         $overdueTasksOther = Task::whereNotRelatedToUser($user_id)
@@ -74,13 +84,14 @@ class ReportController extends Controller
             ->where('due_at', '<=', $yesterday)
             ->where('due_at', '<>', '0000-00-00 00:00:00')
             ->orderBy('due_at', 'ASC')
+            ->take($max_items)
             ->get();
 
         $oldestTasks = User::find(Auth::user()->id)
             ->tasks()
             ->where('completed', '<>', 1)
             ->orderBy('created_at', 'ASC')
-            ->take(5)
+            ->take($max_items)
             ->get();
 
         // Graphs
@@ -107,6 +118,8 @@ class ReportController extends Controller
 
         return View::make('admin.reports.daily')
             ->with([
+                    'mostRecentProjects' => $mostRecentProjects,
+
                     'overdueHighPriorityTasks' => $overdueHighPriorityTasks,
                     'overdueTasks' => $overdueTasks,
                     'overdueHighPriorityTasksOther' => $overdueHighPriorityTasksOther,
