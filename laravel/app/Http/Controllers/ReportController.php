@@ -46,7 +46,7 @@ class ReportController extends Controller
             ->where('due_at', '<=', $yesterday)
             ->where('due_at', '<>', '0000-00-00 00:00:00')
             ->orderBy('due_at', 'ASC')
-            ->get();
+            ->get(); 
 
         $overdueTasks = User::find(Auth::user()->id)
             ->tasks()
