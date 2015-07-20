@@ -31,7 +31,7 @@
             <tr>
                 <th>Task
                 </th>
-                <th>Assigned to</th>
+                <th>Members</th>
                 <th>Due</th>
                 <th>Created</th>
             </tr>
