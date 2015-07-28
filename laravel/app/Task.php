@@ -18,6 +18,10 @@ class Task extends Model
      */
     protected $guarded = ['assigned_to', 'old_task_status'];
 
+    public function url() {
+        return '/project/' . $this->project->slug . '/tasklist/' . $this->tasklist->slug . '/task/' . $this->task->slug . '/';
+    }
+
     public function comments() {
         return $this->hasMany('App\Comment')->orderBy('created_at', 'desc');;
     }

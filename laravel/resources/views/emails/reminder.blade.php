@@ -6,7 +6,7 @@
 <body>
 {!! $comment !!}
 
-{!! $user->signature !!}
+{!! $user->signature !!}<a href="{{$url}}">.</a>
 
 </body>
 

@@ -59,8 +59,12 @@ class CommentController extends Controller
 
         if(Input::get('comment_and_notify')) {
             $user = Auth::user();
-            Mail::send('emails.reminder', ['user' => $user, 'comment' => $new_comment], function ($m) use ($user, $task) {
-                $m->to($user->email, $user->name)->subject($task->name)->from(array($user->email=>$user->name));
+            $to_list = array();
+            foreach($task->users as $user2) {
+                $to_list[] = $user2->email;
+            }
+            Mail::send('emails.reminder', ['url' => $task->url, 'user' => $user, 'comment' => $new_comment], function ($m) use ($user, $task, $to_list) {
+                $m->to($to_list, $user->name)->subject($task->name)->from(array($user->email=>$user->name));
             });
         }
 
