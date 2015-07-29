@@ -38,7 +38,7 @@ class ReportController extends Controller
     public function index(Project $project, Tasklist $tasklist)
     {
         $yesterday = \Carbon\Carbon::now()->subDays(0);
-        $max_mru_items = 5;
+        $max_mru_items = 15;
         $max_items = 3;
 
         $mostRecentProjects = User::find(Auth::user()->id)
