@@ -19,11 +19,12 @@
 
     <h4>Other Reports</h4>
 
-    {{-- Only display hyperlinks if there are items --}}
-
+    <a href="#work-breakdown-graph">Work Breakdown</a> |
     <a href="#tasks-completed-graph">Tasks Completed</a> |
     <a href="#tasks-updated-graph">Tasks Updated</a> |
     <a href="#tasks-created-graph">Tasks Created</a> |
+
+    {{-- Only display hyperlinks if there are items --}}
 
     @if ($overdueHighPriorityTasks->count())
         <a href="#overdue-high-priority-tasks">Overdue High Priority Tasks ({{ $overdueHighPriorityTasks->count() }}
@@ -51,6 +52,11 @@
     <a href="#number-tasks-created-list">Number of Tasks Created</a>
 
     <hr>
+
+    <a name="work-breakdown-graph"></a>
+    <label for="work-breakdown-report">Work Breakdown<br/>
+        <canvas id="work-breakdown-report" width="342" height="300"></canvas>
+    </label>
 
     <a name="tasks-completed-graph"></a>
     <label for="tasks-completed-report">Tasks Completed<br/>
@@ -349,5 +355,36 @@
         new Chart(ctx).Bar(chart, {bezierCurve: false});
         })
         ();
+
+        (function () {
+            var ctx = document.getElementById('work-breakdown-report').getContext('2d');
+
+
+        var data = [
+            {
+                value: 300,
+                color:"#F7464A",
+                highlight: "#FF5A5E",
+                label: "Red"
+            },
+            {
+                value: 50,
+                color: "#46BFBD",
+                highlight: "#5AD3D1",
+                label: "Green"
+            },
+            {
+                value: 100,
+                color: "#FDB45C",
+                highlight: "#FFC870",
+                label: "Yellow"
+            }
+        ]
+
+        new Chart(ctx).Pie(data, {segmentShowStroke : true });
+
+        })
+        ();
+
     </script>
 @stop

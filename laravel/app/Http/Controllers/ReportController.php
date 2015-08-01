@@ -97,6 +97,13 @@ class ReportController extends Controller
 
         // Graphs
 
+        $workBreakdown = DB::table('tasks')
+            ->select(DB::raw('count(id),creator_id'))
+            ->groupBy(DB::raw('creator_id'))
+            ->get();
+
+        //dd($workBreakdown);
+
         $completedTasks = DB::table('tasks')
             ->select(DB::raw('DATE(completed_at) as completedDate'), DB::raw('count(id) as completedTask'))
             ->orWhereNotNull('completed_at')
