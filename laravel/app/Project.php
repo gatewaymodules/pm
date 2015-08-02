@@ -23,7 +23,14 @@ class Project extends Model {
 
     public function tasklists()
     {
-        return $this->hasMany('App\Tasklist')->orderBy('updated_at', 'desc');
+        if ($this->sort_order == 'alpha') {
+            return $this->hasMany('App\Tasklist')->orderBy('name', 'asc');
+        } else {
+            return $this->hasMany('App\Tasklist')->orderBy('updated_at', 'desc');
+        }
+
+        // TODO Find way to see if list sort order is name or updated_at
+        //return $this->hasMany('App\Tasklist')->orderBy('updated_at', 'desc');
     }
 
     /**

@@ -16,6 +16,11 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('sort_order', 'Sort Order') !!}
+    {!! Form::text('sort_order', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
     {!! Form::label('slug', 'URL') !!}
     {!! Form::text('slug', null, ['class' => 'form-control']) !!}
 </div>

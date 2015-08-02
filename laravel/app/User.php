@@ -38,7 +38,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function tasklists()
     {
-        return $this->belongsToMany('App\Tasklist')->orderBy('updated_at', 'desc');
+
+            //dd($this->project());
+
+        // TODO figure out a programmatic way to determine if a list has to be sorted by name or last updated
+        //return $this->belongsToMany('App\Tasklist')->orderBy('updated_at', 'desc');
+        return $this->belongsToMany('App\Tasklist')->orderBy('name', 'asc');
     }
 
     public function name() {
